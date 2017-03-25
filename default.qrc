@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>src/document-open.png</file>
+        <file>src/avatar-default.png</file>
+        <file>src/document-save.png</file>
+        <file>src/document-save-as.png</file>
+        <file>src/edit-find.png</file>
+    </qresource>
+</RCC>
