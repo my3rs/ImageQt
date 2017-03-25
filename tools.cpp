@@ -28,13 +28,14 @@ QImage Tools::Warm(int delta, QImage origin)
 
     for (int x=0; x<newImage->width(); x++)
     {
-        for (int y=0; y>newImage->height(); y++)
+        for (int y=0; y<newImage->height(); y++)
         {
             oldColor = QColor(origin.pixel(x,y));
 
             r = oldColor.red() + delta;
             g = oldColor.green() + delta;
             b = oldColor.blue();
+//            qDebug()<<r<<" "<<g<<""<<b;
 
             // Check if the new values are between 0 and 255
             r = qBound(0, r, 255);

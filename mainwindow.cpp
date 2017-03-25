@@ -574,7 +574,7 @@ void MainWindow::on_actionGrayscale_triggered()
 {   
     QImage newImage = Tools::GreyScale(rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
-    newImage = tmpPixmap.toImage();
+//    newImage = tmpPixmap.toImage();
 
     rightImage->updateImage(newImage);
     rightImage->updatePixmap(tmpPixmap);
@@ -590,7 +590,7 @@ void MainWindow::on_actionWarm_triggered()
 {
     QImage newImage = Tools::Warm(30, rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
-    newImage = tmpPixmap.toImage();
+//    newImage = tmpPixmap.toImage();
 
     rightImage->updateImage(newImage);
     rightImage->updatePixmap(tmpPixmap);
