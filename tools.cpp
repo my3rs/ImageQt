@@ -22,6 +22,7 @@ QImage Tools::Warm(int delta, QImage origin)
 {
     QImage *newImage = new QImage(origin.width(), origin.height(),
                                   QImage::Format_ARGB32);
+
     QColor oldColor;
     int r, g, b;
 
