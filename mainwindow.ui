@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>957</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,7 +90,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>957</width>
      <height>28</height>
     </rect>
    </property>
@@ -109,9 +109,26 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <widget class="QMenu" name="menuAdd_Frame">
+     <property name="title">
+      <string>Add Frame</string>
+     </property>
+     <addaction name="actionMovie_frame"/>
+     <addaction name="actionClassic_frame"/>
+     <addaction name="actionFlower_frame"/>
+    </widget>
+    <widget class="QMenu" name="menuColour_temperature">
+     <property name="title">
+      <string>Colour temperature</string>
+     </property>
+     <addaction name="actionWarm"/>
+     <addaction name="actionCool"/>
+    </widget>
     <addaction name="actionGaussian_blur"/>
     <addaction name="actionGrayscale"/>
-    <addaction name="actionWarm"/>
+    <addaction name="menuColour_temperature"/>
+    <addaction name="separator"/>
+    <addaction name="menuAdd_Frame"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -244,6 +261,26 @@
   <action name="actionWarm">
    <property name="text">
     <string>Warm</string>
+   </property>
+  </action>
+  <action name="actionCool">
+   <property name="text">
+    <string>Cool</string>
+   </property>
+  </action>
+  <action name="actionMovie_frame">
+   <property name="text">
+    <string>Movie frame</string>
+   </property>
+  </action>
+  <action name="actionClassic_frame">
+   <property name="text">
+    <string>Classic frame</string>
+   </property>
+  </action>
+  <action name="actionFlower_frame">
+   <property name="text">
+    <string>Flower frame</string>
    </property>
   </action>
  </widget>

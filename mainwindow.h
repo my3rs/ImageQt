@@ -37,6 +37,7 @@ public:
     void cleanImage();
     void setActionStatus(bool);
     void adjustZoom();
+    void updateRightImage(QImage &image, QPixmap &pixmap);
 
 private slots:
     void on_actionExit_triggered();         // Exit the program
@@ -62,6 +63,14 @@ private slots:
     void on_actionGrayscale_triggered();
 
     void on_actionWarm_triggered();
+
+    void on_actionCool_triggered();
+
+    void on_actionMovie_frame_triggered();
+
+    void on_actionClassic_frame_triggered();
+
+    void on_actionFlower_frame_triggered();
 
 private:
     Ui::MainWindow  *ui;

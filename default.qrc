@@ -5,5 +5,11 @@
         <file>src/document-save.png</file>
         <file>src/document-save-as.png</file>
         <file>src/edit-find.png</file>
+        <file>src/frame_3.png</file>
+        <file>src/frame_1.png</file>
+        <file>src/frame_2.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>src/frame_3.png</file>
     </qresource>
 </RCC>

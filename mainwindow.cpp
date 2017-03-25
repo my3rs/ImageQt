@@ -611,15 +611,45 @@ void MainWindow::on_actionCool_triggered()
     repaintRightScene(tmpPixmap);
 }
 
+
+/******************************************************************************
+ *                              Add frame
+ *****************************************************************************/
 void MainWindow::on_actionMovie_frame_triggered()
 {
     QImage frame = QImage(":/img/src/frame_3.png");
     QImage newImage = Tools::DrawFrame(rightImage->imageObject(), frame);
-
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
-    rightImage->updateImage(newImage);
-    rightImage->updatePixmap(tmpPixmap);
+    updateRightImage(newImage, tmpPixmap);
+}
 
-    repaintRightScene(tmpPixmap);
+void MainWindow::on_actionClassic_frame_triggered()
+{
+    QImage frame = QImage(":/img/src/frame_1.png");
+    QImage newImage = Tools::DrawFrame(rightImage->imageObject(), frame);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+void MainWindow::on_actionFlower_frame_triggered()
+{
+    QImage frame = QImage(":/img/src/frame_2.png");
+    QImage newImage = Tools::DrawFrame(rightImage->imageObject(), frame);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+
+
+/******************************************************************************
+ *                Update right image and repaint right scene
+ *****************************************************************************/
+void MainWindow::updateRightImage(QImage &image, QPixmap &pixmap)
+{
+    rightImage->updateImage(image);
+    rightImage->updatePixmap(pixmap);
+    repaintRightScene(rightImage->pixmapObject());
 }
