@@ -3,11 +3,14 @@
 
 #include <QImage>
 #include <QDebug>
+#include <QPainter>
 
 namespace Tools {
 
 QImage GreyScale(QImage origin);
 QImage Warm(int delta, QImage origin);
+QImage Cool(int delta, QImage origin);
+QImage DrawFrame(QImage origin, QImage &frame);
 }
 
 #endif // TOOLS_H

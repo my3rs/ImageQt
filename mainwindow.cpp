@@ -395,10 +395,10 @@ void MainWindow::on_actionNormal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::about(this, tr(WINDOW_ABOUT), tr("ImageQt for Linux. Powered by Qt.\n"
-                                                  "Author:\nLu Hongli\n"
-                                                  "Liu Zheng\n"
-                                                  "Ou Hanyang\n"));
+    QMessageBox message(QMessageBox::NoIcon, tr(WINDOW_ABOUT), "<h1>ImageQt</h1>"
+                                                               "Powered By Qt 5.7.1.");
+    message.setIconPixmap(QPixmap(":/img/src/edit-find.png"));
+    message.exec();
 }
 
 /******************************************************************************
@@ -474,6 +474,7 @@ void MainWindow::repaintRightScene()
     }
 
     rightImage->updatePixmap(image->pixmapObject());
+    rightImage->updateImage(image->imageObject());
     rightScene->addPixmap(rightImage->pixmapObject());
 }
 
@@ -574,7 +575,6 @@ void MainWindow::on_actionGrayscale_triggered()
 {   
     QImage newImage = Tools::GreyScale(rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
-//    newImage = tmpPixmap.toImage();
 
     rightImage->updateImage(newImage);
     rightImage->updatePixmap(tmpPixmap);
@@ -590,7 +590,33 @@ void MainWindow::on_actionWarm_triggered()
 {
     QImage newImage = Tools::Warm(30, rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
-//    newImage = tmpPixmap.toImage();
+
+    rightImage->updateImage(newImage);
+    rightImage->updatePixmap(tmpPixmap);
+
+    repaintRightScene(tmpPixmap);
+}
+
+/******************************************************************************
+ *                              Cool
+ *****************************************************************************/
+void MainWindow::on_actionCool_triggered()
+{
+    QImage newImage = Tools::Cool(30, rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    rightImage->updateImage(newImage);
+    rightImage->updatePixmap(tmpPixmap);
+
+    repaintRightScene(tmpPixmap);
+}
+
+void MainWindow::on_actionMovie_frame_triggered()
+{
+    QImage frame = QImage(":/img/src/frame_3.png");
+    QImage newImage = Tools::DrawFrame(rightImage->imageObject(), frame);
+
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     rightImage->updateImage(newImage);
     rightImage->updatePixmap(tmpPixmap);
