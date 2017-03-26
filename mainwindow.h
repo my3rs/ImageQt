@@ -9,11 +9,12 @@
 #include <QLabel>
 #include <QDebug>
 #include <QStandardPaths>
+#include <QTranslator>
 #include "image.h"
 #include "graphicsview.h"
 #include "zoom_dialog.h"
 #include "gaussianblur_dialog.h"
-#include "filter.h"
+#include "filters.h"
 #include "tools.h"
 
 #define WINDOW_TITLE    "ImageQt"
@@ -71,6 +72,16 @@ private slots:
     void on_actionClassic_frame_triggered();
 
     void on_actionFlower_frame_triggered();
+
+    void on_actionMetal_triggered();
+
+    void on_actionAdjust_brightness_triggered();
+
+    void on_actionChinese_triggered();
+
+    void on_actionHorizontal_triggered();
+
+    void on_actionVertical_triggered();
 
 private:
     Ui::MainWindow  *ui;

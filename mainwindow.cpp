@@ -397,7 +397,7 @@ void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox message(QMessageBox::NoIcon, tr(WINDOW_ABOUT), "<h1>ImageQt</h1>"
                                                                "Powered By Qt 5.7.1.");
-    message.setIconPixmap(QPixmap(":/img/src/edit-find.png"));
+    message.setIconPixmap(QPixmap(":/img/src/logo_1.png"));
     message.exec();
 }
 
@@ -576,10 +576,7 @@ void MainWindow::on_actionGrayscale_triggered()
     QImage newImage = Tools::GreyScale(rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
-    rightImage->updateImage(newImage);
-    rightImage->updatePixmap(tmpPixmap);
-
-    repaintRightScene(tmpPixmap);
+    updateRightImage(newImage, tmpPixmap);
 
 }
 
@@ -591,10 +588,7 @@ void MainWindow::on_actionWarm_triggered()
     QImage newImage = Tools::Warm(30, rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
-    rightImage->updateImage(newImage);
-    rightImage->updatePixmap(tmpPixmap);
-
-    repaintRightScene(tmpPixmap);
+    updateRightImage(newImage, tmpPixmap);
 }
 
 /******************************************************************************
@@ -605,10 +599,7 @@ void MainWindow::on_actionCool_triggered()
     QImage newImage = Tools::Cool(30, rightImage->imageObject());
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
-    rightImage->updateImage(newImage);
-    rightImage->updatePixmap(tmpPixmap);
-
-    repaintRightScene(tmpPixmap);
+    updateRightImage(newImage, tmpPixmap);
 }
 
 
@@ -652,4 +643,51 @@ void MainWindow::updateRightImage(QImage &image, QPixmap &pixmap)
     rightImage->updateImage(image);
     rightImage->updatePixmap(pixmap);
     repaintRightScene(rightImage->pixmapObject());
+}
+
+
+/******************************************************************************
+ *                          Add metal texture
+ *****************************************************************************/
+void MainWindow::on_actionMetal_triggered()
+{
+    QImage newImage = Filters::Metal(rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+/******************************************************************************
+ *                          Adjust Brightness
+ *****************************************************************************/
+void MainWindow::on_actionAdjust_brightness_triggered()
+{
+
+}
+
+void MainWindow::on_actionChinese_triggered()
+{
+    QTranslator translator;
+    translator.load(":/language/cn.qm");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+}
+
+/******************************************************************************
+ *                          Flip Horizontal
+ *****************************************************************************/
+void MainWindow::on_actionHorizontal_triggered()
+{
+    QImage newImage = Tools::Horizontal(rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+/******************************************************************************
+ *                          Flip Vertical
+ *****************************************************************************/
+void MainWindow::on_actionVertical_triggered()
+{
+
 }

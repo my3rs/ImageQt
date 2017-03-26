@@ -1,5 +1,8 @@
 #include "tools.h"
 
+/*****************************************************************************
+ *                           Greyscale
+ * **************************************************************************/
 QImage Tools::GreyScale(QImage origin)
 {
     QImage *newImage = new QImage(origin.width(), origin.height(),
@@ -18,6 +21,9 @@ QImage Tools::GreyScale(QImage origin)
 
 }
 
+/*****************************************************************************
+ *                           Adjust color temperature
+ * **************************************************************************/
 QImage Tools::Warm(int delta, QImage origin)
 {
     QImage *newImage = new QImage(origin.width(), origin.height(),
@@ -75,6 +81,9 @@ QImage Tools::Cool(int delta, QImage origin)
     return *newImage;
 }
 
+/*****************************************************************************
+ *                           Add frame
+ * **************************************************************************/
 QImage Tools::DrawFrame(QImage origin, QImage &frame)
 {
     QImage *newImage = new QImage(origin);
@@ -91,4 +100,60 @@ QImage Tools::DrawFrame(QImage origin, QImage &frame)
 
     return *newImage;
 
+}
+
+/*****************************************************************************
+ *                          Adjust image brightness
+ * **************************************************************************/
+QImage Tools::Brightness(int delta, QImage origin)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                  QImage::Format_ARGB32);
+
+    QColor oldColor;
+    int r, g, b;
+
+    for (int x=0; x<newImage->width(); x++)
+    {
+        for (int y=0; y<newImage->height(); y++)
+        {
+            oldColor = QColor(origin.pixel(x,y));
+
+            r = oldColor.red() + delta;
+            g = oldColor.green() + delta;
+            b = oldColor.blue() + delta;
+
+            // Check if the new values are between 0 and 255
+            r = qBound(0, r, 255);
+            g = qBound(0, g, 255);
+
+            newImage->setPixel(x,y, qRgb(r,g,b));
+        }
+    }
+    return *newImage;
+}
+
+/*****************************************************************************
+ *                          Flip horizontal
+ * **************************************************************************/
+QImage Tools::Horizontal(const QImage &origin)
+{
+    QImage *newImage = new QImage(QSize(origin.width(), origin.height()),
+                                  QImage::Format_ARGB32);
+    QColor tmpColor;
+    int r, g, b;
+    for (int x=0; x<newImage->width(); x++)
+    {
+        for (int y=0; y<newImage->height(); y++)
+        {
+            tmpColor = QColor(origin.pixel(x, y));
+            r = tmpColor.red();
+            g = tmpColor.green();
+            b = tmpColor.blue();
+
+            newImage->setPixel(newImage->width()-x-1,y, qRgb(r,g,b));
+
+        }
+    }
+    return *newImage;
 }
