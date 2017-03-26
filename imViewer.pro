@@ -29,15 +29,16 @@ SOURCES += main.cpp\
     graphicsview.cpp \
     gaussianblur_dialog.cpp \
     zoom_dialog.cpp \
-    tools.cpp
+    tools.cpp \
+    filters.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
     graphicsview.h \
-    filter.h \
     gaussianblur_dialog.h \
     zoom_dialog.h \
-    tools.h
+    tools.h \
+    filters.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
@@ -45,3 +46,5 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     default.qrc
+
+TRANSLATIONS += cn.ts

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="default.qrc">
+    <normaloff>:/img/src/logo_2.png</normaloff>:/img/src/logo_2.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
@@ -124,11 +128,19 @@
      <addaction name="actionWarm"/>
      <addaction name="actionCool"/>
     </widget>
+    <widget class="QMenu" name="menuAdd_texture">
+     <property name="title">
+      <string>Add texture</string>
+     </property>
+     <addaction name="actionMetal"/>
+    </widget>
     <addaction name="actionGaussian_blur"/>
     <addaction name="actionGrayscale"/>
     <addaction name="menuColour_temperature"/>
+    <addaction name="actionAdjust_brightness"/>
     <addaction name="separator"/>
     <addaction name="menuAdd_Frame"/>
+    <addaction name="menuAdd_texture"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -141,15 +153,31 @@
      <addaction name="actionLeft"/>
      <addaction name="actionRight"/>
     </widget>
+    <widget class="QMenu" name="menuFlip">
+     <property name="title">
+      <string>Flip</string>
+     </property>
+     <addaction name="actionHorizontal"/>
+     <addaction name="actionVertical"/>
+    </widget>
     <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
     <addaction name="zoomAction"/>
+    <addaction name="menuFlip"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <addaction name="actionChinese"/>
+     <addaction name="actionEnglish"/>
+    </widget>
     <addaction name="actionAbout"/>
+    <addaction name="menuLanguage"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -229,16 +257,28 @@
    </property>
   </action>
   <action name="actionRestore">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/restore.png</normaloff>:/img/src/restore.png</iconset>
+   </property>
    <property name="text">
     <string>Restore</string>
    </property>
   </action>
   <action name="actionLeft">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/left.png</normaloff>:/img/src/left.png</iconset>
+   </property>
    <property name="text">
     <string>Left</string>
    </property>
   </action>
   <action name="actionRight">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/right.png</normaloff>:/img/src/right.png</iconset>
+   </property>
    <property name="text">
     <string>Right</string>
    </property>
@@ -281,6 +321,52 @@
   <action name="actionFlower_frame">
    <property name="text">
     <string>Flower frame</string>
+   </property>
+  </action>
+  <action name="actionMetal">
+   <property name="text">
+    <string>Metal</string>
+   </property>
+  </action>
+  <action name="actionAdjust_brightness">
+   <property name="text">
+    <string>Adjust brightness</string>
+   </property>
+  </action>
+  <action name="actionChinese">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/chinese.png</normaloff>:/img/src/chinese.png</iconset>
+   </property>
+   <property name="text">
+    <string>Chinese</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/english.png</normaloff>:/img/src/english.png</iconset>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionHorizontal">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/horizontal.png</normaloff>:/img/src/horizontal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Horizontal</string>
+   </property>
+  </action>
+  <action name="actionVertical">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/vertical.png</normaloff>:/img/src/vertical.png</iconset>
+   </property>
+   <property name="text">
+    <string>Vertical</string>
    </property>
   </action>
  </widget>

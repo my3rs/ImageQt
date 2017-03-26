@@ -8,8 +8,18 @@
         <file>src/frame_3.png</file>
         <file>src/frame_1.png</file>
         <file>src/frame_2.png</file>
+        <file>src/logo_1.png</file>
+        <file>src/logo_2.png</file>
+        <file>src/metal.png</file>
+        <file>src/chinese.png</file>
+        <file>src/english.png</file>
+        <file>src/right.png</file>
+        <file>src/horizontal.png</file>
+        <file>src/vertical.png</file>
+        <file>src/left.png</file>
+        <file>src/restore.png</file>
     </qresource>
-    <qresource prefix="/">
-        <file>src/frame_3.png</file>
+    <qresource prefix="/language">
+        <file>cn.qm</file>
     </qresource>
 </RCC>
