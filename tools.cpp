@@ -157,3 +157,25 @@ QImage Tools::Horizontal(const QImage &origin)
     }
     return *newImage;
 }
+
+QImage Tools::Vertical(const QImage &origin)
+{
+    QImage *newImage = new QImage(QSize(origin.width(), origin.height()),
+                                  QImage::Format_ARGB32);
+    QColor tmpColor;
+    int r, g, b;
+    for (int x=0; x<newImage->width(); x++)
+    {
+        for (int y=0; y<newImage->height(); y++)
+        {
+            tmpColor = QColor(origin.pixel(x, y));
+            r = tmpColor.red();
+            g = tmpColor.green();
+            b = tmpColor.blue();
+
+            newImage->setPixel(x, newImage->height()-y-1, qRgb(r,g,b));
+
+        }
+    }
+    return *newImage;
+}

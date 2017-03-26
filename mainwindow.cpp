@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setActionStatus(false);
     setWindowTitle("ImageQt");
+    ui->actionEnglish->setEnabled(false);
 
 }
 
@@ -665,13 +666,7 @@ void MainWindow::on_actionAdjust_brightness_triggered()
 
 }
 
-void MainWindow::on_actionChinese_triggered()
-{
-    QTranslator translator;
-    translator.load(":/language/cn.qm");
-    qApp->installTranslator(&translator);
-    ui->retranslateUi(this);
-}
+
 
 /******************************************************************************
  *                          Flip Horizontal
@@ -689,5 +684,31 @@ void MainWindow::on_actionHorizontal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionVertical_triggered()
 {
+    QImage newImage = Tools::Vertical(rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
+    updateRightImage(newImage, tmpPixmap);
+}
+
+/******************************************************************************
+ *                          Language support
+ *****************************************************************************/
+void MainWindow::on_actionEnglish_triggered()
+{
+    QTranslator translator;
+    translator.load(":/language/cn.qm");
+    qApp->removeTranslator(&translator);
+    ui->retranslateUi(this);
+    ui->actionEnglish->setEnabled(false);
+    ui->actionChinese->setEnabled(true);
+}
+
+void MainWindow::on_actionChinese_triggered()
+{
+    QTranslator translator;
+    translator.load(":/language/cn.qm");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+    ui->actionChinese->setEnabled(false);
+    ui->actionEnglish->setEnabled(true);
 }

@@ -83,6 +83,8 @@ private slots:
 
     void on_actionVertical_triggered();
 
+    void on_actionEnglish_triggered();
+
 private:
     Ui::MainWindow  *ui;
     QGraphicsScene  *leftScene;
