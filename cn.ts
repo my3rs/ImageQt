@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en">
 <context>
+    <name>BrightnessDialog</name>
+    <message>
+        <location filename="dialog_brightness.ui" line="20"/>
+        <source>Adjust Brightness</source>
+        <translation>调节亮度</translation>
+    </message>
+    <message>
+        <location filename="dialog_brightness.ui" line="37"/>
+        <source>Input a dalta value of brightness, +/- both available.</source>
+        <translation>输入亮度调节参数，正值或负值.</translation>
+    </message>
+</context>
+<context>
     <name>GaussianBlurDialog</name>
     <message>
         <location filename="gaussianblurdialog.ui" line="20"/>
