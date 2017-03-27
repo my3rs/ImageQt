@@ -1,4 +1,4 @@
-#include "zoom_dialog.h"
+#include "dialog_zoom.h"
 #include "ui_zoomdialog.h"
 
 ZoomDialog::ZoomDialog(QWidget *parent) :

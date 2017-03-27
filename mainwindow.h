@@ -12,8 +12,9 @@
 #include <QTranslator>
 #include "image.h"
 #include "graphicsview.h"
-#include "zoom_dialog.h"
-#include "gaussianblur_dialog.h"
+#include "dialog_zoom.h"
+#include "dialog_brightness.h"
+#include "dialog_gaussianblur.h"
 #include "filters.h"
 #include "tools.h"
 
@@ -38,9 +39,17 @@ public:
     void cleanImage();
     void setActionStatus(bool);
     void adjustZoom();
+    void adjustBrightness(int delta);
     void updateRightImage(QImage &image, QPixmap &pixmap);
 
 private slots:
+
+    // Receive data from dialogs
+    void receiveZoomFactor(int factor);
+    void receiveBrightnessDelta(int delta);
+    void receiveGaussianFactor(int radius);
+
+    // On action triggered
     void on_actionExit_triggered();         // Exit the program
     void on_actionAdjust_triggered();       // Adjust to fit the window size
     void on_actionClose_triggered();        // Clear both left and right Scene
@@ -53,36 +62,19 @@ private slots:
     void on_actionAbout_triggered();        // Show "About" dialog
     void on_actionZoom_Out_triggered();     // Zoom out
     void on_actionZoom_In_triggered();      // Zoom in
-
-    void receiveZoomFactor(int factor);
-    void receiveGaussianFactor(int radius);
-
-    void on_zoomAction_triggered();
-
-    void on_actionGaussian_blur_triggered();
-
-    void on_actionGrayscale_triggered();
-
+    void on_zoomAction_triggered();         // Zoom action with dialog
+    void on_actionGaussian_blur_triggered();// Gaussian blur
+    void on_actionGrayscale_triggered();    // Grayscale
     void on_actionWarm_triggered();
-
     void on_actionCool_triggered();
-
     void on_actionMovie_frame_triggered();
-
     void on_actionClassic_frame_triggered();
-
     void on_actionFlower_frame_triggered();
-
     void on_actionMetal_triggered();
-
     void on_actionAdjust_brightness_triggered();
-
     void on_actionChinese_triggered();
-
     void on_actionHorizontal_triggered();
-
     void on_actionVertical_triggered();
-
     void on_actionEnglish_triggered();
 
 private:

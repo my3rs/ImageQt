@@ -12,3 +12,8 @@ BrightnessDialog::~BrightnessDialog()
 {
     delete ui;
 }
+
+void BrightnessDialog::on_buttonBox_accepted()
+{
+    emit sendData(ui->spinBox->value());
+}

@@ -1,4 +1,4 @@
-#include "gaussianblur_dialog.h"
+#include "dialog_gaussianblur.h"
 #include "ui_gaussianblurdialog.h"
 
 GaussianBlurDialog::GaussianBlurDialog(QWidget *parent) :

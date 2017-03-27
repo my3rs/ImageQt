@@ -27,22 +27,25 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     image.cpp \
     graphicsview.cpp \
-    gaussianblur_dialog.cpp \
-    zoom_dialog.cpp \
     tools.cpp \
-    filters.cpp
+    filters.cpp \
+    dialog_brightness.cpp \
+    dialog_gaussianblur.cpp \
+    dialog_zoom.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
     graphicsview.h \
-    gaussianblur_dialog.h \
-    zoom_dialog.h \
     tools.h \
-    filters.h
+    filters.h \
+    dialog_brightness.h \
+    dialog_gaussianblur.h \
+    dialog_zoom.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
-    gaussianblurdialog.ui
+    gaussianblurdialog.ui \
+    dialog_brightness.ui
 
 RESOURCES += \
     default.qrc

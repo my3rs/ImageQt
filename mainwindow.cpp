@@ -663,9 +663,24 @@ void MainWindow::on_actionMetal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
-
+    BrightnessDialog *dialog = new BrightnessDialog;
+    connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
+    dialog->show();
 }
 
+void MainWindow::receiveBrightnessDelta(int delta)
+{
+    qDebug()<<"adjust brightness, delta: "<<delta;
+    adjustBrightness(delta);
+}
+
+void MainWindow::adjustBrightness(int delta)
+{
+    QImage newImage = Tools::Brightness(delta, rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
 
 
 /******************************************************************************

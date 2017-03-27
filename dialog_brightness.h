@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::BrightnessDialog *ui;
+
+signals:
+    void sendData(int);
+private slots:
+    void on_buttonBox_accepted();
 };
 
 #endif // DIALOG_BRIGHTNESS_H
