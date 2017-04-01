@@ -134,7 +134,7 @@ QImage Tools::Brightness(int delta, QImage origin)
 }
 
 /*****************************************************************************
- *                          Flip horizontal
+ *                                   Flip
  * **************************************************************************/
 QImage Tools::Horizontal(const QImage &origin)
 {
@@ -178,4 +178,25 @@ QImage Tools::Vertical(const QImage &origin)
         }
     }
     return *newImage;
+}
+
+
+/*****************************************************************************
+ *                               Histogram
+ * **************************************************************************/
+std::vector<int> Tools::Histogram(const QImage &origin)
+{
+    const unsigned char* grayData = origin.bits();
+    std::vector<int> hist(256);
+    for (int x=0; x<origin.width(); x++)
+    {
+        for (int y=0; y<origin.height(); y++)
+        {
+            int index = int(*grayData);
+            hist[index] = hist[index] + 1;
+            grayData += 3;
+        }
+    }
+    grayData = NULL;
+    return hist;
 }
