@@ -28,6 +28,84 @@
     </message>
 </context>
 <context>
+    <name>Histogram</name>
+    <message>
+        <location filename="histogram.cpp" line="117"/>
+        <source>Can&apos;t load the gray levels histogram.</source>
+        <translation>灰度直方图加载失败</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="123"/>
+        <source>Can&apos;t load the red component histogram.</source>
+        <translation>红色分量直方图加载失败</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="131"/>
+        <source>Can&apos;t load the green component histogram.</source>
+        <translation>绿色分量直方图加载失败</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="136"/>
+        <source>Can&apos;t load the blue component histogram.</source>
+        <translation>蓝色分量直方图加载失败</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="166"/>
+        <source>black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="167"/>
+        <source>white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="171"/>
+        <source>GRAY LEVELS HISTOGRAM</source>
+        <translation>灰度直方图</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="173"/>
+        <location filename="histogram.cpp" line="230"/>
+        <location filename="histogram.cpp" line="287"/>
+        <source>Intensity</source>
+        <translation>强度</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="174"/>
+        <location filename="histogram.cpp" line="231"/>
+        <location filename="histogram.cpp" line="288"/>
+        <source>Pixels count</source>
+        <translation>像素数</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="228"/>
+        <source>RED COMPONENT HISTOGRAM</source>
+        <translation>红色分量直方图</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="285"/>
+        <source>GREEN COMPONENT HISTOGRAM</source>
+        <translation>绿色分量直方图</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="223"/>
+        <location filename="histogram.cpp" line="280"/>
+        <source>dark</source>
+        <translation>暗</translation>
+    </message>
+    <message>
+        <location filename="histogram.cpp" line="224"/>
+        <location filename="histogram.cpp" line="281"/>
+        <source>light</source>
+        <translation>亮</translation>
+    </message>
+    <message>
+        <source>BLUE COMPONENT HISTOGRAM</source>
+        <translation type="vanished">蓝色分量直方图</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>MainWindow</source>
