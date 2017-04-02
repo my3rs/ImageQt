@@ -12,7 +12,12 @@ Image viewer powered by Qt 5.7.1
 6. 添加相框
 7. 金属纹理
 8. 语言切换（中/英）支持
+9. 直方图（包括灰度直方图和各通道直方图）
 
 ## 截图
 
-![1](https://source.seahi.me/17-3-26/80019698-file_1490497728902_14c7d.png)
+![主界面](https://source.seahi.me/17-4-2/66467824-file_1491102266981_ca20.png)
+
+![关于](https://source.seahi.me/17-4-2/17776145-file_1491102266717_14c1d.png)
+
+![直方图](https://source.seahi.me/17-4-2/33392854-file_1491102267128_1e84.png)
