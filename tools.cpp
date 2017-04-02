@@ -12,7 +12,7 @@ QImage Tools::GreyScale(QImage origin)
     for (int x=0; x<newImage->width(); x++) {
         for (int y=0; y<newImage->height(); y++) {
             oldColor = QColor(origin.pixel(x,y));
-            int average = (oldColor.red()+oldColor.green()+oldColor.blue())/3;
+            int average = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
             newImage->setPixel(x,y,qRgb(average,average,average));
         }
     }
@@ -166,7 +166,7 @@ QImage Tools::Vertical(const QImage &origin)
 
 
 /*****************************************************************************
- *                           Add frame
+ *                            添加相框
  * **************************************************************************/
 QImage Tools::DrawFrame(QImage origin, QImage &frame)
 {
@@ -184,4 +184,30 @@ QImage Tools::DrawFrame(QImage origin, QImage &frame)
 
     return *newImage;
 
+}
+
+/*****************************************************************************
+ *                           线性灰度变换 y = ax + b
+ * **************************************************************************/
+QImage Tools::LinearLevelTransformation(const QImage &origin, double _a, double _b)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int grayLevel = 0;
+
+    for (int x=0; x<newImage->width(); x++) {
+        for (int y=0; y<newImage->height(); y++) {
+            oldColor = QColor(origin.pixel(x,y));
+            grayLevel = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+            int _y = _a*grayLevel + _b;
+            // Make sure that the new values are between 0 and 255
+            _y = qBound(0, _y, 255);
+
+            newImage->setPixel(x,y,qRgb(_y,_y,_y));
+        }
+    }
+//    qDebug()<<"a:"<<_a<<"\tb:"<<_b;
+
+    return *newImage;
 }

@@ -4,7 +4,6 @@
         <file>src/avatar-default.png</file>
         <file>src/document-save.png</file>
         <file>src/document-save-as.png</file>
-        <file>src/edit-find.png</file>
         <file>src/frame_3.png</file>
         <file>src/frame_1.png</file>
         <file>src/frame_2.png</file>
@@ -21,6 +20,9 @@
         <file>src/histogram.png</file>
         <file>src/brightness.svg</file>
         <file>src/save.svg</file>
+        <file>src/zoom.png</file>
+        <file>src/lineGrey.gif</file>
+        <file>src/quill_72px.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

@@ -19,10 +19,11 @@
 #include "graphicsview.h"
 #include "dialog_zoom.h"
 #include "dialog_brightness.h"
-#include "dialog_gaussianblur.h"
+#include "dialog_gaussianblur.h"c
 #include "filters.h"
 #include "tools.h"
 #include "histogram.h"
+#include "dialog_linear_gray.h"
 
 
 #define WINDOW_TITLE    "ImageQt"
@@ -51,10 +52,11 @@ public:
 
 private slots:
 
-    // Receive data from dialogs
+    // 从子对话框中接收数据
     void receiveZoomFactor(int factor);
     void receiveBrightnessDelta(int delta);
     void receiveGaussianFactor(int radius);
+    void receiveLinearGreyParameter(double, double);
 
     // On action triggered
     void on_actionExit_triggered();         // Exit the program
@@ -85,6 +87,8 @@ private slots:
     void on_actionEnglish_triggered();
 
     void on_actionHistogram_triggered();
+
+    void on_actionLinear_level_transformation_triggered();
 
 private:
     Ui::MainWindow  *ui;

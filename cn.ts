@@ -52,12 +52,12 @@
     <message>
         <location filename="histogram.cpp" line="166"/>
         <source>black</source>
-        <translation type="unfinished"></translation>
+        <translation>黑</translation>
     </message>
     <message>
         <location filename="histogram.cpp" line="167"/>
         <source>white</source>
-        <translation type="unfinished"></translation>
+        <translation>白</translation>
     </message>
     <message>
         <location filename="histogram.cpp" line="171"/>
@@ -68,6 +68,7 @@
         <location filename="histogram.cpp" line="173"/>
         <location filename="histogram.cpp" line="230"/>
         <location filename="histogram.cpp" line="287"/>
+        <location filename="histogram.cpp" line="344"/>
         <source>Intensity</source>
         <translation>强度</translation>
     </message>
@@ -75,6 +76,7 @@
         <location filename="histogram.cpp" line="174"/>
         <location filename="histogram.cpp" line="231"/>
         <location filename="histogram.cpp" line="288"/>
+        <location filename="histogram.cpp" line="345"/>
         <source>Pixels count</source>
         <translation>像素数</translation>
     </message>
@@ -91,18 +93,39 @@
     <message>
         <location filename="histogram.cpp" line="223"/>
         <location filename="histogram.cpp" line="280"/>
+        <location filename="histogram.cpp" line="337"/>
         <source>dark</source>
         <translation>暗</translation>
     </message>
     <message>
         <location filename="histogram.cpp" line="224"/>
         <location filename="histogram.cpp" line="281"/>
+        <location filename="histogram.cpp" line="338"/>
         <source>light</source>
         <translation>亮</translation>
     </message>
     <message>
+        <location filename="histogram.cpp" line="342"/>
         <source>BLUE COMPONENT HISTOGRAM</source>
-        <translation type="vanished">蓝色分量直方图</translation>
+        <translation>蓝色分量直方图</translation>
+    </message>
+</context>
+<context>
+    <name>LinearGrayDialog</name>
+    <message>
+        <location filename="dialog_linear_gray.ui" line="14"/>
+        <source>Linear Gray Level Transformation</source>
+        <translation>线性灰度变换</translation>
+    </message>
+    <message>
+        <location filename="dialog_linear_gray.ui" line="57"/>
+        <source>y = </source>
+        <translation>y = </translation>
+    </message>
+    <message>
+        <location filename="dialog_linear_gray.ui" line="83"/>
+        <source>x + </source>
+        <translation>x + </translation>
     </message>
 </context>
 <context>
@@ -147,180 +170,194 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="103"/>
+        <location filename="mainwindow.ui" line="104"/>
         <source>Fi&amp;le</source>
         <oldsource>File</oldsource>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="114"/>
+        <location filename="mainwindow.ui" line="115"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="118"/>
+        <location filename="mainwindow.ui" line="119"/>
         <source>Add &amp;Frame</source>
         <oldsource>Add Frame</oldsource>
         <translation>添加相框</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="126"/>
+        <location filename="mainwindow.ui" line="127"/>
         <source>&amp;Colour temperature</source>
         <oldsource>Colour temperature</oldsource>
         <translation>色温调节</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="133"/>
+        <location filename="mainwindow.ui" line="134"/>
         <source>A&amp;dd texture</source>
         <oldsource>Add texture</oldsource>
         <translation>添加纹理</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="147"/>
+        <location filename="mainwindow.ui" line="148"/>
         <source>Tools</source>
         <translation>工具</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="151"/>
+        <location filename="mainwindow.ui" line="152"/>
         <source>&amp;Rotate</source>
         <oldsource>Rotate</oldsource>
         <translation>旋转</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="158"/>
+        <location filename="mainwindow.ui" line="159"/>
         <source>&amp;Flip</source>
         <oldsource>Flip</oldsource>
         <translation>翻转</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="171"/>
+        <location filename="mainwindow.ui" line="166"/>
+        <source>Grey level transformation</source>
+        <translation>灰度变换</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="180"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="175"/>
+        <location filename="mainwindow.ui" line="184"/>
         <source>&amp;Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="195"/>
+        <location filename="mainwindow.ui" line="203"/>
         <source>&amp;Open...</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="203"/>
+        <location filename="mainwindow.ui" line="211"/>
         <source>&amp;Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="212"/>
+        <location filename="mainwindow.ui" line="220"/>
         <source>&amp;Save...</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="220"/>
+        <location filename="mainwindow.ui" line="228"/>
         <source>Sa&amp;ve As...</source>
         <translation>另存为</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="225"/>
+        <location filename="mainwindow.ui" line="233"/>
         <source>&amp;Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="237"/>
+        <location filename="mainwindow.ui" line="245"/>
         <source>&amp;About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="266"/>
+        <location filename="mainwindow.ui" line="264"/>
         <source>R&amp;estore</source>
         <translation>恢复</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="275"/>
+        <location filename="mainwindow.ui" line="273"/>
         <source>&amp;Left</source>
         <translation>逆时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="284"/>
+        <location filename="mainwindow.ui" line="282"/>
         <source>&amp;Right</source>
         <translation>顺时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="289"/>
+        <location filename="mainwindow.ui" line="291"/>
         <source>&amp;Zoom</source>
         <translation>缩放</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="294"/>
+        <location filename="mainwindow.ui" line="296"/>
         <source>&amp;Gaussian blur</source>
         <translation>高斯模糊</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="299"/>
+        <location filename="mainwindow.ui" line="301"/>
         <source>G&amp;rayscale</source>
         <translation>灰度图</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="304"/>
+        <location filename="mainwindow.ui" line="306"/>
         <source>&amp;Warm</source>
         <translation>变暖</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="309"/>
+        <location filename="mainwindow.ui" line="311"/>
         <source>&amp;Cool</source>
         <translation>变冷</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="314"/>
+        <location filename="mainwindow.ui" line="316"/>
         <source>&amp;Movie frame</source>
         <translation>电影</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="319"/>
+        <location filename="mainwindow.ui" line="321"/>
         <source>&amp;Classic frame</source>
         <translation>经典</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="324"/>
+        <location filename="mainwindow.ui" line="326"/>
         <source>&amp;Flower frame</source>
         <translation>小花</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="329"/>
+        <location filename="mainwindow.ui" line="331"/>
         <source>&amp;Metal</source>
         <translation>金属</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="334"/>
+        <location filename="mainwindow.ui" line="340"/>
         <source>&amp;Adjust brightness</source>
         <translation>调整亮度</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="343"/>
+        <location filename="mainwindow.ui" line="349"/>
         <source>&amp;Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="352"/>
+        <location filename="mainwindow.ui" line="358"/>
         <source>&amp;English</source>
         <translation>英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="361"/>
+        <location filename="mainwindow.ui" line="367"/>
         <source>&amp;Horizontal</source>
         <translation>水平镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="370"/>
+        <location filename="mainwindow.ui" line="376"/>
         <source>&amp;Vertical</source>
         <translation>垂直镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="375"/>
+        <location filename="mainwindow.ui" line="385"/>
+        <source>&amp;Histogram</source>
+        <translation>直方图(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="390"/>
+        <source>Linear level transformation</source>
+        <translation>线性灰度变换</translation>
+    </message>
+    <message>
         <source>Histogram</source>
-        <translation>直方图</translation>
+        <translation type="vanished">直方图</translation>
     </message>
     <message>
         <source>Language</source>
@@ -331,7 +368,7 @@
         <translation type="vanished">打开...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="198"/>
+        <location filename="mainwindow.ui" line="206"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
@@ -340,7 +377,7 @@
         <translation type="vanished">保存...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="215"/>
+        <location filename="mainwindow.ui" line="223"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
@@ -349,7 +386,7 @@
         <translation type="vanished">退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="228"/>
+        <location filename="mainwindow.ui" line="236"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
@@ -358,22 +395,20 @@
         <translation type="vanished">关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="242"/>
         <source>Zoom In</source>
-        <translation>放大</translation>
+        <translation type="vanished">放大</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="247"/>
         <source>Zoom Out</source>
-        <translation>缩小</translation>
+        <translation type="vanished">缩小</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="252"/>
+        <location filename="mainwindow.ui" line="250"/>
         <source>Normal</source>
         <translation>原始尺寸</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="257"/>
+        <location filename="mainwindow.ui" line="255"/>
         <source>Adjust</source>
         <translation></translation>
     </message>

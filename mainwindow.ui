@@ -89,6 +89,7 @@
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -160,11 +161,23 @@
      <addaction name="actionHorizontal"/>
      <addaction name="actionVertical"/>
     </widget>
+    <widget class="QMenu" name="menuGrey_level_transformation">
+     <property name="title">
+      <string>Grey level transformation</string>
+     </property>
+     <property name="icon">
+      <iconset resource="default.qrc">
+       <normaloff>:/img/src/quill_72px.png</normaloff>:/img/src/quill_72px.png</iconset>
+     </property>
+     <addaction name="actionLinear_level_transformation"/>
+    </widget>
     <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
     <addaction name="zoomAction"/>
     <addaction name="menuFlip"/>
+    <addaction name="separator"/>
     <addaction name="actionHistogram"/>
+    <addaction name="menuGrey_level_transformation"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -185,7 +198,6 @@
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
    <property name="icon">
     <iconset resource="default.qrc">
@@ -237,16 +249,6 @@
     <string>&amp;About</string>
    </property>
   </action>
-  <action name="actionZoom_In">
-   <property name="text">
-    <string>Zoom In</string>
-   </property>
-  </action>
-  <action name="actionZoom_Out">
-   <property name="text">
-    <string>Zoom Out</string>
-   </property>
-  </action>
   <action name="actionNormal">
    <property name="text">
     <string>Normal</string>
@@ -285,6 +287,10 @@
    </property>
   </action>
   <action name="zoomAction">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/zoom.png</normaloff>:/img/src/zoom.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Zoom</string>
    </property>
@@ -381,6 +387,11 @@
    </property>
    <property name="text">
     <string>&amp;Histogram</string>
+   </property>
+  </action>
+  <action name="actionLinear_level_transformation">
+   <property name="text">
+    <string>Linear grey level transformation</string>
    </property>
   </action>
  </widget>

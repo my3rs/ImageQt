@@ -759,3 +759,24 @@ void MainWindow::on_actionHistogram_triggered()
 
     hstgrmDialog->show();
 }
+
+
+
+/******************************************************************************
+ *                           灰度线性变换 y = ax + b
+ *****************************************************************************/
+void MainWindow::on_actionLinear_level_transformation_triggered()
+{
+    LinearGrayDialog *dialog = new LinearGrayDialog;
+    connect(dialog, SIGNAL(sendData(double, double)),
+            this, SLOT(receiveLinearGreyParameter(double,double)));
+    dialog->show();
+}
+
+void MainWindow::receiveLinearGreyParameter(double _a, double _b)
+{
+    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}

@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     dialog_brightness.cpp \
     dialog_gaussianblur.cpp \
     dialog_zoom.cpp \
-    histogram.cpp
+    histogram.cpp \
+    dialog_linear_gray.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -42,12 +43,14 @@ HEADERS  += mainwindow.h \
     dialog_brightness.h \
     dialog_gaussianblur.h \
     dialog_zoom.h \
-    histogram.h
+    histogram.h \
+    dialog_linear_gray.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
     gaussianblurdialog.ui \
-    dialog_brightness.ui
+    dialog_brightness.ui \
+    dialog_linear_gray.ui
 
 RESOURCES += \
     default.qrc
