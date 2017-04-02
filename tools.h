@@ -19,7 +19,6 @@ QImage DrawFrame(QImage origin, QImage &frame);
 QImage Brightness(int delta, QImage origin);
 QImage Horizontal(const QImage &origin);
 QImage Vertical(const QImage &origin);
-std::vector<int> Histogram(const QImage &origin);
 }
 
 #endif // TOOLS_H

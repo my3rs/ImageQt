@@ -81,26 +81,7 @@ QImage Tools::Cool(int delta, QImage origin)
     return *newImage;
 }
 
-/*****************************************************************************
- *                           Add frame
- * **************************************************************************/
-QImage Tools::DrawFrame(QImage origin, QImage &frame)
-{
-    QImage *newImage = new QImage(origin);
-    QPainter painter;
 
-    int width = origin.width();
-    int height = origin.height();
-
-    QImage tmpFrame = frame.scaled(QSize(width, height));
-
-    painter.begin(newImage);
-    painter.drawImage(0, 0, tmpFrame);
-    painter.end();
-
-    return *newImage;
-
-}
 
 /*****************************************************************************
  *                          Adjust image brightness
@@ -181,22 +162,26 @@ QImage Tools::Vertical(const QImage &origin)
 }
 
 
+
+
+
 /*****************************************************************************
- *                               Histogram
+ *                           Add frame
  * **************************************************************************/
-std::vector<int> Tools::Histogram(const QImage &origin)
+QImage Tools::DrawFrame(QImage origin, QImage &frame)
 {
-    const unsigned char* grayData = origin.bits();
-    std::vector<int> hist(256);
-    for (int x=0; x<origin.width(); x++)
-    {
-        for (int y=0; y<origin.height(); y++)
-        {
-            int index = int(*grayData);
-            hist[index] = hist[index] + 1;
-            grayData += 3;
-        }
-    }
-    grayData = NULL;
-    return hist;
+    QImage *newImage = new QImage(origin);
+    QPainter painter;
+
+    int width = origin.width();
+    int height = origin.height();
+
+    QImage tmpFrame = frame.scaled(QSize(width, height));
+
+    painter.begin(newImage);
+    painter.drawImage(0, 0, tmpFrame);
+    painter.end();
+
+    return *newImage;
+
 }
