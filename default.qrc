@@ -18,6 +18,9 @@
         <file>src/vertical.png</file>
         <file>src/left.png</file>
         <file>src/restore.png</file>
+        <file>src/histogram.png</file>
+        <file>src/brightness.svg</file>
+        <file>src/save.svg</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>
