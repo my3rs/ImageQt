@@ -45,7 +45,6 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="38"/>
-        <location filename="mainwindow.ui" line="202"/>
         <source>Close</source>
         <translation>清除</translation>
     </message>
@@ -61,7 +60,6 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="63"/>
-        <location filename="mainwindow.ui" line="265"/>
         <source>Restore</source>
         <translation>恢复</translation>
     </message>
@@ -72,7 +70,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="103"/>
-        <source>File</source>
+        <source>Fi&amp;le</source>
+        <oldsource>File</oldsource>
         <translation>文件</translation>
     </message>
     <message>
@@ -82,17 +81,20 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="118"/>
-        <source>Add Frame</source>
+        <source>Add &amp;Frame</source>
+        <oldsource>Add Frame</oldsource>
         <translation>添加相框</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="126"/>
-        <source>Colour temperature</source>
+        <source>&amp;Colour temperature</source>
+        <oldsource>Colour temperature</oldsource>
         <translation>色温调节</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="133"/>
-        <source>Add texture</source>
+        <source>A&amp;dd texture</source>
+        <oldsource>Add texture</oldsource>
         <translation>添加纹理</translation>
     </message>
     <message>
@@ -102,163 +104,264 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="151"/>
-        <source>Rotate</source>
+        <source>&amp;Rotate</source>
+        <oldsource>Rotate</oldsource>
         <translation>旋转</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="158"/>
-        <source>Flip</source>
+        <source>&amp;Flip</source>
+        <oldsource>Flip</oldsource>
         <translation>翻转</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="170"/>
+        <location filename="mainwindow.ui" line="171"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="174"/>
-        <source>Language</source>
+        <location filename="mainwindow.ui" line="175"/>
+        <source>&amp;Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="194"/>
-        <source>Open...</source>
-        <translation>打开...</translation>
+        <location filename="mainwindow.ui" line="195"/>
+        <source>&amp;Open...</source>
+        <translation>打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="197"/>
+        <location filename="mainwindow.ui" line="203"/>
+        <source>&amp;Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="212"/>
+        <source>&amp;Save...</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="220"/>
+        <source>Sa&amp;ve As...</source>
+        <translation>另存为</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="225"/>
+        <source>&amp;Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="237"/>
+        <source>&amp;About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="266"/>
+        <source>R&amp;estore</source>
+        <translation>恢复</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="275"/>
+        <source>&amp;Left</source>
+        <translation>逆时针</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="284"/>
+        <source>&amp;Right</source>
+        <translation>顺时针</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="289"/>
+        <source>&amp;Zoom</source>
+        <translation>缩放</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="294"/>
+        <source>&amp;Gaussian blur</source>
+        <translation>高斯模糊</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="299"/>
+        <source>G&amp;rayscale</source>
+        <translation>灰度图</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="304"/>
+        <source>&amp;Warm</source>
+        <translation>变暖</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="309"/>
+        <source>&amp;Cool</source>
+        <translation>变冷</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="314"/>
+        <source>&amp;Movie frame</source>
+        <translation>电影</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="319"/>
+        <source>&amp;Classic frame</source>
+        <translation>经典</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="324"/>
+        <source>&amp;Flower frame</source>
+        <translation>小花</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="329"/>
+        <source>&amp;Metal</source>
+        <translation>金属</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="334"/>
+        <source>&amp;Adjust brightness</source>
+        <translation>调整亮度</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="343"/>
+        <source>&amp;Chinese</source>
+        <translation>中文</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="352"/>
+        <source>&amp;English</source>
+        <translation>英文</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="361"/>
+        <source>&amp;Horizontal</source>
+        <translation>水平镜像</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="370"/>
+        <source>&amp;Vertical</source>
+        <translation>垂直镜像</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="375"/>
+        <source>Histogram</source>
+        <translation>直方图</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="vanished">语言</translation>
+    </message>
+    <message>
+        <source>Open...</source>
+        <translation type="vanished">打开...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="198"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="211"/>
         <source>Save...</source>
-        <translation>保存...</translation>
+        <translation type="vanished">保存...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="214"/>
+        <location filename="mainwindow.ui" line="215"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="219"/>
-        <source>Save As...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.ui" line="224"/>
         <source>Exit</source>
-        <translation>退出</translation>
+        <translation type="vanished">退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="227"/>
+        <location filename="mainwindow.ui" line="228"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="236"/>
         <source>About</source>
-        <translation>关于</translation>
+        <translation type="vanished">关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="241"/>
+        <location filename="mainwindow.ui" line="242"/>
         <source>Zoom In</source>
         <translation>放大</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="246"/>
+        <location filename="mainwindow.ui" line="247"/>
         <source>Zoom Out</source>
         <translation>缩小</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="251"/>
+        <location filename="mainwindow.ui" line="252"/>
         <source>Normal</source>
         <translation>原始尺寸</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="256"/>
+        <location filename="mainwindow.ui" line="257"/>
         <source>Adjust</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="274"/>
         <source>Left</source>
-        <translation>左旋转</translation>
+        <translation type="vanished">左旋转</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="283"/>
         <source>Right</source>
-        <translation>右旋转</translation>
+        <translation type="vanished">右旋转</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="288"/>
         <source>Zoom</source>
-        <translation>缩放</translation>
+        <translation type="vanished">缩放</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="293"/>
         <source>Gaussian blur</source>
-        <translation>高斯模糊</translation>
+        <translation type="vanished">高斯模糊</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="298"/>
         <source>Grayscale</source>
-        <translation>灰度图像</translation>
+        <translation type="vanished">灰度图像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="303"/>
         <source>Warm</source>
-        <translation>暖色调</translation>
+        <translation type="vanished">暖色调</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="308"/>
         <source>Cool</source>
-        <translation>冷色调</translation>
+        <translation type="vanished">冷色调</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="313"/>
         <source>Movie frame</source>
-        <translation>电影</translation>
+        <translation type="vanished">电影</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="318"/>
         <source>Classic frame</source>
-        <translation>经典</translation>
+        <translation type="vanished">经典</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="323"/>
         <source>Flower frame</source>
-        <translation>小花</translation>
+        <translation type="vanished">小花</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="328"/>
         <source>Metal</source>
-        <translation>金属</translation>
+        <translation type="vanished">金属</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="333"/>
         <source>Adjust brightness</source>
-        <translation>调整亮度</translation>
+        <translation type="vanished">调整亮度</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="342"/>
         <source>Chinese</source>
-        <translation>汉语</translation>
+        <translation type="vanished">汉语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="351"/>
         <source>English</source>
-        <translation>英语</translation>
+        <translation type="vanished">英语</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="360"/>
         <source>Horizontal</source>
-        <translation>水平</translation>
+        <translation type="vanished">水平</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="369"/>
         <source>Vertical</source>
-        <translation>垂直</translation>
+        <translation type="vanished">垂直</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="262"/>
