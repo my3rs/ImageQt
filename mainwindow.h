@@ -1,3 +1,8 @@
+/****************************************************************************
+ *                    Mainwindow and actions control
+ *
+ * *************************************************************************/
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -17,6 +22,8 @@
 #include "dialog_gaussianblur.h"
 #include "filters.h"
 #include "tools.h"
+#include "histogram.h"
+
 
 #define WINDOW_TITLE    "ImageQt"
 #define WINDOW_CRITICAL "Error - ImageQt"
@@ -76,6 +83,8 @@ private slots:
     void on_actionHorizontal_triggered();
     void on_actionVertical_triggered();
     void on_actionEnglish_triggered();
+
+    void on_actionHistogram_triggered();
 
 private:
     Ui::MainWindow  *ui;

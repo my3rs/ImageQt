@@ -727,3 +727,35 @@ void MainWindow::on_actionChinese_triggered()
     ui->actionChinese->setEnabled(false);
     ui->actionEnglish->setEnabled(true);
 }
+
+
+/******************************************************************************
+ *                           绘制图像直方图
+ *****************************************************************************/
+void MainWindow::on_actionHistogram_triggered()
+{
+
+    QDialog * hstgrmDialog = new QDialog(this);
+    QScrollArea * scrollArea = new QScrollArea(hstgrmDialog);
+    Histogram * hstgrm = new Histogram(scrollArea);
+    hstgrm->computeHstgrm(rightImage->imageObject());
+
+    if (hstgrm == NULL)
+        return;
+
+
+    scrollArea->setWidget(hstgrm);
+
+    QHBoxLayout * layout = new QHBoxLayout;
+    layout->addWidget(scrollArea);
+    hstgrmDialog->setLayout(layout);
+
+    hstgrm->resize(800, 780);
+    hstgrmDialog->setFixedWidth(820);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->adjustSize();
+
+    hstgrmDialog->setWindowTitle("Histogram - ImageQt");
+
+    hstgrmDialog->show();
+}

@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     filters.cpp \
     dialog_brightness.cpp \
     dialog_gaussianblur.cpp \
-    dialog_zoom.cpp
+    dialog_zoom.cpp \
+    histogram.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -40,7 +41,8 @@ HEADERS  += mainwindow.h \
     filters.h \
     dialog_brightness.h \
     dialog_gaussianblur.h \
-    dialog_zoom.h
+    dialog_zoom.h \
+    histogram.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \

@@ -95,12 +95,12 @@
      <x>0</x>
      <y>0</y>
      <width>957</width>
-     <height>28</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Fi&amp;le</string>
     </property>
     <addaction name="actionOpen"/>
     <addaction name="actionClose"/>
@@ -115,7 +115,7 @@
     </property>
     <widget class="QMenu" name="menuAdd_Frame">
      <property name="title">
-      <string>Add Frame</string>
+      <string>Add &amp;Frame</string>
      </property>
      <addaction name="actionMovie_frame"/>
      <addaction name="actionClassic_frame"/>
@@ -123,14 +123,14 @@
     </widget>
     <widget class="QMenu" name="menuColour_temperature">
      <property name="title">
-      <string>Colour temperature</string>
+      <string>&amp;Colour temperature</string>
      </property>
      <addaction name="actionWarm"/>
      <addaction name="actionCool"/>
     </widget>
     <widget class="QMenu" name="menuAdd_texture">
      <property name="title">
-      <string>Add texture</string>
+      <string>A&amp;dd texture</string>
      </property>
      <addaction name="actionMetal"/>
     </widget>
@@ -148,14 +148,14 @@
     </property>
     <widget class="QMenu" name="menuRotate">
      <property name="title">
-      <string>Rotate</string>
+      <string>&amp;Rotate</string>
      </property>
      <addaction name="actionLeft"/>
      <addaction name="actionRight"/>
     </widget>
     <widget class="QMenu" name="menuFlip">
      <property name="title">
-      <string>Flip</string>
+      <string>&amp;Flip</string>
      </property>
      <addaction name="actionHorizontal"/>
      <addaction name="actionVertical"/>
@@ -164,6 +164,7 @@
     <addaction name="actionRestore"/>
     <addaction name="zoomAction"/>
     <addaction name="menuFlip"/>
+    <addaction name="actionHistogram"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -171,7 +172,7 @@
     </property>
     <widget class="QMenu" name="menuLanguage">
      <property name="title">
-      <string>Language</string>
+      <string>&amp;Language</string>
      </property>
      <addaction name="actionChinese"/>
      <addaction name="actionEnglish"/>
@@ -191,7 +192,7 @@
      <normaloff>:/img/src/document-open.png</normaloff>:/img/src/document-open.png</iconset>
    </property>
    <property name="text">
-    <string>Open...</string>
+    <string>&amp;Open...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -199,16 +200,16 @@
   </action>
   <action name="actionClose">
    <property name="text">
-    <string>Close</string>
+    <string>&amp;Close</string>
    </property>
   </action>
   <action name="actionSave">
    <property name="icon">
     <iconset resource="default.qrc">
-     <normaloff>:/img/src/document-save.png</normaloff>:/img/src/document-save.png</iconset>
+     <normaloff>:/img/src/save.svg</normaloff>:/img/src/save.svg</iconset>
    </property>
    <property name="text">
-    <string>Save...</string>
+    <string>&amp;Save...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -216,12 +217,12 @@
   </action>
   <action name="actionSave_As">
    <property name="text">
-    <string>Save As...</string>
+    <string>Sa&amp;ve As...</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>Exit</string>
+    <string>&amp;Exit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -233,7 +234,7 @@
      <normaloff>:/img/src/avatar-default.png</normaloff>:/img/src/avatar-default.png</iconset>
    </property>
    <property name="text">
-    <string>About</string>
+    <string>&amp;About</string>
    </property>
   </action>
   <action name="actionZoom_In">
@@ -262,7 +263,7 @@
      <normaloff>:/img/src/restore.png</normaloff>:/img/src/restore.png</iconset>
    </property>
    <property name="text">
-    <string>Restore</string>
+    <string>R&amp;estore</string>
    </property>
   </action>
   <action name="actionLeft">
@@ -271,7 +272,7 @@
      <normaloff>:/img/src/left.png</normaloff>:/img/src/left.png</iconset>
    </property>
    <property name="text">
-    <string>Left</string>
+    <string>&amp;Left</string>
    </property>
   </action>
   <action name="actionRight">
@@ -280,57 +281,61 @@
      <normaloff>:/img/src/right.png</normaloff>:/img/src/right.png</iconset>
    </property>
    <property name="text">
-    <string>Right</string>
+    <string>&amp;Right</string>
    </property>
   </action>
   <action name="zoomAction">
    <property name="text">
-    <string>Zoom</string>
+    <string>&amp;Zoom</string>
    </property>
   </action>
   <action name="actionGaussian_blur">
    <property name="text">
-    <string>Gaussian blur</string>
+    <string>&amp;Gaussian blur</string>
    </property>
   </action>
   <action name="actionGrayscale">
    <property name="text">
-    <string>Grayscale</string>
+    <string>G&amp;rayscale</string>
    </property>
   </action>
   <action name="actionWarm">
    <property name="text">
-    <string>Warm</string>
+    <string>&amp;Warm</string>
    </property>
   </action>
   <action name="actionCool">
    <property name="text">
-    <string>Cool</string>
+    <string>&amp;Cool</string>
    </property>
   </action>
   <action name="actionMovie_frame">
    <property name="text">
-    <string>Movie frame</string>
+    <string>&amp;Movie frame</string>
    </property>
   </action>
   <action name="actionClassic_frame">
    <property name="text">
-    <string>Classic frame</string>
+    <string>&amp;Classic frame</string>
    </property>
   </action>
   <action name="actionFlower_frame">
    <property name="text">
-    <string>Flower frame</string>
+    <string>&amp;Flower frame</string>
    </property>
   </action>
   <action name="actionMetal">
    <property name="text">
-    <string>Metal</string>
+    <string>&amp;Metal</string>
    </property>
   </action>
   <action name="actionAdjust_brightness">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/brightness.svg</normaloff>:/img/src/brightness.svg</iconset>
+   </property>
    <property name="text">
-    <string>Adjust brightness</string>
+    <string>&amp;Adjust brightness</string>
    </property>
   </action>
   <action name="actionChinese">
@@ -339,7 +344,7 @@
      <normaloff>:/img/src/chinese.png</normaloff>:/img/src/chinese.png</iconset>
    </property>
    <property name="text">
-    <string>Chinese</string>
+    <string>&amp;Chinese</string>
    </property>
   </action>
   <action name="actionEnglish">
@@ -348,7 +353,7 @@
      <normaloff>:/img/src/english.png</normaloff>:/img/src/english.png</iconset>
    </property>
    <property name="text">
-    <string>English</string>
+    <string>&amp;English</string>
    </property>
   </action>
   <action name="actionHorizontal">
@@ -357,7 +362,7 @@
      <normaloff>:/img/src/horizontal.png</normaloff>:/img/src/horizontal.png</iconset>
    </property>
    <property name="text">
-    <string>Horizontal</string>
+    <string>&amp;Horizontal</string>
    </property>
   </action>
   <action name="actionVertical">
@@ -366,7 +371,16 @@
      <normaloff>:/img/src/vertical.png</normaloff>:/img/src/vertical.png</iconset>
    </property>
    <property name="text">
-    <string>Vertical</string>
+    <string>&amp;Vertical</string>
+   </property>
+  </action>
+  <action name="actionHistogram">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/histogram.png</normaloff>:/img/src/histogram.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Histogram</string>
    </property>
   </action>
  </widget>
