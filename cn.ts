@@ -118,14 +118,34 @@
         <translation>线性灰度变换</translation>
     </message>
     <message>
-        <location filename="dialog_linear_gray.ui" line="57"/>
+        <location filename="dialog_linear_gray.ui" line="63"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Transformation function:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;变换函数：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="dialog_linear_gray.ui" line="75"/>
         <source>y = </source>
         <translation>y = </translation>
     </message>
     <message>
-        <location filename="dialog_linear_gray.ui" line="83"/>
+        <location filename="dialog_linear_gray.ui" line="101"/>
         <source>x + </source>
         <translation>x + </translation>
+    </message>
+    <message>
+        <location filename="dialog_linear_gray.ui" line="138"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Roboto&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#c80932;&quot;&gt;NOTE!&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;The function you choose here will be used for grayscale linear transformation.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Roboto&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#c80932;&quot;&gt;NOTE!&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;请在这里确定线性灰度变换的函数！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -221,139 +241,143 @@
         <translation>灰度变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="180"/>
+        <location filename="mainwindow.ui" line="184"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="184"/>
+        <location filename="mainwindow.ui" line="188"/>
         <source>&amp;Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="203"/>
+        <location filename="mainwindow.ui" line="207"/>
         <source>&amp;Open...</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="211"/>
+        <location filename="mainwindow.ui" line="215"/>
         <source>&amp;Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="220"/>
+        <location filename="mainwindow.ui" line="224"/>
         <source>&amp;Save...</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="228"/>
+        <location filename="mainwindow.ui" line="232"/>
         <source>Sa&amp;ve As...</source>
         <translation>另存为</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="233"/>
+        <location filename="mainwindow.ui" line="237"/>
         <source>&amp;Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="245"/>
+        <location filename="mainwindow.ui" line="249"/>
         <source>&amp;About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="264"/>
+        <location filename="mainwindow.ui" line="268"/>
         <source>R&amp;estore</source>
         <translation>恢复</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="273"/>
+        <location filename="mainwindow.ui" line="277"/>
         <source>&amp;Left</source>
         <translation>逆时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="282"/>
+        <location filename="mainwindow.ui" line="286"/>
         <source>&amp;Right</source>
         <translation>顺时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="291"/>
+        <location filename="mainwindow.ui" line="295"/>
         <source>&amp;Zoom</source>
         <translation>缩放</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="296"/>
+        <location filename="mainwindow.ui" line="300"/>
         <source>&amp;Gaussian blur</source>
         <translation>高斯模糊</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="301"/>
+        <location filename="mainwindow.ui" line="305"/>
         <source>G&amp;rayscale</source>
         <translation>灰度图</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="306"/>
+        <location filename="mainwindow.ui" line="310"/>
         <source>&amp;Warm</source>
         <translation>变暖</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="311"/>
+        <location filename="mainwindow.ui" line="315"/>
         <source>&amp;Cool</source>
         <translation>变冷</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="316"/>
+        <location filename="mainwindow.ui" line="320"/>
         <source>&amp;Movie frame</source>
         <translation>电影</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="321"/>
+        <location filename="mainwindow.ui" line="325"/>
         <source>&amp;Classic frame</source>
         <translation>经典</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="326"/>
+        <location filename="mainwindow.ui" line="330"/>
         <source>&amp;Flower frame</source>
         <translation>小花</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="331"/>
+        <location filename="mainwindow.ui" line="335"/>
         <source>&amp;Metal</source>
         <translation>金属</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="340"/>
+        <location filename="mainwindow.ui" line="344"/>
         <source>&amp;Adjust brightness</source>
         <translation>调整亮度</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="349"/>
+        <location filename="mainwindow.ui" line="353"/>
         <source>&amp;Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="358"/>
+        <location filename="mainwindow.ui" line="362"/>
         <source>&amp;English</source>
         <translation>英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="367"/>
+        <location filename="mainwindow.ui" line="371"/>
         <source>&amp;Horizontal</source>
         <translation>水平镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="376"/>
+        <location filename="mainwindow.ui" line="380"/>
         <source>&amp;Vertical</source>
         <translation>垂直镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="385"/>
+        <location filename="mainwindow.ui" line="389"/>
         <source>&amp;Histogram</source>
         <translation>直方图(&amp;H)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="390"/>
-        <source>Linear level transformation</source>
+        <location filename="mainwindow.ui" line="394"/>
+        <source>Linear grey level transformation</source>
         <translation>线性灰度变换</translation>
+    </message>
+    <message>
+        <source>Linear level transformation</source>
+        <translation type="vanished">线性灰度变换</translation>
     </message>
     <message>
         <source>Histogram</source>
@@ -368,7 +392,7 @@
         <translation type="vanished">打开...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="206"/>
+        <location filename="mainwindow.ui" line="210"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
@@ -377,7 +401,7 @@
         <translation type="vanished">保存...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="223"/>
+        <location filename="mainwindow.ui" line="227"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
@@ -386,7 +410,7 @@
         <translation type="vanished">退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="236"/>
+        <location filename="mainwindow.ui" line="240"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
@@ -403,12 +427,12 @@
         <translation type="vanished">缩小</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="250"/>
+        <location filename="mainwindow.ui" line="254"/>
         <source>Normal</source>
         <translation>原始尺寸</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="255"/>
+        <location filename="mainwindow.ui" line="259"/>
         <source>Adjust</source>
         <translation></translation>
     </message>
@@ -477,32 +501,32 @@
         <translation type="vanished">垂直</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="262"/>
+        <location filename="mainwindow.cpp" line="282"/>
         <source>Open image</source>
         <translation>打开图片</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="263"/>
+        <location filename="mainwindow.cpp" line="283"/>
         <source>All Files (*);;All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;Image BPM (*.bpm);;Image GIF (*.gif);;Image JPG (*.jpg);;Image JPEG (*.jpeg);;Image PNG (*.png);;Image PPM (*.ppm);;Image XBM (*.xbm);;Image XPM (*.xpm);;</source>
         <translation>所有文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="280"/>
+        <location filename="mainwindow.cpp" line="300"/>
         <source>Unable to open image.</source>
         <translation>无法打开文件.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="342"/>
         <source>Save image</source>
         <translation>保存图像</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="323"/>
+        <location filename="mainwindow.cpp" line="343"/>
         <source>All files (*);;Image BPM (*.bpm);;Image GIF (*.gif);;Image JPG (*.jpg);;Image JPEG (*.jpeg);;Image PNG (*.png);;Image PPM (*.ppm);;Image XBM (*.xbm);;Image XPM (*.xpm);;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="337"/>
+        <location filename="mainwindow.cpp" line="357"/>
         <source>Unable to save image.</source>
         <translation>无法保存图像.</translation>
     </message>
