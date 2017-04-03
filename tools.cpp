@@ -292,3 +292,60 @@ QImage Tools::ExpTransform(const QImage &origin, double b, double c, double a)
 
     return *newImage;
 }
+
+/*****************************************************************************
+ *                                  指数灰度变换
+ * int option:
+ *          0   0-255-0
+ *          1   255-0-255
+ * **************************************************************************/
+QImage Tools::TwoThreshold(const QImage &origin, double t1, double t2, int option)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int _x = 0;
+    int _y = 0;
+    if (option == 0)
+    {
+        for (int x=0; x<newImage->width(); x++) {
+            for (int y=0; y<newImage->height(); y++) {
+                oldColor = QColor(origin.pixel(x,y));
+                _x = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+
+                if (_x < t1 || _x > t2)
+                    _y = 0;
+                else
+                    _y = 255;
+
+
+                // Make sure that the new values are between 0 and 255
+                _y = qBound(0, _y, 255);
+
+                newImage->setPixel(x,y,qRgb(_y,_y,_y));
+            }
+        }
+    }
+    else
+    {
+        for (int x=0; x<newImage->width(); x++) {
+            for (int y=0; y<newImage->height(); y++) {
+                oldColor = QColor(origin.pixel(x,y));
+                _x = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+
+                if (_x>=t1 && _x<=t2)
+                    _y = 0;
+                else
+                    _y = 255;
+
+
+                // Make sure that the new values are between 0 and 255
+                _y = qBound(0, _y, 255);
+
+                newImage->setPixel(x,y,qRgb(_y,_y,_y));
+            }
+        }
+    }
+
+    return *newImage;
+}

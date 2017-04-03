@@ -24,6 +24,7 @@ QImage LinearLevelTransformation(const QImage &origin, double a, double b);
 QImage LogGreyLevelTransformation(const QImage &origin, double a, double b);
 QImage PowerGreyLevelTransformation(const QImage &origin, double c, double r, double b);
 QImage ExpTransform(const QImage &origin, double b, double c, double a);
+QImage TwoThreshold(const QImage &orogin, double t1, double t2, int option);
 }
 
 #endif // TOOLS_H
