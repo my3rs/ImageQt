@@ -9,6 +9,7 @@
 #include <QImage>
 #include <QDebug>
 #include <QPainter>
+#include <QtMath>
 
 namespace Tools {
 
@@ -20,6 +21,7 @@ QImage Brightness(int delta, QImage origin);
 QImage Horizontal(const QImage &origin);
 QImage Vertical(const QImage &origin);
 QImage LinearLevelTransformation(const QImage &origin, double a, double b);
+QImage LogGreyLevelTransformation(const QImage &origin, double a, double b);
 }
 
 #endif // TOOLS_H

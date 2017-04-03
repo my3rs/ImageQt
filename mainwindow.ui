@@ -51,9 +51,9 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QPushButton" name="zoomInBtn">
+           <widget class="QPushButton" name="hstgrmBtn">
             <property name="text">
-             <string>+</string>
+             <string>Histogram</string>
             </property>
            </widget>
           </item>
@@ -61,13 +61,6 @@
            <widget class="QPushButton" name="normalBtn">
             <property name="text">
              <string>Restore</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="zoomOutBtn">
-            <property name="text">
-             <string>-</string>
             </property>
            </widget>
           </item>
@@ -163,13 +156,14 @@
     </widget>
     <widget class="QMenu" name="menuGrey_level_transformation">
      <property name="title">
-      <string>Grey level transformation</string>
+      <string>&amp;Grey level transformation</string>
      </property>
      <property name="icon">
       <iconset resource="default.qrc">
        <normaloff>:/img/src/quill_72px.png</normaloff>:/img/src/quill_72px.png</iconset>
      </property>
      <addaction name="actionLinear_level_transformation"/>
+     <addaction name="actionLogarithm_grey_level_transformation"/>
     </widget>
     <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
@@ -391,7 +385,12 @@
   </action>
   <action name="actionLinear_level_transformation">
    <property name="text">
-    <string>Linear grey level transformation</string>
+    <string>&amp;Linear grey level transformation</string>
+   </property>
+  </action>
+  <action name="actionLogarithm_grey_level_transformation">
+   <property name="text">
+    <string>Logarithm grey level transformation</string>
    </property>
   </action>
  </widget>

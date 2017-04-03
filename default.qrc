@@ -23,6 +23,7 @@
         <file>src/zoom.png</file>
         <file>src/lineGrey.gif</file>
         <file>src/quill_72px.png</file>
+        <file>src/log.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

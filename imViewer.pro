@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     dialog_zoom.cpp \
     histogram.cpp \
     dialog_linear_gray.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    dialog_log_grey.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -46,13 +47,15 @@ HEADERS  += mainwindow.h \
     dialog_zoom.h \
     histogram.h \
     dialog_linear_gray.h \
-    qcustomplot.h
+    qcustomplot.h \
+    dialog_log_grey.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
     gaussianblurdialog.ui \
     dialog_brightness.ui \
-    dialog_linear_gray.ui
+    dialog_linear_gray.ui \
+    dialog_log_grey.ui
 
 RESOURCES += \
     default.qrc

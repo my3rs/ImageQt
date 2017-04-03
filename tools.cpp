@@ -211,3 +211,30 @@ QImage Tools::LinearLevelTransformation(const QImage &origin, double _a, double 
 
     return *newImage;
 }
+
+
+/*****************************************************************************
+ *                           对数灰度变换
+ * **************************************************************************/
+QImage Tools::LogGreyLevelTransformation(const QImage &origin, double a, double b)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int grayLevel = 0;
+
+    for (int x=0; x<newImage->width(); x++) {
+        for (int y=0; y<newImage->height(); y++) {
+            oldColor = QColor(origin.pixel(x,y));
+            grayLevel = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+            int _y = qLn(b+grayLevel)/qLn(a);
+
+            // Make sure that the new values are between 0 and 255
+            _y = qBound(0, _y, 255);
+
+            newImage->setPixel(x,y,qRgb(_y,_y,_y));
+        }
+    }
+
+    return *newImage;
+}

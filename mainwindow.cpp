@@ -32,13 +32,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->saveAsBtn, SIGNAL(clicked(bool)),
             this, SLOT(on_actionSave_As_triggered()));
 
-    connect(ui->zoomInBtn, SIGNAL(clicked(bool)),
-            this, SLOT(on_actionZoom_In_triggered()));
-    connect(ui->zoomOutBtn, SIGNAL(clicked(bool)),
-            this, SLOT(on_actionZoom_Out_triggered()));
 
     connect(ui->normalBtn, SIGNAL(clicked()),
             this, SLOT(on_actionNormal_triggered()));
+
+    connect(ui->hstgrmBtn, SIGNAL(clicked()),
+            this, SLOT(on_actionHistogram_triggered()));
 
 
     setActionStatus(false);
@@ -88,12 +87,12 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    ui->actionLogarithm_grey_level_transformation(status);
+    ui->hstgrmBtn->setEnabled(status);
     ui->actionSave->setEnabled(status);
     ui->saveAsBtn->setEnabled(status);
     ui->closeBtn->setEnabled(status);
     ui->actionClose->setEnabled(status);
-    ui->zoomInBtn->setEnabled(status);
-    ui->zoomOutBtn->setEnabled(status);
     ui->normalBtn->setEnabled(status);
     ui->actionSave_As->setEnabled(status);
 
@@ -422,40 +421,40 @@ void MainWindow::on_actionAbout_triggered()
     message.exec();
 }
 
-/******************************************************************************
- *                              Action: Zoom Out
- *****************************************************************************/
-void MainWindow::on_actionZoom_Out_triggered()
-{
+///******************************************************************************
+// *                              Action: Zoom Out
+// *****************************************************************************/
+//void MainWindow::on_actionZoom_Out_triggered()
+//{
 
-    int cur_width = rightImage->width();
-    int cur_height = rightImage->height();
+//    int cur_width = rightImage->width();
+//    int cur_height = rightImage->height();
 
-    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width/1.2, cur_height/1.2);
+//    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width/1.2, cur_height/1.2);
 
-    rightImage->updatePixmap(newPixmap);
-
-
-    repaintRightScene(newPixmap);
-}
-/******************************************************************************
- *                              Action: Zoom In
- *****************************************************************************/
-void MainWindow::on_actionZoom_In_triggered()
-{
-
-    int cur_width = rightImage->width();
-    int cur_height = rightImage->height();
-
-    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width*1.2, cur_height*1.2);
-
-    rightImage->updatePixmap(newPixmap);
+//    rightImage->updatePixmap(newPixmap);
 
 
-    repaintRightScene(newPixmap);
+//    repaintRightScene(newPixmap);
+//}
+///******************************************************************************
+// *                              Action: Zoom In
+// *****************************************************************************/
+//void MainWindow::on_actionZoom_In_triggered()
+//{
+
+//    int cur_width = rightImage->width();
+//    int cur_height = rightImage->height();
+
+//    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width*1.2, cur_height*1.2);
+
+//    rightImage->updatePixmap(newPixmap);
 
 
-}
+//    repaintRightScene(newPixmap);
+
+
+//}
 
 /******************************************************************************
  *                Repaint the right Scene of the MainWindow
@@ -794,6 +793,26 @@ void MainWindow::on_actionLinear_level_transformation_triggered()
 }
 
 void MainWindow::receiveLinearGreyParameter(double _a, double _b)
+{
+    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                       灰度对数变换 y = log(b+x)/log(a)
+ *****************************************************************************/
+void MainWindow::on_actionLogarithm_grey_level_transformation_triggered()
+{
+    DialogLogGrey *dialog = new DialogLogGrey;
+    connect(dialog, SIGNAL(sendData(double, double)),
+            this, SLOT(receiveLogGreyParamter(double,double)));
+    dialog->show();
+}
+
+void MainWindow::receiveLogGreyParamter(double _a, double _b)
 {
     QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
