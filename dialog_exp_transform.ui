@@ -35,7 +35,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="default.qrc">:/img/src/fun_exp.png</pixmap>
+              <pixmap>:/img/src/fun_exp.png</pixmap>
              </property>
             </widget>
            </item>
@@ -51,7 +51,11 @@
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="bDoubleSpinBox"/>
+            <widget class="QDoubleSpinBox" name="bDoubleSpinBox">
+             <property name="maximum">
+              <double>10.000000000000000</double>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -65,7 +69,17 @@
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="cDoubleSpinBox"/>
+            <widget class="QDoubleSpinBox" name="cDoubleSpinBox">
+             <property name="minimum">
+              <double>-2.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>2.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -79,7 +93,14 @@
             </widget>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="aDoubleSpinBox"/>
+            <widget class="QDoubleSpinBox" name="aDoubleSpinBox">
+             <property name="minimum">
+              <double>-50.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>50.000000000000000</double>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -142,9 +163,7 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="default.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
