@@ -16,7 +16,7 @@ LinearGrayDialog::LinearGrayDialog(QWidget *parent) :
 }
 
 /******************************************************************************
- *                              绘制变换函数的图像
+ *                              绘制线性变换函数的图像
  * y = __a*x + __b
  * ***************************************************************************/
 void LinearGrayDialog::paintFunctionImage(double __a, double __b)

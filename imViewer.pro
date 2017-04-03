@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     qcustomplot.cpp \
     dialog_log_grey.cpp \
     dialog_power_grey.cpp \
-    dialog_exp_transform.cpp
+    dialog_exp_transform.cpp \
+    dialog_two_threshold_transform.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -52,7 +53,8 @@ HEADERS  += mainwindow.h \
     qcustomplot.h \
     dialog_log_grey.h \
     dialog_power_grey.h \
-    dialog_exp_transform.h
+    dialog_exp_transform.h \
+    dialog_two_threshold_transform.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
@@ -61,7 +63,8 @@ FORMS    += mainwindow.ui \
     dialog_linear_gray.ui \
     dialog_log_grey.ui \
     dialog_power_grey.ui \
-    dialog_exp_transform.ui
+    dialog_exp_transform.ui \
+    dialog_two_threshold_transform.ui
 
 RESOURCES += \
     default.qrc
