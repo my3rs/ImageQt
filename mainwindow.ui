@@ -14,7 +14,7 @@
    <string>ImageQt</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="default.qrc">
+   <iconset>
     <normaloff>:/img/src/logo_2.png</normaloff>:/img/src/logo_2.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -159,13 +159,14 @@
       <string>&amp;Grey level transformation</string>
      </property>
      <property name="icon">
-      <iconset resource="default.qrc">
+      <iconset>
        <normaloff>:/img/src/quill_72px.png</normaloff>:/img/src/quill_72px.png</iconset>
      </property>
      <addaction name="actionLinear_level_transformation"/>
      <addaction name="actionLogarithm_grey_level_transformation"/>
      <addaction name="actionPower_transformation"/>
      <addaction name="actionExp_transfrom"/>
+     <addaction name="actionTwo_thresholds_transform"/>
     </widget>
     <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
@@ -196,7 +197,7 @@
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/document-open.png</normaloff>:/img/src/document-open.png</iconset>
    </property>
    <property name="text">
@@ -213,7 +214,7 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/save.svg</normaloff>:/img/src/save.svg</iconset>
    </property>
    <property name="text">
@@ -238,7 +239,7 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/avatar-default.png</normaloff>:/img/src/avatar-default.png</iconset>
    </property>
    <property name="text">
@@ -257,7 +258,7 @@
   </action>
   <action name="actionRestore">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/restore.png</normaloff>:/img/src/restore.png</iconset>
    </property>
    <property name="text">
@@ -266,7 +267,7 @@
   </action>
   <action name="actionLeft">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/left.png</normaloff>:/img/src/left.png</iconset>
    </property>
    <property name="text">
@@ -275,7 +276,7 @@
   </action>
   <action name="actionRight">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/right.png</normaloff>:/img/src/right.png</iconset>
    </property>
    <property name="text">
@@ -284,7 +285,7 @@
   </action>
   <action name="zoomAction">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/zoom.png</normaloff>:/img/src/zoom.png</iconset>
    </property>
    <property name="text">
@@ -333,7 +334,7 @@
   </action>
   <action name="actionAdjust_brightness">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/brightness.svg</normaloff>:/img/src/brightness.svg</iconset>
    </property>
    <property name="text">
@@ -342,7 +343,7 @@
   </action>
   <action name="actionChinese">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/chinese.png</normaloff>:/img/src/chinese.png</iconset>
    </property>
    <property name="text">
@@ -351,7 +352,7 @@
   </action>
   <action name="actionEnglish">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/english.png</normaloff>:/img/src/english.png</iconset>
    </property>
    <property name="text">
@@ -360,7 +361,7 @@
   </action>
   <action name="actionHorizontal">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/horizontal.png</normaloff>:/img/src/horizontal.png</iconset>
    </property>
    <property name="text">
@@ -369,7 +370,7 @@
   </action>
   <action name="actionVertical">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/vertical.png</normaloff>:/img/src/vertical.png</iconset>
    </property>
    <property name="text">
@@ -378,7 +379,7 @@
   </action>
   <action name="actionHistogram">
    <property name="icon">
-    <iconset resource="default.qrc">
+    <iconset>
      <normaloff>:/img/src/histogram.png</normaloff>:/img/src/histogram.png</iconset>
    </property>
    <property name="text">
@@ -405,6 +406,11 @@
     <string>Exp transfrom</string>
    </property>
   </action>
+  <action name="actionTwo_thresholds_transform">
+   <property name="text">
+    <string>Two thresholds transform</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -414,8 +420,6 @@
    <header>graphicsview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="default.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

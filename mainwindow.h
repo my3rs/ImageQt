@@ -27,6 +27,7 @@
 #include "dialog_log_grey.h"
 #include "dialog_power_grey.h"
 #include "dialog_exp_transform.h"
+#include "dialog_two_threshold_transform.h"
 
 
 #define WINDOW_TITLE    "ImageQt"
@@ -63,6 +64,7 @@ private slots:
     void receiveLogGreyParamter(double, double);
     void receivePowerGreyParamter(double, double, double);
     void receiveExpGreyParamter(double, double, double);
+    void receiveTwoThresholdParamter(int, int, int);
 
     // On action triggered
     void on_actionExit_triggered();         // Exit the program
@@ -101,6 +103,8 @@ private slots:
     void on_actionPower_transformation_triggered();
 
     void on_actionExp_transfrom_triggered();
+
+    void on_actionTwo_thresholds_transform_triggered();
 
 private:
     Ui::MainWindow  *ui;

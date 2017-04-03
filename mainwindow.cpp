@@ -87,6 +87,8 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    ui->actionExp_transfrom->setEnabled(status);
+    ui->actionTwo_thresholds_transform->setEnabled(status);
     ui->actionPower_transformation->setEnabled(status);
     ui->actionLogarithm_grey_level_transformation->setEnabled(status);
     ui->hstgrmBtn->setEnabled(status);
@@ -855,6 +857,26 @@ void MainWindow::on_actionExp_transfrom_triggered()
 void MainWindow::receiveExpGreyParamter(double b, double c, double a)
 {
     QImage newImage = Tools::ExpTransform(rightImage->imageObject(), b, c, a);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                             双阈值变换
+ *****************************************************************************/
+void MainWindow::on_actionTwo_thresholds_transform_triggered()
+{
+    DialogThresholdTransform *dialog = new DialogThresholdTransform;
+    connect(dialog, SIGNAL(sendData(int, int, int)),
+            this, SLOT(receiveTwoThresholdParamter(int,int,int)));
+    dialog->show();
+}
+
+void MainWindow::receiveTwoThresholdParamter(int t1, int t2, int option)
+{
+    QImage newImage = Tools::TwoThreshold(image->imageObject(), t1, t2, option);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
