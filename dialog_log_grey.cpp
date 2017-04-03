@@ -11,6 +11,7 @@ DialogLogGrey::DialogLogGrey(QWidget *parent) :
     pixmap.load(":/img/src/log.png");
 
     ui->funLabel->setPixmap(pixmap);
+    setWindowTitle(tr("Grey Level Logarithm Transformation"));
 
     paintFunctionImage(ui->aDoubleSpinBox->value(), ui->bDoubleSpinBox->value());
 }

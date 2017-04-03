@@ -87,7 +87,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
-    ui->actionLogarithm_grey_level_transformation(status);
+    ui->actionLogarithm_grey_level_transformation->setEnabled(status);
     ui->hstgrmBtn->setEnabled(status);
     ui->actionSave->setEnabled(status);
     ui->saveAsBtn->setEnabled(status);
