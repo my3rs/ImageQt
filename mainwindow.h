@@ -25,6 +25,8 @@
 #include "histogram.h"
 #include "dialog_linear_gray.h"
 #include "dialog_log_grey.h"
+#include "dialog_power_grey.h"
+#include "dialog_exp_transform.h"
 
 
 #define WINDOW_TITLE    "ImageQt"
@@ -59,6 +61,8 @@ private slots:
     void receiveGaussianFactor(int radius);
     void receiveLinearGreyParameter(double, double);
     void receiveLogGreyParamter(double, double);
+    void receivePowerGreyParamter(double, double, double);
+    void receiveExpGreyParamter(double, double, double);
 
     // On action triggered
     void on_actionExit_triggered();         // Exit the program
@@ -93,6 +97,10 @@ private slots:
     void on_actionLinear_level_transformation_triggered();
 
     void on_actionLogarithm_grey_level_transformation_triggered();
+
+    void on_actionPower_transformation_triggered();
+
+    void on_actionExp_transfrom_triggered();
 
 private:
     Ui::MainWindow  *ui;

@@ -87,6 +87,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    ui->actionPower_transformation->setEnabled(status);
     ui->actionLogarithm_grey_level_transformation->setEnabled(status);
     ui->hstgrmBtn->setEnabled(status);
     ui->actionSave->setEnabled(status);
@@ -815,6 +816,45 @@ void MainWindow::on_actionLogarithm_grey_level_transformation_triggered()
 void MainWindow::receiveLogGreyParamter(double _a, double _b)
 {
     QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+/******************************************************************************
+ *                             灰度幂次变换
+ *****************************************************************************/
+void MainWindow::on_actionPower_transformation_triggered()
+{
+    DialogPowerGrey *dialog = new DialogPowerGrey;
+    connect(dialog, SIGNAL(sendData(double, double, double)),
+            this, SLOT(receivePowerGreyParamter(double,double,double)));
+    dialog->show();
+}
+
+void MainWindow::receivePowerGreyParamter(double c, double r, double b)
+{
+    QImage newImage = Tools::PowerGreyLevelTransformation(rightImage->imageObject(), c, r, b);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                             灰度指数变换
+ *****************************************************************************/
+void MainWindow::on_actionExp_transfrom_triggered()
+{
+    DialogExpTransform *dialog = new DialogExpTransform;
+    connect(dialog, SIGNAL(sendData(double, double, double)),
+            this, SLOT(receiveExpGreyParamter(double,double,double)));
+    dialog->show();
+}
+
+void MainWindow::receiveExpGreyParamter(double b, double c, double a)
+{
+    QImage newImage = Tools::ExpTransform(rightImage->imageObject(), b, c, a);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);

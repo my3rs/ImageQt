@@ -24,6 +24,7 @@
         <file>src/lineGrey.gif</file>
         <file>src/quill_72px.png</file>
         <file>src/log.png</file>
+        <file>src/fun_exp.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

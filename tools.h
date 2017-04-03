@@ -22,6 +22,8 @@ QImage Horizontal(const QImage &origin);
 QImage Vertical(const QImage &origin);
 QImage LinearLevelTransformation(const QImage &origin, double a, double b);
 QImage LogGreyLevelTransformation(const QImage &origin, double a, double b);
+QImage PowerGreyLevelTransformation(const QImage &origin, double c, double r, double b);
+QImage ExpTransform(const QImage &origin, double b, double c, double a);
 }
 
 #endif // TOOLS_H

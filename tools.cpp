@@ -238,3 +238,57 @@ QImage Tools::LogGreyLevelTransformation(const QImage &origin, double a, double 
 
     return *newImage;
 }
+
+
+/*****************************************************************************
+ *                           幂次灰度变换 _y=c*_x^r+b
+ * **************************************************************************/
+QImage Tools::PowerGreyLevelTransformation(const QImage &origin, double c, double r, double b)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int _x = 0;
+
+    for (int x=0; x<newImage->width(); x++) {
+        for (int y=0; y<newImage->height(); y++) {
+            oldColor = QColor(origin.pixel(x,y));
+            _x = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+            int _y =c*qPow(_x, r)+b;
+
+            // Make sure that the new values are between 0 and 255
+            _y = qBound(0, _y, 255);
+
+            newImage->setPixel(x,y,qRgb(_y,_y,_y));
+        }
+    }
+
+    return *newImage;
+}
+
+
+/*****************************************************************************
+ *                                  指数灰度变换
+ * **************************************************************************/
+QImage Tools::ExpTransform(const QImage &origin, double b, double c, double a)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int _x = 0;
+
+    for (int x=0; x<newImage->width(); x++) {
+        for (int y=0; y<newImage->height(); y++) {
+            oldColor = QColor(origin.pixel(x,y));
+            _x = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+            int _y =qPow(b, c*(_x-a));
+
+            // Make sure that the new values are between 0 and 255
+            _y = qBound(0, _y, 255);
+
+            newImage->setPixel(x,y,qRgb(_y,_y,_y));
+        }
+    }
+
+    return *newImage;
+}

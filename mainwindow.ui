@@ -164,6 +164,8 @@
      </property>
      <addaction name="actionLinear_level_transformation"/>
      <addaction name="actionLogarithm_grey_level_transformation"/>
+     <addaction name="actionPower_transformation"/>
+     <addaction name="actionExp_transfrom"/>
     </widget>
     <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
@@ -385,12 +387,22 @@
   </action>
   <action name="actionLinear_level_transformation">
    <property name="text">
-    <string>&amp;Linear grey level transformation</string>
+    <string>Linear transform</string>
    </property>
   </action>
   <action name="actionLogarithm_grey_level_transformation">
    <property name="text">
-    <string>Logarithm grey level transformation</string>
+    <string>Logarithm transform</string>
+   </property>
+  </action>
+  <action name="actionPower_transformation">
+   <property name="text">
+    <string>Power transform</string>
+   </property>
+  </action>
+  <action name="actionExp_transfrom">
+   <property name="text">
+    <string>Exp transfrom</string>
    </property>
   </action>
  </widget>
