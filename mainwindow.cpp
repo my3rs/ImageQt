@@ -91,10 +91,30 @@ void MainWindow::setActionStatus(bool status)
     ui->actionSave->setEnabled(status);
     ui->saveAsBtn->setEnabled(status);
     ui->closeBtn->setEnabled(status);
+    ui->actionClose->setEnabled(status);
     ui->zoomInBtn->setEnabled(status);
     ui->zoomOutBtn->setEnabled(status);
     ui->normalBtn->setEnabled(status);
     ui->actionSave_As->setEnabled(status);
+
+    ui->actionCool->setEnabled(status);
+    ui->actionWarm->setEnabled(status);
+    ui->actionFlower_frame->setEnabled(status);
+    ui->actionGaussian_blur->setEnabled(status);
+    ui->actionGrayscale->setEnabled(status);
+    ui->actionHistogram->setEnabled(status);
+    ui->actionHorizontal->setEnabled(status);
+    ui->actionLeft->setEnabled(status);
+    ui->actionLinear_level_transformation->setEnabled(status);
+    ui->actionMetal->setEnabled(status);
+    ui->actionMovie_frame->setEnabled(status);
+    ui->actionNormal->setEnabled(status);
+    ui->actionRestore->setEnabled(status);
+    ui->actionVertical->setEnabled(status);
+    ui->actionClassic_frame->setEnabled(status);
+    ui->actionAdjust_brightness->setEnabled(status);
+    ui->actionRight->setEnabled(status);
+    ui->zoomAction->setEnabled(status);
 }
 
 /******************************************************************************
