@@ -17,6 +17,17 @@ public:
 
 private:
     Ui::DialogThresholdTransform *ui;
+
+    void paintFunctionImage(int t1, int t2, int option);
+
+signals:
+    void sendData(int t1, int t2, int opt);
+
+private slots:
+    void on_buttonBox_accepted();
+    void on_T1SpinBox_valueChanged(int arg1);
+    void on_T2SpinBox_valueChanged(int arg1);
+    void on_comboBox_currentIndexChanged(int index);
 };
 
 #endif // DIALOG_THRESHOLD_TRANSFORM_H
