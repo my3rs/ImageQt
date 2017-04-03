@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = imViewer
 TEMPLATE = app
@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     dialog_gaussianblur.cpp \
     dialog_zoom.cpp \
     histogram.cpp \
-    dialog_linear_gray.cpp
+    dialog_linear_gray.cpp \
+    qcustomplot.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     dialog_gaussianblur.h \
     dialog_zoom.h \
     histogram.h \
-    dialog_linear_gray.h
+    dialog_linear_gray.h \
+    qcustomplot.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
