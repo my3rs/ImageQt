@@ -17,6 +17,17 @@ public:
 
 private:
     Ui::DialogPowerGrey *ui;
+
+    void paintFunctionImage(double c, double r, double b);
+
+
+signals:
+    void sendData(double, double, double);
+private slots:
+    void on_buttonBox_accepted();
+    void on_cDoubleSpinBox_valueChanged(double arg1);
+    void on_rDoubleSpinBox_valueChanged(double arg1);
+    void on_bDoubleSpinBox_valueChanged(double arg1);
 };
 
 #endif // DIALOG_POWER_GREY_H
