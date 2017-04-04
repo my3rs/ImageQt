@@ -87,6 +87,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    ui->actionStretch_transformation->setEnabled(status);
     ui->actionExp_transfrom->setEnabled(status);
     ui->actionTwo_thresholds_transform->setEnabled(status);
     ui->actionPower_transformation->setEnabled(status);
@@ -797,7 +798,7 @@ void MainWindow::on_actionLinear_level_transformation_triggered()
 
 void MainWindow::receiveLinearGreyParameter(double _a, double _b)
 {
-    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
+    QImage newImage = Tools::LinearLevelTransformation(image->imageObject(), _a, _b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -817,7 +818,7 @@ void MainWindow::on_actionLogarithm_grey_level_transformation_triggered()
 
 void MainWindow::receiveLogGreyParamter(double _a, double _b)
 {
-    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
+    QImage newImage = Tools::LinearLevelTransformation(image->imageObject(), _a, _b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -836,7 +837,7 @@ void MainWindow::on_actionPower_transformation_triggered()
 
 void MainWindow::receivePowerGreyParamter(double c, double r, double b)
 {
-    QImage newImage = Tools::PowerGreyLevelTransformation(rightImage->imageObject(), c, r, b);
+    QImage newImage = Tools::PowerGreyLevelTransformation(image->imageObject(), c, r, b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -856,7 +857,7 @@ void MainWindow::on_actionExp_transfrom_triggered()
 
 void MainWindow::receiveExpGreyParamter(double b, double c, double a)
 {
-    QImage newImage = Tools::ExpTransform(rightImage->imageObject(), b, c, a);
+    QImage newImage = Tools::ExpTransform(image->imageObject(), b, c, a);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -889,6 +890,17 @@ void MainWindow::receiveTwoThresholdParamter(int t1, int t2, int option)
 void MainWindow::on_actionStretch_transformation_triggered()
 {
     DialogStretchTransform *dialog = new DialogStretchTransform;
-
+    connect(dialog, SIGNAL(sendData(int,int,double,double,double,double,double)),
+            this, SLOT(receiveStretchParamter(int,int,double,double,double,double,double)));
     dialog->show();
+}
+
+void MainWindow::receiveStretchParamter(int x1, int x2,
+                                        double k1, double k2, double k3,
+                                        double b2, double b3)
+{
+    QImage newImage = Tools::StretchTransform(image->imageObject(),x1,x2,k1,k2,k3,b2,b3);
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
 }

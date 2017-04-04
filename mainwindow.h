@@ -66,6 +66,7 @@ private slots:
     void receivePowerGreyParamter(double, double, double);
     void receiveExpGreyParamter(double, double, double);
     void receiveTwoThresholdParamter(int, int, int);
+    void receiveStretchParamter(int, int, double,double,double,double,double);
 
     // On action triggered
     void on_actionExit_triggered();         // Exit the program
