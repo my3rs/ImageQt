@@ -8,6 +8,7 @@ DialogStretchTransform::DialogStretchTransform(QWidget *parent) :
     ui->setupUi(this);
 
     calK();
+    paintFunctionImage();
 }
 
 DialogStretchTransform::~DialogStretchTransform()
@@ -17,15 +18,23 @@ DialogStretchTransform::~DialogStretchTransform()
 
 void DialogStretchTransform::calK()
 {
-    k1 = ui->y1->value()/1.0/ui->x1->value();
+    x1 = ui->x1->value();
+    x2 = ui->x2->value();
+    y1 = ui->y1->value();
+    y2 = ui->y2->value();
+
+    k1 = y1/1.0/x1;
     k2 = (ui->y2->value()-ui->y1->value())/1.0/(ui->x2->value()-ui->x1->value());
     k3 = (255-ui->y2->value())/1.0/(255-ui->x2->value());
+
+    b2 = y2-k2*x2;
+    b3 = 255-k3*255;
 
     ui->k1->setText(QString::number(k1, 10, 2));
     ui->k2->setText(QString::number(k2, 10, 2));
     ui->k3->setText(QString::number(k3, 10, 2));
 
-    paintFunctionImage();
+
 }
 
 void DialogStretchTransform::paintFunctionImage()
@@ -90,4 +99,9 @@ void DialogStretchTransform::on_y2_valueChanged(int arg1)
 {
     calK();
     paintFunctionImage();
+}
+
+void DialogStretchTransform::on_buttonBox_accepted()
+{
+    emit sendData(x1, x2, k1,k2,k3,b2,b3);
 }

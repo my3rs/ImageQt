@@ -349,3 +349,42 @@ QImage Tools::TwoThreshold(const QImage &origin, double t1, double t2, int optio
 
     return *newImage;
 }
+
+
+
+/*****************************************************************************
+ *                                拉伸灰度变换
+ * **************************************************************************/
+QImage Tools::StretchTransform(const QImage &origin,
+                               int x1, int x2,
+                               double k1, double k2, double k3,
+                               double b2, double b3)
+{
+    QImage *newImage = new QImage(origin.width(), origin.height(),
+                                   QImage::Format_ARGB32);
+    QColor oldColor;
+    int _x = 0;
+    int _y = 0;
+
+    for (int x=0; x<newImage->width(); x++) {
+        for (int y=0; y<newImage->height(); y++) {
+            oldColor = QColor(origin.pixel(x,y));
+            _x = (oldColor.red()*299+oldColor.green()*587+oldColor.blue()*114+500)/1000;
+
+            if ( _x<x1)
+                _y = k1*_x;
+            else if (_x < x2)
+                _y = k2*_x + b2;
+            else
+                _y = k3*_x + b3;
+
+
+            // Make sure that the new values are between 0 and 255
+            _y = qBound(0, _y, 255);
+
+            newImage->setPixel(x,y,qRgb(_y,_y,_y));
+        }
+    }
+
+    return *newImage;
+}
