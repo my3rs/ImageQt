@@ -864,7 +864,7 @@ void MainWindow::receiveExpGreyParamter(double b, double c, double a)
 
 
 /******************************************************************************
- *                             双阈值变换
+ *                             灰度双阈值变换
  *****************************************************************************/
 void MainWindow::on_actionTwo_thresholds_transform_triggered()
 {
@@ -880,4 +880,15 @@ void MainWindow::receiveTwoThresholdParamter(int t1, int t2, int option)
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                             灰度拉伸变换
+ *****************************************************************************/
+void MainWindow::on_actionStretch_transformation_triggered()
+{
+    DialogStretchTransform *dialog = new DialogStretchTransform;
+
+    dialog->show();
 }

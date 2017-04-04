@@ -28,6 +28,7 @@
 #include "dialog_power_grey.h"
 #include "dialog_exp_transform.h"
 #include "dialog_two_threshold_transform.h"
+#include "dialog_stretch_transform.h"
 
 
 #define WINDOW_TITLE    "ImageQt"
@@ -105,6 +106,8 @@ private slots:
     void on_actionExp_transfrom_triggered();
 
     void on_actionTwo_thresholds_transform_triggered();
+
+    void on_actionStretch_transformation_triggered();
 
 private:
     Ui::MainWindow  *ui;
