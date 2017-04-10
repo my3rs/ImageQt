@@ -23,6 +23,8 @@
 #include "filters.h"
 #include "tools.h"
 #include "histogram.h"
+#include "medianfilter.h"
+#include "gaussianblur.h"
 #include "dialog_linear_gray.h"
 #include "dialog_log_grey.h"
 #include "dialog_power_grey.h"
@@ -60,7 +62,7 @@ private slots:
     // 从子对话框中接收数据
     void receiveZoomFactor(int factor);
     void receiveBrightnessDelta(int delta);
-    void receiveGaussianFactor(int radius);
+    void receiveGaussianFactor(int radius, double sigma);
     void receiveLinearGreyParameter(double, double);
     void receiveLogGreyParamter(double, double);
     void receivePowerGreyParamter(double, double, double);
@@ -82,7 +84,7 @@ private slots:
 //    void on_actionZoom_Out_triggered();     // Zoom out
 //    void on_actionZoom_In_triggered();      // Zoom in
     void on_zoomAction_triggered();         // Zoom action with dialog
-    void on_actionGaussian_blur_triggered();// Gaussian blur
+
     void on_actionGrayscale_triggered();    // Grayscale
     void on_actionWarm_triggered();
     void on_actionCool_triggered();
@@ -109,6 +111,12 @@ private slots:
     void on_actionTwo_thresholds_transform_triggered();
 
     void on_actionStretch_transformation_triggered();
+
+    void on_actionSimple_triggered();
+
+    void on_actionGauss_triggered();
+
+    void on_actionMeida_Filter_triggered();
 
 private:
     Ui::MainWindow  *ui;

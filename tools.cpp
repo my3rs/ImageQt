@@ -1,4 +1,6 @@
 #include "tools.h"
+#include "medianfilter.h"
+#include "common.h"
 
 /*****************************************************************************
  *                           Greyscale
@@ -294,7 +296,7 @@ QImage Tools::ExpTransform(const QImage &origin, double b, double c, double a)
 }
 
 /*****************************************************************************
- *                                  指数灰度变换
+ *                                  双阈值灰度变换
  * int option:
  *          0   0-255-0
  *          1   255-0-255
@@ -354,6 +356,7 @@ QImage Tools::TwoThreshold(const QImage &origin, double t1, double t2, int optio
 
 /*****************************************************************************
  *                                拉伸灰度变换
+ * 拉伸变换使用一个分段函数，三个k值
  * **************************************************************************/
 QImage Tools::StretchTransform(const QImage &origin,
                                int x1, int x2,
@@ -387,4 +390,71 @@ QImage Tools::StretchTransform(const QImage &origin,
     }
 
     return *newImage;
+}
+
+
+/*****************************************************************************
+ *                               简单平滑处理
+ * **************************************************************************/
+QImage Tools::SimpleSmooth(const QImage &origin)
+{
+    QImage *newImage = new QImage(origin);
+
+    int kernel[5][5] = {
+        {0,0,1,0,0},
+        {0,1,3,1,0},
+        {1,3,7,3,1},
+        {0,1,3,1,0},
+        {0,0,1,0,0}
+    };
+    int kernelSize = 5;
+    int sumKernel=27;
+    int r,g,b;
+    QColor color;
+
+    for(int x=kernelSize/2; x<newImage->width()-kernelSize/2; x++)
+    {
+        for (int y=kernelSize/2; y<newImage->height()-kernelSize/2; y++)
+        {
+            r = g = b = 0;
+            for (int i=-kernelSize/2; i<=kernelSize/2; i++)
+            {
+                for (int j=-kernelSize/2; j<=kernelSize/2; j++)
+                {
+                    color = QColor(origin.pixel(x+i,y+j));
+                    r += color.red()*kernel[kernelSize/2+i][kernelSize/2+j];
+                    g += color.green()*kernel[kernelSize/2+i][kernelSize/2+j];
+                    b += color.blue()*kernel[kernelSize/2+i][kernelSize/2+j];
+
+                }
+            }
+            r = qBound(0, r/sumKernel, 255);
+            g = qBound(0, g/sumKernel, 255);
+            b = qBound(0, b/sumKernel, 255);
+
+            newImage->setPixel(x,y,qRgb(r,g,b));
+
+        }
+    }
+    return *newImage;
+}
+
+
+/*****************************************************************************
+ *                                   中值滤波
+ * **************************************************************************/
+QImage Tools::MeidaFilter(const QImage &origin, int filterRadius)
+{
+    int imageHeight = origin.height();
+    int imageWidth = origin.width();
+    MedianFilter medianFilter;
+    int* resImageBits = new int[imageHeight * imageWidth];
+    medianFilter.applyMedianFilter((int*)origin.bits(), resImageBits, imageHeight, imageWidth, filterRadius);
+
+    QImage destImage((uchar*)resImageBits, imageWidth, imageHeight, origin.format());
+//    QPixmap pixRes;
+//    pixRes.convertFromImage(destImage);
+
+
+    return destImage;
 }

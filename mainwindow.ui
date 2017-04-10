@@ -89,7 +89,7 @@
      <x>0</x>
      <y>0</y>
      <width>957</width>
-     <height>30</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -107,75 +107,16 @@
     <property name="title">
      <string>Edit</string>
     </property>
-    <widget class="QMenu" name="menuAdd_Frame">
-     <property name="title">
-      <string>Add &amp;Frame</string>
-     </property>
-     <addaction name="actionMovie_frame"/>
-     <addaction name="actionClassic_frame"/>
-     <addaction name="actionFlower_frame"/>
-    </widget>
-    <widget class="QMenu" name="menuColour_temperature">
-     <property name="title">
-      <string>&amp;Colour temperature</string>
-     </property>
-     <addaction name="actionWarm"/>
-     <addaction name="actionCool"/>
-    </widget>
-    <widget class="QMenu" name="menuAdd_texture">
-     <property name="title">
-      <string>A&amp;dd texture</string>
-     </property>
-     <addaction name="actionMetal"/>
-    </widget>
-    <addaction name="actionGaussian_blur"/>
     <addaction name="actionGrayscale"/>
-    <addaction name="menuColour_temperature"/>
     <addaction name="actionAdjust_brightness"/>
-    <addaction name="separator"/>
-    <addaction name="menuAdd_Frame"/>
-    <addaction name="menuAdd_texture"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
      <string>Tools</string>
     </property>
-    <widget class="QMenu" name="menuRotate">
-     <property name="title">
-      <string>&amp;Rotate</string>
-     </property>
-     <addaction name="actionLeft"/>
-     <addaction name="actionRight"/>
-    </widget>
-    <widget class="QMenu" name="menuFlip">
-     <property name="title">
-      <string>&amp;Flip</string>
-     </property>
-     <addaction name="actionHorizontal"/>
-     <addaction name="actionVertical"/>
-    </widget>
-    <widget class="QMenu" name="menuGrey_level_transformation">
-     <property name="title">
-      <string>&amp;Grey level transformation</string>
-     </property>
-     <property name="icon">
-      <iconset resource="default.qrc">
-       <normaloff>:/img/src/quill_72px.png</normaloff>:/img/src/quill_72px.png</iconset>
-     </property>
-     <addaction name="actionLinear_level_transformation"/>
-     <addaction name="actionLogarithm_grey_level_transformation"/>
-     <addaction name="actionPower_transformation"/>
-     <addaction name="actionExp_transfrom"/>
-     <addaction name="actionTwo_thresholds_transform"/>
-     <addaction name="actionStretch_transformation"/>
-    </widget>
-    <addaction name="menuRotate"/>
     <addaction name="actionRestore"/>
-    <addaction name="zoomAction"/>
-    <addaction name="menuFlip"/>
     <addaction name="separator"/>
     <addaction name="actionHistogram"/>
-    <addaction name="menuGrey_level_transformation"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -191,9 +132,88 @@
     <addaction name="actionAbout"/>
     <addaction name="menuLanguage"/>
    </widget>
+   <widget class="QMenu" name="menuGrey_Transfrom">
+    <property name="title">
+     <string>&amp;Grey Transfrom</string>
+    </property>
+    <addaction name="actionLinear_level_transformation"/>
+    <addaction name="actionPower_transformation"/>
+    <addaction name="actionLogarithm_grey_level_transformation"/>
+    <addaction name="actionExp_transfrom"/>
+    <addaction name="actionTwo_thresholds_transform"/>
+    <addaction name="actionStretch_transformation"/>
+   </widget>
+   <widget class="QMenu" name="menuGeometric">
+    <property name="title">
+     <string>Geo&amp;metric Transform</string>
+    </property>
+    <widget class="QMenu" name="menuRotate_2">
+     <property name="title">
+      <string>&amp;Rotate</string>
+     </property>
+     <addaction name="actionLeft"/>
+     <addaction name="actionRight"/>
+    </widget>
+    <widget class="QMenu" name="menuFlip_2">
+     <property name="title">
+      <string>&amp;Flip</string>
+     </property>
+     <addaction name="actionHorizontal"/>
+     <addaction name="actionVertical"/>
+    </widget>
+    <addaction name="menuRotate_2"/>
+    <addaction name="zoomAction"/>
+    <addaction name="menuFlip_2"/>
+   </widget>
+   <widget class="QMenu" name="menuArtistic_Effect">
+    <property name="title">
+     <string>Artistic Effect</string>
+    </property>
+    <widget class="QMenu" name="menuFrame">
+     <property name="title">
+      <string>&amp;Frame</string>
+     </property>
+     <addaction name="actionMovie_frame"/>
+     <addaction name="actionClassic_frame"/>
+     <addaction name="actionFlower_frame"/>
+    </widget>
+    <widget class="QMenu" name="menuTexture">
+     <property name="title">
+      <string>&amp;Texture</string>
+     </property>
+     <addaction name="actionMetal"/>
+    </widget>
+    <widget class="QMenu" name="menuTemperature">
+     <property name="title">
+      <string>T&amp;emperature</string>
+     </property>
+     <property name="icon">
+      <iconset resource="default.qrc">
+       <normaloff>:/img/src/temperature_72px.png</normaloff>:/img/src/temperature_72px.png</iconset>
+     </property>
+     <addaction name="actionCool"/>
+     <addaction name="actionWarm"/>
+    </widget>
+    <addaction name="menuFrame"/>
+    <addaction name="menuTexture"/>
+    <addaction name="menuTemperature"/>
+   </widget>
+   <widget class="QMenu" name="menuBlur">
+    <property name="title">
+     <string>Smoothi&amp;ng</string>
+    </property>
+    <addaction name="actionSimple"/>
+    <addaction name="actionGauss"/>
+    <addaction name="separator"/>
+    <addaction name="actionMeida_Filter"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuTools"/>
+   <addaction name="menuArtistic_Effect"/>
+   <addaction name="menuBlur"/>
+   <addaction name="menuGeometric"/>
+   <addaction name="menuGrey_Transfrom"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionOpen">
@@ -293,11 +313,6 @@
     <string>&amp;Zoom</string>
    </property>
   </action>
-  <action name="actionGaussian_blur">
-   <property name="text">
-    <string>&amp;Gaussian blur</string>
-   </property>
-  </action>
   <action name="actionGrayscale">
    <property name="text">
     <string>G&amp;rayscale</string>
@@ -388,6 +403,10 @@
    </property>
   </action>
   <action name="actionLinear_level_transformation">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/line_graphic_72p.png</normaloff>:/img/src/line_graphic_72p.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Linear transform</string>
    </property>
@@ -403,6 +422,10 @@
    </property>
   </action>
   <action name="actionExp_transfrom">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/Line_Chart_72px.png</normaloff>:/img/src/Line_Chart_72px.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Exp transfrom</string>
    </property>
@@ -414,7 +437,26 @@
   </action>
   <action name="actionStretch_transformation">
    <property name="text">
-    <string>Stretch transformation</string>
+    <string>&amp;Stretch transformation</string>
+   </property>
+  </action>
+  <action name="actionSimple">
+   <property name="text">
+    <string>&amp;Simple</string>
+   </property>
+  </action>
+  <action name="actionGauss">
+   <property name="icon">
+    <iconset resource="default.qrc">
+     <normaloff>:/img/src/blur_on_72px.png</normaloff>:/img/src/blur_on_72px.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Gauss</string>
+   </property>
+  </action>
+  <action name="actionMeida_Filter">
+   <property name="text">
+    <string>Meida Filter</string>
    </property>
   </action>
  </widget>

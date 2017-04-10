@@ -15,6 +15,6 @@ GaussianBlurDialog::~GaussianBlurDialog()
 
 void GaussianBlurDialog::on_buttonBox_accepted()
 {
-    emit sendData(ui->gaussianSpinBox->value());
+    emit sendData(ui->radiusSpinBox->value(), ui->sigmaSpinBox->value());
 }
 

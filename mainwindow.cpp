@@ -87,6 +87,11 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    // Blur
+    ui->actionSimple->setEnabled(status);
+    ui->actionGauss->setEnabled(status);
+    ui->actionMeida_Filter->setEnabled(status);
+    // Grey Transform
     ui->actionStretch_transformation->setEnabled(status);
     ui->actionExp_transfrom->setEnabled(status);
     ui->actionTwo_thresholds_transform->setEnabled(status);
@@ -103,7 +108,6 @@ void MainWindow::setActionStatus(bool status)
     ui->actionCool->setEnabled(status);
     ui->actionWarm->setEnabled(status);
     ui->actionFlower_frame->setEnabled(status);
-    ui->actionGaussian_blur->setEnabled(status);
     ui->actionGrayscale->setEnabled(status);
     ui->actionHistogram->setEnabled(status);
     ui->actionHorizontal->setEnabled(status);
@@ -509,7 +513,7 @@ void MainWindow::repaintRightScene()
  *****************************************************************************/
 void MainWindow::on_zoomAction_triggered()
 {
-    ZoomDialog *dialog = new ZoomDialog;
+    ZoomDialog *dialog = new ZoomDialog(this);
     connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveZoomFactor(int)));
     dialog->show();
 }
@@ -573,23 +577,8 @@ QString MainWindow::getUserPath()
 }
 
 
-/******************************************************************************
- *                          Gaussian blur
- *****************************************************************************/
-void MainWindow::on_actionGaussian_blur_triggered()
-{
-    GaussianBlurDialog *dialog = new GaussianBlurDialog;
-    connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveGaussianFactor(int)));
-    dialog->show();
 
-}
 
-void MainWindow::receiveGaussianFactor(int radius)
-/////////////////////////////////////////////////////////////   TO DO
-{
-    qDebug()<<"Gaussian factor:"<<radius;
-
-}
 
 
 /******************************************************************************
@@ -686,7 +675,7 @@ void MainWindow::on_actionMetal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
-    BrightnessDialog *dialog = new BrightnessDialog;
+    BrightnessDialog *dialog = new BrightnessDialog(this);
     connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
     dialog->show();
 }
@@ -790,7 +779,7 @@ void MainWindow::on_actionHistogram_triggered()
  *****************************************************************************/
 void MainWindow::on_actionLinear_level_transformation_triggered()
 {
-    LinearGrayDialog *dialog = new LinearGrayDialog;
+    LinearGrayDialog *dialog = new LinearGrayDialog(this);
     connect(dialog, SIGNAL(sendData(double, double)),
             this, SLOT(receiveLinearGreyParameter(double,double)));
     dialog->show();
@@ -810,7 +799,7 @@ void MainWindow::receiveLinearGreyParameter(double _a, double _b)
  *****************************************************************************/
 void MainWindow::on_actionLogarithm_grey_level_transformation_triggered()
 {
-    DialogLogGrey *dialog = new DialogLogGrey;
+    DialogLogGrey *dialog = new DialogLogGrey(this);
     connect(dialog, SIGNAL(sendData(double, double)),
             this, SLOT(receiveLogGreyParamter(double,double)));
     dialog->show();
@@ -829,7 +818,7 @@ void MainWindow::receiveLogGreyParamter(double _a, double _b)
  *****************************************************************************/
 void MainWindow::on_actionPower_transformation_triggered()
 {
-    DialogPowerGrey *dialog = new DialogPowerGrey;
+    DialogPowerGrey *dialog = new DialogPowerGrey(this);
     connect(dialog, SIGNAL(sendData(double, double, double)),
             this, SLOT(receivePowerGreyParamter(double,double,double)));
     dialog->show();
@@ -849,7 +838,7 @@ void MainWindow::receivePowerGreyParamter(double c, double r, double b)
  *****************************************************************************/
 void MainWindow::on_actionExp_transfrom_triggered()
 {
-    DialogExpTransform *dialog = new DialogExpTransform;
+    DialogExpTransform *dialog = new DialogExpTransform(this);
     connect(dialog, SIGNAL(sendData(double, double, double)),
             this, SLOT(receiveExpGreyParamter(double,double,double)));
     dialog->show();
@@ -869,7 +858,7 @@ void MainWindow::receiveExpGreyParamter(double b, double c, double a)
  *****************************************************************************/
 void MainWindow::on_actionTwo_thresholds_transform_triggered()
 {
-    DialogThresholdTransform *dialog = new DialogThresholdTransform;
+    DialogThresholdTransform *dialog = new DialogThresholdTransform(this);
     connect(dialog, SIGNAL(sendData(int, int, int)),
             this, SLOT(receiveTwoThresholdParamter(int,int,int)));
     dialog->show();
@@ -883,13 +872,12 @@ void MainWindow::receiveTwoThresholdParamter(int t1, int t2, int option)
     updateRightImage(newImage, tmpPixmap);
 }
 
-
 /******************************************************************************
  *                             灰度拉伸变换
  *****************************************************************************/
 void MainWindow::on_actionStretch_transformation_triggered()
 {
-    DialogStretchTransform *dialog = new DialogStretchTransform;
+    DialogStretchTransform *dialog = new DialogStretchTransform(this);
     connect(dialog, SIGNAL(sendData(int,int,double,double,double,double,double)),
             this, SLOT(receiveStretchParamter(int,int,double,double,double,double,double)));
     dialog->show();
@@ -903,4 +891,56 @@ void MainWindow::receiveStretchParamter(int x1, int x2,
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                             简单平滑
+ *****************************************************************************/
+void MainWindow::on_actionSimple_triggered()
+{
+    QImage newImage = Tools::SimpleSmooth(rightImage->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+/******************************************************************************
+ *                             高斯平滑
+ *****************************************************************************/
+void MainWindow::on_actionGauss_triggered()
+{
+    GaussianBlurDialog *dialog = new GaussianBlurDialog(this);
+    connect(dialog, SIGNAL(sendData(int, double)), this,
+            SLOT(receiveGaussianFactor(int, double)));
+
+    dialog->show();
+}
+
+void MainWindow::receiveGaussianFactor(int radius, double sigma)
+{
+    GaussianBlur *blur = new GaussianBlur(radius, sigma);
+
+    // Why a QImage converted from QPixmap?
+    QImage newImage = blur->BlurImage(image->pixmapObject().toImage());
+
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
+}
+
+
+/******************************************************************************
+ *                              中值滤波
+ *****************************************************************************/
+void MainWindow::on_actionMeida_Filter_triggered()
+{
+    bool ok;
+    int value = QInputDialog::getInt(this, tr("Media Filter"), "Input a value for radius(1~30)",3,1,30,1,&ok);
+    if (ok)
+    {
+        QImage newImage = Tools::MeidaFilter(image->imageObject(), value);
+        QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+        updateRightImage(newImage, tmpPixmap);
+    }
 }

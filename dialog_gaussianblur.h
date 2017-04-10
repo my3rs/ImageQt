@@ -19,7 +19,7 @@ private:
     Ui::GaussianBlurDialog *ui;
 
 signals:
-    void sendData(int);
+    void sendData(int, double);
 
 private slots:
     void on_buttonBox_accepted();

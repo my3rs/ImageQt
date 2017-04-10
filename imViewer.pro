@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -39,7 +39,9 @@ SOURCES += main.cpp\
     dialog_power_grey.cpp \
     dialog_exp_transform.cpp \
     dialog_two_threshold_transform.cpp \
-    dialog_stretch_transform.cpp
+    dialog_stretch_transform.cpp \
+    gaussianblur.cpp \
+    medianfilter.cpp
 
 HEADERS  += mainwindow.h \
     image.h \
@@ -56,7 +58,10 @@ HEADERS  += mainwindow.h \
     dialog_power_grey.h \
     dialog_exp_transform.h \
     dialog_two_threshold_transform.h \
-    dialog_stretch_transform.h
+    dialog_stretch_transform.h \
+    gaussianblur.h \
+    medianfilter.h \
+    common.h
 
 FORMS    += mainwindow.ui \
     zoomdialog.ui \
@@ -73,3 +78,5 @@ RESOURCES += \
     default.qrc
 
 TRANSLATIONS += cn.ts
+
+DISTFILES +=
