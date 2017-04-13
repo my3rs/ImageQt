@@ -17,7 +17,7 @@ int GraphicsView::getFactor()
 
 void GraphicsView::setFactor(int _factor)
 {
-    if (_factor = 0)
+    if (_factor == 0)
     {
         factor = 0;
     }

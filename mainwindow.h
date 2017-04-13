@@ -19,7 +19,7 @@
 #include "graphicsview.h"
 #include "dialog_zoom.h"
 #include "dialog_brightness.h"
-#include "dialog_gaussianblur.h"c
+#include "dialog_gaussianblur.h"
 #include "filters.h"
 #include "tools.h"
 #include "histogram.h"
