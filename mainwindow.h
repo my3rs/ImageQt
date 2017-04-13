@@ -74,7 +74,7 @@ private slots:
     void on_actionExit_triggered();         // Exit the program
     void on_actionAdjust_triggered();       // Adjust to fit the window size
     void on_actionClose_triggered();        // Clear both left and right Scene
-    void on_actionOpen_triggered(QString imagePath = "");
+    void on_actionOpen_triggered();
     void on_actionSave_As_triggered();      // Save as
     void on_actionRestore_triggered();      // Restore to the original image
     void on_actionRight_triggered();        // Rotate Right:90^

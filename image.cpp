@@ -75,19 +75,19 @@ QString Image::directory()
 
 int Image::width()
 {
-    pixmap.width();
+    return pixmap.width();
 }
 
 int Image::height()
 {
-    pixmap.height();
+    return pixmap.height();
 }
 
 
 void Image::updatePixmap(QPixmap newPixmap)
 {
 
-    pixmap = QPixmap(newPixmap);
+    pixmap = newPixmap;
 }
 
 void Image::updateImage(const QImage &image)
