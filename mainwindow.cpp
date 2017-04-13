@@ -675,9 +675,9 @@ void MainWindow::on_actionMetal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
-    BrightnessDialog *dialog = new BrightnessDialog(this);
-    connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
-    dialog->show();
+    BrightnessDialog dialog;
+    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
+    dialog.exec();
 }
 
 void MainWindow::receiveBrightnessDelta(int delta)
