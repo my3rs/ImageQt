@@ -1,6 +1,6 @@
 # ImageQt
 
-Image viewer powered by Qt 5.7.1
+Image viewer powered by Qt 5.8.0
 
 ## 功能（按完成时间排序）
 
