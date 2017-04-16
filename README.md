@@ -19,11 +19,12 @@ Image viewer powered by Qt 5.7.1
 13. 幂次灰度变换
 14. 对数灰度变换
 15. 拉伸灰度变换
+16. 简单平滑
+17. 高斯平滑
+18. 中值滤波
+19. 拉普拉斯锐化
 
 ## 截图
 
-![主界面](https://source.seahi.me/17-4-2/66467824-file_1491102266981_ca20.png)
+![1](http://i2.muimg.com/567571/e133813c5cc8bb6b.png)
 
-![关于](https://source.seahi.me/17-4-2/17776145-file_1491102266717_14c1d.png)
-
-![直方图](https://source.seahi.me/17-4-2/33392854-file_1491102267128_1e84.png)
