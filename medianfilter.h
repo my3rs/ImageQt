@@ -1,10 +1,12 @@
 #ifndef MEDIANFILTER_H
 #define MEDIANFILTER_H
 
-#include "common.h"
 #include <QObject>
 #include <QtConcurrent>
 #include <QProgressDialog>
+
+typedef int element;
+#define MAX_FILTER_RADIUS 30
 
 struct IndexPair{
     int i, j;

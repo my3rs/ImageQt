@@ -54,8 +54,7 @@ HEADERS  += mainwindow.h \
     dialog_two_threshold_transform.h \
     dialog_stretch_transform.h \
     gaussianblur.h \
-    medianfilter.h \
-    common.h
+    medianfilter.h
 
 FORMS    += mainwindow.ui \
     gaussianblurdialog.ui \
