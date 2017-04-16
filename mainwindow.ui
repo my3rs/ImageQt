@@ -142,6 +142,8 @@
     <addaction name="actionExp_transfrom"/>
     <addaction name="actionTwo_thresholds_transform"/>
     <addaction name="actionStretch_transformation"/>
+    <addaction name="separator"/>
+    <addaction name="actionBinaryzation"/>
    </widget>
    <widget class="QMenu" name="menuGeometric">
     <property name="title">
@@ -481,6 +483,11 @@
   <action name="actionEdge_Detection">
    <property name="text">
     <string>Edge Detection</string>
+   </property>
+  </action>
+  <action name="actionBinaryzation">
+   <property name="text">
+    <string>Binaryzation</string>
    </property>
   </action>
  </widget>
