@@ -212,6 +212,8 @@
      <string>Sharpen</string>
     </property>
     <addaction name="actionLaplace"/>
+    <addaction name="actionSobel"/>
+    <addaction name="actionEdge_Detection"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -469,6 +471,16 @@
   <action name="actionLaplace">
    <property name="text">
     <string>Laplace</string>
+   </property>
+  </action>
+  <action name="actionSobel">
+   <property name="text">
+    <string>Sobel</string>
+   </property>
+  </action>
+  <action name="actionEdge_Detection">
+   <property name="text">
+    <string>Edge Detection</string>
    </property>
   </action>
  </widget>

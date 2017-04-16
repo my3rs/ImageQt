@@ -7,12 +7,16 @@
 #define TOOLS_H
 
 #include <QImage>
+#include <QPixmap>
 #include <QDebug>
 #include <QPainter>
 #include <QtMath>
+#include "gaussianblur.h"
+#include "image.h"
+
 
 namespace Tools {
-
+void updateImage(Image*, QImage, QPixmap);
 QImage GreyScale(QImage origin);
 QImage Warm(int delta, QImage origin);
 QImage Cool(int delta, QImage origin);
@@ -31,8 +35,11 @@ QImage StretchTransform(const QImage &origin,
                                         double b2, double b3);
 QImage SimpleSmooth(const QImage &origin);
 QImage MeidaFilter(const QImage &origin, int radius);
-QImage LaplaceSharpen(const QImage &origin);
-
+// 后面这些更新了调用逻辑, 以 laplace sharpen 为例
+void LaplaceSharpen(Image *origin);
+void EdgeDetection(Image *origin);
+void SobelEdge(Image *origin);
+void GaussianSmoothing(Image *origin, int radius, double sigma);
 }
 
 

@@ -88,6 +88,10 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::setActionStatus(bool status)
 {
+    // Sharpen
+    ui->actionLaplace->setEnabled(status);
+    ui->actionSobel->setEnabled(status);
+    ui->actionEdge_Detection->setEnabled(status);
     // Blur
     ui->actionSimple->setEnabled(status);
     ui->actionGauss->setEnabled(status);
@@ -427,40 +431,6 @@ void MainWindow::on_actionAbout_triggered()
     message.exec();
 }
 
-///******************************************************************************
-// *                              Action: Zoom Out
-// *****************************************************************************/
-//void MainWindow::on_actionZoom_Out_triggered()
-//{
-
-//    int cur_width = rightImage->width();
-//    int cur_height = rightImage->height();
-
-//    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width/1.2, cur_height/1.2);
-
-//    rightImage->updatePixmap(newPixmap);
-
-
-//    repaintRightScene(newPixmap);
-//}
-///******************************************************************************
-// *                              Action: Zoom In
-// *****************************************************************************/
-//void MainWindow::on_actionZoom_In_triggered()
-//{
-
-//    int cur_width = rightImage->width();
-//    int cur_height = rightImage->height();
-
-//    QPixmap newPixmap = rightImage->pixmapObject().scaled(cur_width*1.2, cur_height*1.2);
-
-//    rightImage->updatePixmap(newPixmap);
-
-
-//    repaintRightScene(newPixmap);
-
-
-//}
 
 /******************************************************************************
  *                Repaint the right Scene of the MainWindow
@@ -832,7 +802,7 @@ void MainWindow::on_actionExp_transfrom_triggered()
 
 void MainWindow::receiveExpGreyParamter(double b, double c, double a)
 {
-    QImage newImage = Tools::ExpTransform(image->imageObject(), b, c, a);
+    QImage newImage = Tools::ExpTransform(rightImage->imageObject(), b, c, a);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -852,7 +822,7 @@ void MainWindow::on_actionTwo_thresholds_transform_triggered()
 
 void MainWindow::receiveTwoThresholdParamter(int t1, int t2, int option)
 {
-    QImage newImage = Tools::TwoThreshold(image->imageObject(), t1, t2, option);
+    QImage newImage = Tools::TwoThreshold(rightImage->imageObject(), t1, t2, option);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -873,7 +843,7 @@ void MainWindow::receiveStretchParamter(int x1, int x2,
                                         double k1, double k2, double k3,
                                         double b2, double b3)
 {
-    QImage newImage = Tools::StretchTransform(image->imageObject(),x1,x2,k1,k2,k3,b2,b3);
+    QImage newImage = Tools::StretchTransform(rightImage->imageObject(),x1,x2,k1,k2,k3,b2,b3);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -905,14 +875,14 @@ void MainWindow::on_actionGauss_triggered()
 
 void MainWindow::receiveGaussianFactor(int radius, double sigma)
 {
-    GaussianBlur *blur = new GaussianBlur(radius, sigma);
+//    GaussianBlur *blur = new GaussianBlur(radius, sigma);
 
-    // Why a QImage converted from QPixmap?
-    QImage newImage = blur->BlurImage(image->pixmapObject().toImage());
+    Tools::GaussianSmoothing(rightImage, radius, sigma);
+//    QImage newImage = blur->BlurImage(rightImage->pixmapObject().toImage());
 
-    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
-
-    updateRightImage(newImage, tmpPixmap);
+//    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+    repaintRightScene(rightImage->pixmapObject());
+    //updateRightImage(newImage, tmpPixmap);
 }
 
 
@@ -925,7 +895,7 @@ void MainWindow::on_actionMeida_Filter_triggered()
     int value = QInputDialog::getInt(this, tr("Media Filter"), "Input a value for radius(1~30)",3,1,30,1,&ok);
     if (ok)
     {
-        QImage newImage = Tools::MeidaFilter(image->imageObject(), value);
+        QImage newImage = Tools::MeidaFilter(rightImage->imageObject(), value);
         QPixmap tmpPixmap = QPixmap::fromImage(newImage);
         updateRightImage(newImage, tmpPixmap);
     }
@@ -936,8 +906,24 @@ void MainWindow::on_actionMeida_Filter_triggered()
  *****************************************************************************/
 void MainWindow::on_actionLaplace_triggered()
 {
-    QImage newImage = Tools::LaplaceSharpen(image->imageObject());
-    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+    Tools::LaplaceSharpen(rightImage);
+    repaintRightScene(rightImage->pixmapObject());
+}
 
-    updateRightImage(newImage, tmpPixmap);
+/******************************************************************************
+ *                              Edge Detection
+ *****************************************************************************/
+void MainWindow::on_actionEdge_Detection_triggered()
+{
+    Tools::EdgeDetection(rightImage);
+    repaintRightScene(rightImage->pixmapObject());
+}
+
+/******************************************************************************
+ *                             Sobel 边缘细化
+ *****************************************************************************/
+void MainWindow::on_actionSobel_triggered()
+{
+    Tools::SobelEdge(rightImage);
+    repaintRightScene(rightImage->pixmapObject());
 }

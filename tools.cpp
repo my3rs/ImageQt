@@ -2,6 +2,7 @@
 #include "medianfilter.h"
 #include "common.h"
 
+
 /*****************************************************************************
  *                           Greyscale
  * **************************************************************************/
@@ -459,12 +460,20 @@ QImage Tools::MeidaFilter(const QImage &origin, int filterRadius)
     return destImage;
 }
 
+//////////////////////////////////////////////////////////////////////////////
+//更新:
+//
+//直接传递 Image 类型的 rightImage
+//操作后对Image的imageObject和pixmapObject更新
+//////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************
  *                                   拉普拉斯锐化
  * **************************************************************************/
-QImage Tools::LaplaceSharpen(const QImage &origin)
+void Tools::LaplaceSharpen(Image *rightImage)
 {
+    QImage origin = rightImage->imageObject();
+
     int width = origin.width();
     int height = origin.height();
     QImage newImage = QImage(width, height,QImage::Format_RGB888);
@@ -507,6 +516,40 @@ QImage Tools::LaplaceSharpen(const QImage &origin)
             newImage.setPixel(x,y, qRgb(sumR, sumG, sumB));
         }
     }
-    return newImage;
+
+    updateImage(rightImage, newImage, QPixmap::fromImage(newImage));
+
 }
 
+/*****************************************************************************
+ *                                   边缘检测
+ * **************************************************************************/
+void Tools::EdgeDetection(Image *origin){
+
+}
+
+
+/*****************************************************************************
+ *                                 Sobel边缘细化
+ * **************************************************************************/
+void Tools::SobelEdge(Image *origin)
+{
+
+}
+
+void Tools::GaussianSmoothing(Image *origin, int radius, double sigma)
+{
+
+    GaussianBlur *blur = new GaussianBlur(radius, sigma);
+    QImage newImage = blur->BlurImage(origin->pixmapObject().toImage());
+
+    updateImage(origin, newImage, QPixmap::fromImage(newImage));
+
+
+}
+
+void Tools::updateImage(Image *origin, QImage img, QPixmap map)
+{
+    origin->updateImage(img);
+    origin->updatePixmap(map);
+}
