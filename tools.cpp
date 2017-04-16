@@ -460,19 +460,12 @@ QImage Tools::MeidaFilter(const QImage &origin, int filterRadius)
     return destImage;
 }
 
-//////////////////////////////////////////////////////////////////////////////
-//更新:
-//
-//直接传递 Image 类型的 rightImage
-//操作后对Image的imageObject和pixmapObject更新
-//////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************
  *                                   拉普拉斯锐化
  * **************************************************************************/
-void Tools::LaplaceSharpen(Image *rightImage)
+QImage Tools::LaplaceSharpen(const QImage &origin)
 {
-    QImage origin = rightImage->imageObject();
 
     int width = origin.width();
     int height = origin.height();
@@ -517,14 +510,14 @@ void Tools::LaplaceSharpen(Image *rightImage)
         }
     }
 
-    updateImage(rightImage, newImage, QPixmap::fromImage(newImage));
+    return newImage;
 
 }
 
 /*****************************************************************************
  *                                   边缘检测
  * **************************************************************************/
-void Tools::EdgeDetection(Image *origin){
+QImage Tools::EdgeDetection(const QImage &origin){
 
 }
 
@@ -532,18 +525,21 @@ void Tools::EdgeDetection(Image *origin){
 /*****************************************************************************
  *                                 Sobel边缘细化
  * **************************************************************************/
-void Tools::SobelEdge(Image *origin)
+QImage Tools::SobelEdge(const QImage &origin)
 {
 
 }
 
-void Tools::GaussianSmoothing(Image *origin, int radius, double sigma)
+/*****************************************************************************
+ *                             Gaussian Smoothing
+ * **************************************************************************/
+QImage Tools::GaussianSmoothing(const QImage &origin, int radius, double sigma)
 {
 
     GaussianBlur *blur = new GaussianBlur(radius, sigma);
-    QImage newImage = blur->BlurImage(origin->pixmapObject().toImage());
+    QImage newImage = blur->BlurImage(origin);
 
-    updateImage(origin, newImage, QPixmap::fromImage(newImage));
+    return newImage;
 
 
 }
@@ -551,19 +547,19 @@ void Tools::GaussianSmoothing(Image *origin, int radius, double sigma)
 /*****************************************************************************
  *                                 二值化
  * **************************************************************************/
-void Tools::Binaryzation(Image *rightImage)
+QImage Tools::Binaryzation(const QImage &origin)
 {
-    QImage img = rightImage->imageObject();
 
-    int width = img.width();
-    int height = img.height();
+
+    int width = origin.width();
+    int height = origin.height();
     QImage newImg = QImage(width, height, QImage::Format_RGB888);
 
     for (int x=0; x<width; x++)
     {
         for(int y=0; y<height; y++)
         {
-            int gray = qGray(img.pixel(x,y));
+            int gray = qGray(origin.pixel(x,y));
             int newGray;
             if (gray > 128)
                 newGray = 255;
@@ -572,11 +568,6 @@ void Tools::Binaryzation(Image *rightImage)
             newImg.setPixel(x,y,qRgb(newGray, newGray, newGray));
         }
     }
-    updateImage(rightImage, newImg, QPixmap::fromImage(newImg));
+    return newImg;
 }
 
-void Tools::updateImage(Image *origin, QImage img, QPixmap map)
-{
-    origin->updateImage(img);
-    origin->updatePixmap(map);
-}
