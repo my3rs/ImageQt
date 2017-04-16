@@ -153,15 +153,7 @@ void MainWindow::setActionStatus(bool status)
 }
 
 
-void MainWindow::receiveBrightnessDelta(int delta)
-{
-    QPixmap rightImage = rightPixmapItem->pixmap();
 
-    QImage newImage = Tools::Brightness(delta, rightImage.toImage());
-    rightImage.convertFromImage(newImage);
-
-    updateRightImage(rightImage);
-}
 
 void MainWindow::receiveGaussianFactor(int radius, double sigma)
 {
@@ -175,30 +167,30 @@ void MainWindow::receiveGaussianFactor(int radius, double sigma)
     updateRightImage(rightImage);
 }
 
-/******************************************************************************
- *                   Receive data from zoom dialog
- *             and then call the function to done zoom action
- *****************************************************************************/
-void MainWindow::receiveZoomFactor(int factor)
-{
-    qDebug()<<"zoom factor:"<<factor;
+///******************************************************************************
+// *                   Receive data from zoom dialog
+// *             and then call the function to done zoom action
+// *****************************************************************************/
+//void MainWindow::receiveZoomFactor(int factor)
+//{
+//    qDebug()<<"zoom factor:"<<factor;
 
-    if (factor != 100)
-    {
-        QPixmap rightImage = rightPixmapItem->pixmap();
+//    if (factor != 100)
+//    {
+//        QPixmap rightImage = rightPixmapItem->pixmap();
 
-        int cur_width = rightImage.width();
-        int cur_height = rightImage.height();
+//        int cur_width = rightImage.width();
+//        int cur_height = rightImage.height();
 
-        QPixmap newPixmap = rightImage.scaled(cur_width*factor/100, cur_height*factor/100);
+//        QPixmap newPixmap = rightImage.scaled(cur_width*factor/100, cur_height*factor/100);
 
-        updateRightImage(newPixmap);
-    }
-    else
-    {
-        return;
-    }
-}
+//        updateRightImage(newPixmap);
+//    }
+//    else
+//    {
+//        return;
+//    }
+//}
 
 void MainWindow::receiveLinearGreyParameter(double _a, double _b)
 {
@@ -467,7 +459,6 @@ void MainWindow::on_actionAdjust_triggered()
     ui->rightGraphicsView->scale(val,val);
 
 
-    //adjustZoom();
 }
 
 
@@ -484,7 +475,6 @@ void MainWindow::on_actionRestore_triggered()
     ui->leftGraphicsView->resetTransform();
     ui->leftGraphicsView->setFactor(0);
 
-    //adjustZoom();
 }
 
 /******************************************************************************
@@ -660,12 +650,6 @@ void MainWindow::on_zoomAction_triggered()
     int factor = QInputDialog::getInt(this, tr("Zoom"), "Input a value for zoom ratio(%)",100,10,1000,10,&ok);
     if (ok)
     {
-//        QPixmap rightImage = rightPixmapItem->pixmap();
-//        QImage newImage = Tools::MeidaFilter(rightImage.toImage(), value);
-//        rightImage.convertFromImage(newImage);
-
-//        updateRightImage(rightImage);
-
         if (factor != 100)
         {
             QPixmap rightImage = rightPixmapItem->pixmap();
@@ -683,9 +667,6 @@ void MainWindow::on_zoomAction_triggered()
         }
     }
 
-//    ZoomDialog dialog;
-//    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveZoomFactor(int)));
-//    dialog.exec();
 }
 
 /******************************************************************************
@@ -819,10 +800,27 @@ void MainWindow::on_actionBinaryzation_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
-    BrightnessDialog dialog;
-    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
-    dialog.exec();
+    bool ok;
+    int delta = QInputDialog::getInt(this, tr("Brightness"), "Input a value for brightness(+/-)",0,-1000,1000,10,&ok);
+    if (ok)
+    {
+        if (delta != 100)
+        {
+            QPixmap rightImage = rightPixmapItem->pixmap();
+
+            QImage newImage = Tools::Brightness(delta, rightImage.toImage());
+            rightImage.convertFromImage(newImage);
+
+            updateRightImage(rightImage);
+        }
+        else
+        {
+            return;
+        }
+    }
+
 }
+
 
 /******************************************************************************
  *                              To do

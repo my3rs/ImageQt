@@ -28,7 +28,6 @@ SOURCES += main.cpp\
     graphicsview.cpp \
     tools.cpp \
     filters.cpp \
-    dialog_brightness.cpp \
     dialog_gaussianblur.cpp \
     histogram.cpp \
     dialog_linear_gray.cpp \
@@ -45,7 +44,6 @@ HEADERS  += mainwindow.h \
     graphicsview.h \
     tools.h \
     filters.h \
-    dialog_brightness.h \
     dialog_gaussianblur.h \
     histogram.h \
     dialog_linear_gray.h \
@@ -60,9 +58,7 @@ HEADERS  += mainwindow.h \
     common.h
 
 FORMS    += mainwindow.ui \
-    zoomdialog.ui \
     gaussianblurdialog.ui \
-    dialog_brightness.ui \
     dialog_linear_gray.ui \
     dialog_log_grey.ui \
     dialog_power_grey.ui \

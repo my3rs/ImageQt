@@ -16,7 +16,6 @@
 #include <QStandardPaths>
 #include <QTranslator>
 #include "graphicsview.h"
-#include "dialog_brightness.h"
 #include "dialog_gaussianblur.h"
 #include "filters.h"
 #include "tools.h"
@@ -55,10 +54,7 @@ public:
 private slots:
 
     // 从子对话框中接收数据
-    void receiveBrightnessDelta(int delta);
     void receiveGaussianFactor(int radius, double sigma);
-    void receiveZoomFactor(int factor);
-
     void receiveLinearGreyParameter(double, double);
     void receivePowerGreyParamter(double, double, double);
     void receiveLogGreyParamter(double, double);
