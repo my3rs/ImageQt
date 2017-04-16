@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    image.cpp \
     graphicsview.cpp \
     tools.cpp \
     filters.cpp \
@@ -44,7 +43,6 @@ SOURCES += main.cpp\
     medianfilter.cpp
 
 HEADERS  += mainwindow.h \
-    image.h \
     graphicsview.h \
     tools.h \
     filters.h \
