@@ -14,7 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     size = new QLabel;
-    //zoom = new QLabel;
+
+
 
     info = NULL;
 
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->rightGraphicsView->setScene(rightScene);
 
     ui->statusBar->addPermanentWidget(size);
-    //ui->statusBar->addWidget(zoom);
+
 
     connect(ui->openBtn, SIGNAL(clicked(bool)),
             this, SLOT(on_actionOpen_triggered()));
@@ -177,9 +178,6 @@ void MainWindow::receiveGaussianFactor(int radius, double sigma)
 /******************************************************************************
  *                   Receive data from zoom dialog
  *             and then call the function to done zoom action
- * ----------------------------------------------------------------------------
- * This is a private slot function
- *
  *****************************************************************************/
 void MainWindow::receiveZoomFactor(int factor)
 {
@@ -657,9 +655,37 @@ void MainWindow::on_actionRight_triggered()
  *****************************************************************************/
 void MainWindow::on_zoomAction_triggered()
 {
-    ZoomDialog dialog;
-    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveZoomFactor(int)));
-    dialog.exec();
+
+    bool ok;
+    int factor = QInputDialog::getInt(this, tr("Zoom"), "Input a value for zoom ratio(%)",100,10,1000,10,&ok);
+    if (ok)
+    {
+//        QPixmap rightImage = rightPixmapItem->pixmap();
+//        QImage newImage = Tools::MeidaFilter(rightImage.toImage(), value);
+//        rightImage.convertFromImage(newImage);
+
+//        updateRightImage(rightImage);
+
+        if (factor != 100)
+        {
+            QPixmap rightImage = rightPixmapItem->pixmap();
+
+            int cur_width = rightImage.width();
+            int cur_height = rightImage.height();
+
+            QPixmap newPixmap = rightImage.scaled(cur_width*factor/100, cur_height*factor/100);
+
+            updateRightImage(newPixmap);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+//    ZoomDialog dialog;
+//    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveZoomFactor(int)));
+//    dialog.exec();
 }
 
 /******************************************************************************

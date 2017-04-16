@@ -16,7 +16,6 @@
 #include <QStandardPaths>
 #include <QTranslator>
 #include "graphicsview.h"
-#include "dialog_zoom.h"
 #include "dialog_brightness.h"
 #include "dialog_gaussianblur.h"
 #include "filters.h"
