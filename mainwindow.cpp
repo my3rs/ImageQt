@@ -281,13 +281,11 @@ void MainWindow::on_actionClose_triggered()
  * Args:
  *      QString imagePath: The abslute path of a image
  *****************************************************************************/
-void MainWindow::on_actionOpen_triggered(QString imagePath)
+void MainWindow::on_actionOpen_triggered()
 {
-    if(imagePath.isEmpty())
-    {
         // Automatically detects the current user's home directory
         // And then wait the user to select one image
-        imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
+        QString imagePath = QFileDialog::getOpenFileName(this, tr("Open image"), getUserPath() + "/Pictures",
                                                  tr("All Files (*);;"
                                                     "All Images (*.bpm *.gif *.jpg *.jpeg *.png *.ppm *.xbm *.xpm);;"
                                                     "Image BPM (*.bpm);;"
@@ -298,7 +296,6 @@ void MainWindow::on_actionOpen_triggered(QString imagePath)
                                                     "Image PPM (*.ppm);;"
                                                     "Image XBM (*.xbm);;"
                                                     "Image XPM (*.xpm);;"));
-    }
 
     if (!imagePath.isEmpty())
     {
@@ -480,18 +477,6 @@ void MainWindow::repaintRightScene(QPixmap newPixmap)
     rightScene->addPixmap(newPixmap);
 }
 
-//void MainWindow::repaintRightScene(QPixmap *newPixmap)
-//{
-//    if (rightScene) {
-//        delete rightScene;
-//        rightScene = new QGraphicsScene;
-//        rightScene->setBackgroundBrush(QColor::fromRgb(224,224,224));
-//        ui->rightGraphicsView->setScene(rightScene);
-//        ui->rightGraphicsView->resetTransform();
-//    }
-//    rightScene->addPixmap(*newPixmap);
-//}
-
 void MainWindow::repaintRightScene()
 {
     if (rightScene) {
@@ -656,7 +641,7 @@ void MainWindow::updateRightImage(QImage &image, QPixmap &pixmap)
 {
     rightImage->updateImage(image);
     rightImage->updatePixmap(pixmap);
-    repaintRightScene(rightImage->pixmapObject());
+    repaintRightScene(pixmap);
 }
 
 
@@ -676,9 +661,9 @@ void MainWindow::on_actionMetal_triggered()
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
-    BrightnessDialog *dialog = new BrightnessDialog(this);
-    connect(dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
-    dialog->show();
+    BrightnessDialog dialog;
+    connect(&dialog, SIGNAL(sendData(int)), this, SLOT(receiveBrightnessDelta(int)));
+    dialog.exec();
 }
 
 void MainWindow::receiveBrightnessDelta(int delta)
