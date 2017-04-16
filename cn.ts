@@ -473,52 +473,52 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">色温</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="225"/>
+        <location filename="mainwindow.ui" line="234"/>
         <source>&amp;Open...</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="233"/>
+        <location filename="mainwindow.ui" line="242"/>
         <source>&amp;Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="242"/>
+        <location filename="mainwindow.ui" line="251"/>
         <source>&amp;Save...</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="250"/>
+        <location filename="mainwindow.ui" line="259"/>
         <source>Sa&amp;ve As...</source>
         <translation>另存为</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="255"/>
+        <location filename="mainwindow.ui" line="264"/>
         <source>&amp;Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="267"/>
+        <location filename="mainwindow.ui" line="276"/>
         <source>&amp;About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="286"/>
+        <location filename="mainwindow.ui" line="295"/>
         <source>R&amp;estore</source>
         <translation>恢复</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="295"/>
+        <location filename="mainwindow.ui" line="304"/>
         <source>&amp;Left</source>
         <translation>逆时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="304"/>
+        <location filename="mainwindow.ui" line="313"/>
         <source>&amp;Right</source>
         <translation>顺时针</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="313"/>
+        <location filename="mainwindow.ui" line="322"/>
         <source>&amp;Zoom</source>
         <translation>缩放</translation>
     </message>
@@ -547,114 +547,134 @@ p, li { white-space: pre-wrap; }
         <translation>平滑</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="318"/>
+        <location filename="mainwindow.ui" line="212"/>
+        <source>Sharpen</source>
+        <translation>锐化</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="327"/>
         <source>G&amp;rayscale</source>
         <translation>灰度图</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="323"/>
+        <location filename="mainwindow.ui" line="332"/>
         <source>&amp;Warm</source>
         <translation>变暖</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="328"/>
+        <location filename="mainwindow.ui" line="337"/>
         <source>&amp;Cool</source>
         <translation>变冷</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="333"/>
+        <location filename="mainwindow.ui" line="342"/>
         <source>&amp;Movie frame</source>
         <translation>电影</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="338"/>
+        <location filename="mainwindow.ui" line="347"/>
         <source>&amp;Classic frame</source>
         <translation>经典</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="343"/>
+        <location filename="mainwindow.ui" line="352"/>
         <source>&amp;Flower frame</source>
         <translation>小花</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="348"/>
+        <location filename="mainwindow.ui" line="357"/>
         <source>&amp;Metal</source>
         <translation>金属</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="357"/>
+        <location filename="mainwindow.ui" line="366"/>
         <source>&amp;Adjust brightness</source>
         <translation>调整亮度</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="366"/>
+        <location filename="mainwindow.ui" line="375"/>
         <source>&amp;Chinese</source>
         <translation>中文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="375"/>
+        <location filename="mainwindow.ui" line="384"/>
         <source>&amp;English</source>
         <translation>英文</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="384"/>
+        <location filename="mainwindow.ui" line="393"/>
         <source>&amp;Horizontal</source>
         <translation>水平镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="393"/>
+        <location filename="mainwindow.ui" line="402"/>
         <source>&amp;Vertical</source>
         <translation>垂直镜像</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="402"/>
+        <location filename="mainwindow.ui" line="411"/>
         <source>&amp;Histogram</source>
         <translation>直方图(&amp;H)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="411"/>
+        <location filename="mainwindow.ui" line="420"/>
         <source>&amp;Linear transform</source>
         <translation>线性变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="416"/>
+        <location filename="mainwindow.ui" line="425"/>
         <source>L&amp;ogarithm transform</source>
         <translation>对数变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="421"/>
+        <location filename="mainwindow.ui" line="430"/>
         <source>&amp;Power transform</source>
         <translation>幂次变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="430"/>
+        <location filename="mainwindow.ui" line="439"/>
         <source>&amp;Exp transfrom</source>
         <translation>指数变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="435"/>
+        <location filename="mainwindow.ui" line="444"/>
         <source>&amp;Two thresholds transform</source>
         <translation>双阈值变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="440"/>
+        <location filename="mainwindow.ui" line="449"/>
         <source>&amp;Stretch transformation</source>
         <translation>拉伸变换</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="445"/>
+        <location filename="mainwindow.ui" line="454"/>
         <source>&amp;Simple</source>
         <translation>简单平滑</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="454"/>
+        <location filename="mainwindow.ui" line="463"/>
         <source>&amp;Gauss</source>
         <translation>高斯平滑</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="459"/>
+        <location filename="mainwindow.ui" line="468"/>
         <source>Meida Filter</source>
         <translation>中值滤波</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="473"/>
+        <source>Laplace</source>
+        <translation>拉普拉斯锐化</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="478"/>
+        <source>Sobel</source>
+        <translation>Sobel边缘细化</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="483"/>
+        <source>Edge Detection</source>
+        <translation>边缘检测</translation>
     </message>
     <message>
         <source>Stretch transformation</source>
@@ -710,7 +730,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">打开...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="228"/>
+        <location filename="mainwindow.ui" line="237"/>
         <source>Ctrl+O</source>
         <translation></translation>
     </message>
@@ -719,7 +739,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">保存...</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="245"/>
+        <location filename="mainwindow.ui" line="254"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
@@ -728,7 +748,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">退出</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="258"/>
+        <location filename="mainwindow.ui" line="267"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
@@ -745,12 +765,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">缩小</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="272"/>
+        <location filename="mainwindow.ui" line="281"/>
         <source>Normal</source>
         <translation>原始尺寸</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="277"/>
+        <location filename="mainwindow.ui" line="286"/>
         <source>Adjust</source>
         <translation></translation>
     </message>
@@ -829,27 +849,27 @@ p, li { white-space: pre-wrap; }
         <translation>所有文件</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="306"/>
+        <location filename="mainwindow.cpp" line="305"/>
         <source>Unable to open image.</source>
         <translation>无法打开文件.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="348"/>
+        <location filename="mainwindow.cpp" line="347"/>
         <source>Save image</source>
         <translation>保存图像</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="349"/>
+        <location filename="mainwindow.cpp" line="348"/>
         <source>All files (*);;Image BPM (*.bpm);;Image GIF (*.gif);;Image JPG (*.jpg);;Image JPEG (*.jpeg);;Image PNG (*.png);;Image PPM (*.ppm);;Image XBM (*.xbm);;Image XPM (*.xpm);;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="363"/>
+        <location filename="mainwindow.cpp" line="362"/>
         <source>Unable to save image.</source>
         <translation>无法保存图像.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="938"/>
+        <location filename="mainwindow.cpp" line="925"/>
         <source>Media Filter</source>
         <translation>中值滤波</translation>
     </message>
