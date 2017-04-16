@@ -124,6 +124,8 @@ private slots:
 
     void on_actionSobel_triggered();
 
+    void on_actionBinaryzation_triggered();
+
 private:
     Ui::MainWindow  *ui;
     QGraphicsScene  *leftScene;

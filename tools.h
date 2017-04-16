@@ -40,6 +40,7 @@ void LaplaceSharpen(Image *origin);
 void EdgeDetection(Image *origin);
 void SobelEdge(Image *origin);
 void GaussianSmoothing(Image *origin, int radius, double sigma);
+void Binaryzation(Image *rightImage);
 }
 
 

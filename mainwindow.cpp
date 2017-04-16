@@ -743,7 +743,7 @@ void MainWindow::on_actionLinear_level_transformation_triggered()
 
 void MainWindow::receiveLinearGreyParameter(double _a, double _b)
 {
-    QImage newImage = Tools::LinearLevelTransformation(image->imageObject(), _a, _b);
+    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -763,7 +763,7 @@ void MainWindow::on_actionLogarithm_grey_level_transformation_triggered()
 
 void MainWindow::receiveLogGreyParamter(double _a, double _b)
 {
-    QImage newImage = Tools::LinearLevelTransformation(image->imageObject(), _a, _b);
+    QImage newImage = Tools::LinearLevelTransformation(rightImage->imageObject(), _a, _b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -782,7 +782,7 @@ void MainWindow::on_actionPower_transformation_triggered()
 
 void MainWindow::receivePowerGreyParamter(double c, double r, double b)
 {
-    QImage newImage = Tools::PowerGreyLevelTransformation(image->imageObject(), c, r, b);
+    QImage newImage = Tools::PowerGreyLevelTransformation(rightImage->imageObject(), c, r, b);
     QPixmap tmpPixmap = QPixmap::fromImage(newImage);
 
     updateRightImage(newImage, tmpPixmap);
@@ -925,5 +925,14 @@ void MainWindow::on_actionEdge_Detection_triggered()
 void MainWindow::on_actionSobel_triggered()
 {
     Tools::SobelEdge(rightImage);
+    repaintRightScene(rightImage->pixmapObject());
+}
+
+/******************************************************************************
+ *                                  二值化
+ *****************************************************************************/
+void MainWindow::on_actionBinaryzation_triggered()
+{
+    Tools::Binaryzation(rightImage);
     repaintRightScene(rightImage->pixmapObject());
 }

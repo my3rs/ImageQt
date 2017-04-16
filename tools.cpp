@@ -548,6 +548,33 @@ void Tools::GaussianSmoothing(Image *origin, int radius, double sigma)
 
 }
 
+/*****************************************************************************
+ *                                 二值化
+ * **************************************************************************/
+void Tools::Binaryzation(Image *rightImage)
+{
+    QImage img = rightImage->imageObject();
+
+    int width = img.width();
+    int height = img.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    for (int x=0; x<width; x++)
+    {
+        for(int y=0; y<height; y++)
+        {
+            int gray = qGray(img.pixel(x,y));
+            int newGray;
+            if (gray > 128)
+                newGray = 255;
+            else
+                newGray = 0;
+            newImg.setPixel(x,y,qRgb(newGray, newGray, newGray));
+        }
+    }
+    updateImage(rightImage, newImg, QPixmap::fromImage(newImg));
+}
+
 void Tools::updateImage(Image *origin, QImage img, QPixmap map)
 {
     origin->updateImage(img);
