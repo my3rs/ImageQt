@@ -89,7 +89,7 @@
      <x>0</x>
      <y>0</y>
      <width>957</width>
-     <height>27</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -207,6 +207,12 @@
     <addaction name="separator"/>
     <addaction name="actionMeida_Filter"/>
    </widget>
+   <widget class="QMenu" name="menuSharpen">
+    <property name="title">
+     <string>Sharpen</string>
+    </property>
+    <addaction name="actionLaplace"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuTools"/>
@@ -214,6 +220,7 @@
    <addaction name="menuBlur"/>
    <addaction name="menuGeometric"/>
    <addaction name="menuGrey_Transfrom"/>
+   <addaction name="menuSharpen"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionOpen">
@@ -457,6 +464,11 @@
   <action name="actionMeida_Filter">
    <property name="text">
     <string>Meida Filter</string>
+   </property>
+  </action>
+  <action name="actionLaplace">
+   <property name="text">
+    <string>Laplace</string>
    </property>
   </action>
  </widget>

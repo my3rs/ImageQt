@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setActionStatus(false);
     setWindowTitle("ImageQt");
     ui->actionEnglish->setEnabled(false);
+    on_actionChinese_triggered();
 
 }
 
@@ -943,4 +944,15 @@ void MainWindow::on_actionMeida_Filter_triggered()
         QPixmap tmpPixmap = QPixmap::fromImage(newImage);
         updateRightImage(newImage, tmpPixmap);
     }
+}
+
+/******************************************************************************
+ *                              Laplace Sharpen
+ *****************************************************************************/
+void MainWindow::on_actionLaplace_triggered()
+{
+    QImage newImage = Tools::LaplaceSharpen(image->imageObject());
+    QPixmap tmpPixmap = QPixmap::fromImage(newImage);
+
+    updateRightImage(newImage, tmpPixmap);
 }

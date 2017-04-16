@@ -458,3 +458,55 @@ QImage Tools::MeidaFilter(const QImage &origin, int filterRadius)
 
     return destImage;
 }
+
+
+/*****************************************************************************
+ *                                   拉普拉斯锐化
+ * **************************************************************************/
+QImage Tools::LaplaceSharpen(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImage = QImage(width, height,QImage::Format_RGB888);
+    int window[3][3] = {0,-1,0,-1,4,-1,0,-1,0};
+
+    for (int x=1; x<width; x++)
+    {
+        for(int y=1; y<height; y++)
+        {
+            int sumR = 0;
+            int sumG = 0;
+            int sumB = 0;
+
+            //对每一个像素使用模板
+            for(int m=x-1; m<= x+1; m++)
+                for(int n=y-1; n<=y+1; n++)
+                {
+                    if(m>=0 && m<width && n<height)
+                    {
+                        sumR += QColor(origin.pixel(m,n)).red()*window[n-y+1][m-x+1];
+                        sumG += QColor(origin.pixel(m,n)).green()*window[n-y+1][m-x+1];
+                        sumB += QColor(origin.pixel(m,n)).blue()*window[n-y+1][m-x+1];
+                    }
+                }
+
+
+            int old_r = QColor(origin.pixel(x,y)).red();
+            sumR += old_r;
+            sumR = qBound(0, sumR, 255);
+
+            int old_g = QColor(origin.pixel(x,y)).green();
+            sumG += old_g;
+            sumG = qBound(0, sumG, 255);
+
+            int old_b = QColor(origin.pixel(x,y)).blue();
+            sumB += old_b;
+            sumB = qBound(0, sumB, 255);
+
+
+            newImage.setPixel(x,y, qRgb(sumR, sumG, sumB));
+        }
+    }
+    return newImage;
+}
+

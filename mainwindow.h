@@ -19,7 +19,7 @@
 #include "graphicsview.h"
 #include "dialog_zoom.h"
 #include "dialog_brightness.h"
-#include "dialog_gaussianblur.h"c
+#include "dialog_gaussianblur.h"
 #include "filters.h"
 #include "tools.h"
 #include "histogram.h"
@@ -117,6 +117,8 @@ private slots:
     void on_actionGauss_triggered();
 
     void on_actionMeida_Filter_triggered();
+
+    void on_actionLaplace_triggered();
 
 private:
     Ui::MainWindow  *ui;

@@ -31,6 +31,7 @@ QImage StretchTransform(const QImage &origin,
                                         double b2, double b3);
 QImage SimpleSmooth(const QImage &origin);
 QImage MeidaFilter(const QImage &origin, int radius);
+QImage LaplaceSharpen(const QImage &origin);
 
 }
 
