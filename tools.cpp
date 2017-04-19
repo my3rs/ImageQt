@@ -1,6 +1,5 @@
 #include "tools.h"
 #include "medianfilter.h"
-#include "common.h"
 
 
 /*****************************************************************************
@@ -515,6 +514,68 @@ QImage Tools::LaplaceSharpen(const QImage &origin)
 }
 
 /*****************************************************************************
+ *                              Sobel Edge Detector
+ * **************************************************************************/
+QImage Tools::SobelEdge(const QImage &origin)
+{
+    double *Gx, *Gy;
+    Gx = new double[9];
+    Gy = new double[9];
+
+    /* Sobel */
+    Gx[0] = 1.0; Gx[1] = 0.0; Gx[2] = -1.0;
+    Gx[3] = 2.0; Gx[4] = 0.0; Gx[5] = -2.0;
+    Gx[6] = 1.0; Gx[7] = 0.0; Gx[8] = -1.0;
+
+    Gy[0] = -1.0; Gy[1] = -2.0; Gy[2] = - 1.0;
+    Gy[3] = 0.0; Gy[4] = 0.0; Gy[5] = 0.0;
+    Gy[6] = 1.0; Gy[7] = 2.0; Gy[8] = 1.0;
+
+    QRgb pixel;
+    QImage grayImage = GreyScale(origin);
+    int height = grayImage.height();
+    int width = grayImage.width();
+    QImage newImage = QImage(width, height,QImage::Format_RGB888);
+
+    float sobel_norm[width*height];
+    float max = 0.0;
+    QColor my_color;
+
+    for (int x=0; x<width; x++)
+    {
+        for( int y=0; y<height; y++)
+        {
+            double value_gx = 0.0;
+            double value_gy = 0.0;
+            double sum_coeff_gx = 0.0;
+            double sum_coeff_gy = 0.0;
+
+            for (int k=0; k<3;k++)
+            {
+                for(int p=0; p<3; p++)
+                {
+                    pixel=grayImage.pixel((x+1+1-k),(y+1+1-p));
+                    value_gx += Gx[p*3+k] * qRed(pixel);
+                    value_gy += Gy[p*3+k] * qRed(pixel);
+                }
+                sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
+                max=sobel_norm[x+y*width]>max ? sobel_norm[x+y*width]:max;
+            }
+        }
+    }
+
+    int c = rand() % 255;
+
+    for(int i=0;i<width;i++){
+        for(int j=0;j<height;j++){
+            my_color.setHsv( 0 ,0, 255-int(255.0*sobel_norm[i + j * width]/max));
+            newImage.setPixel(i,j,my_color.rgb());
+        }
+    }
+    return newImage;
+}
+
+/*****************************************************************************
  *                                   边缘检测
  * **************************************************************************/
 QImage Tools::EdgeDetection(const QImage &origin){
@@ -522,13 +583,7 @@ QImage Tools::EdgeDetection(const QImage &origin){
 }
 
 
-/*****************************************************************************
- *                                 Sobel边缘细化
- * **************************************************************************/
-QImage Tools::SobelEdge(const QImage &origin)
-{
 
-}
 
 /*****************************************************************************
  *                             Gaussian Smoothing

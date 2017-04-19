@@ -39,6 +39,7 @@ QImage EdgeDetection(const QImage &origin);
 QImage SobelEdge(const QImage &origin);
 QImage GaussianSmoothing(const QImage &origin, int radius, double sigma);
 QImage Binaryzation(const QImage &origin);
+
 }
 
 

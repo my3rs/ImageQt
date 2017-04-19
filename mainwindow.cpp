@@ -776,7 +776,11 @@ void MainWindow::on_actionLaplace_triggered()
 
 void MainWindow::on_actionSobel_triggered()
 {
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::SobelEdge(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
 
+    updateRightImage(rightImage);
 }
 
 void MainWindow::on_actionEdge_Detection_triggered()
