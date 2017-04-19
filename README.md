@@ -22,7 +22,8 @@ Image viewer powered by Qt 5.8.0
 16. 简单平滑
 17. 高斯平滑
 18. 中值滤波
-19. 拉普拉斯锐化
+19. Laplace锐化
+20. Sobel边缘检测
 
 ## 截图
 
