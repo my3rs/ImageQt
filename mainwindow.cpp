@@ -113,7 +113,7 @@ void MainWindow::setActionStatus(bool status)
     // sharpen
     ui->actionLaplace->setEnabled(status);
     ui->actionSobel->setEnabled(status);
-    ui->actionEdge_Detection->setEnabled(status);
+    //ui->actionEdge_Detection->setEnabled(status);
     // Blur
     ui->actionSimple->setEnabled(status);
     ui->actionGauss->setEnabled(status);
@@ -783,10 +783,6 @@ void MainWindow::on_actionSobel_triggered()
     updateRightImage(rightImage);
 }
 
-void MainWindow::on_actionEdge_Detection_triggered()
-{
-
-}
 
 void MainWindow::on_actionBinaryzation_triggered()
 {
@@ -903,3 +899,12 @@ void MainWindow::on_actionT_triggered()
     }
 }
 
+
+void MainWindow::on_actionPrewitt_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::PrewittEdge(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}

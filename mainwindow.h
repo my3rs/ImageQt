@@ -17,7 +17,6 @@
 #include <QTranslator>
 #include "graphicsview.h"
 #include "dialog_gaussianblur.h"
-#include "filters.h"
 #include "tools.h"
 #include "histogram.h"
 #include "medianfilter.h"
@@ -111,11 +110,13 @@ private slots:
 
     void on_actionLaplace_triggered();
 
-    void on_actionEdge_Detection_triggered();
+//    void on_actionEdge_Detection_triggered();
 
     void on_actionSobel_triggered();
 
     void on_actionBinaryzation_triggered();
+
+    void on_actionPrewitt_triggered();
 
 private:
     Ui::MainWindow  *ui;

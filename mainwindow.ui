@@ -213,9 +213,15 @@
     <property name="title">
      <string>Sharpen</string>
     </property>
+    <widget class="QMenu" name="menuEdge_Detection">
+     <property name="title">
+      <string>Edge Detection</string>
+     </property>
+     <addaction name="actionSobel"/>
+     <addaction name="actionPrewitt"/>
+    </widget>
     <addaction name="actionLaplace"/>
-    <addaction name="actionSobel"/>
-    <addaction name="actionEdge_Detection"/>
+    <addaction name="menuEdge_Detection"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -480,14 +486,14 @@
     <string>Sobel</string>
    </property>
   </action>
-  <action name="actionEdge_Detection">
-   <property name="text">
-    <string>Edge Detection</string>
-   </property>
-  </action>
   <action name="actionBinaryzation">
    <property name="text">
     <string>Binaryzation</string>
+   </property>
+  </action>
+  <action name="actionPrewitt">
+   <property name="text">
+    <string>Prewitt</string>
    </property>
   </action>
  </widget>

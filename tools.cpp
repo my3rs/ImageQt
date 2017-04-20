@@ -551,18 +551,17 @@ QImage Tools::SobelEdge(const QImage &origin)
             {
                 for(int p=0; p<3; p++)
                 {
-                    pixel=grayImage.pixel((x+1+1-k),(y+1+1-p));
+                    pixel=grayImage.pixel(x+1+1-k,y+1+1-p);
                     value_gx += Gx[p*3+k] * qRed(pixel);
                     value_gy += Gy[p*3+k] * qRed(pixel);
                 }
-                sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
+//                sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
+                sobel_norm[x+y*width] = abs(value_gx) + abs(value_gy);
 
                 max=sobel_norm[x+y*width]>max ? sobel_norm[x+y*width]:max;
             }
         }
     }
-
-    int c = rand() % 255;
 
     for(int i=0;i<width;i++){
         for(int j=0;j<height;j++){
@@ -573,18 +572,67 @@ QImage Tools::SobelEdge(const QImage &origin)
     return newImage;
 }
 
-/*****************************************************************************
- *                                   边缘检测
- * **************************************************************************/
-QImage Tools::EdgeDetection(const QImage &origin){
+QImage Tools::PrewittEdge(const QImage &origin)
+{
+    double *Gx = new double[9];
+    double *Gy = new double[9];
 
+    /* Sobel */
+    Gx[0] = -1.0; Gx[1] = 0.0; Gx[2] = 1.0;
+    Gx[3] = -1.0; Gx[4] = 0.0; Gx[5] = 1.0;
+    Gx[6] = -1.0; Gx[7] = 0.0; Gx[8] = 1.0;
+
+    Gy[0] = 1.0; Gy[1] = 1.0; Gy[2] = 1.0;
+    Gy[3] = 0.0; Gy[4] = 0.0; Gy[5] = 0.0;
+    Gy[6] = -1.0; Gy[7] = -1.0; Gy[8] = -1.0;
+
+    QRgb pixel;
+    QImage grayImage = GreyScale(origin);
+    int height = grayImage.height();
+    int width = grayImage.width();
+    QImage newImage = QImage(width, height,QImage::Format_RGB888);
+
+    float sobel_norm[width*height];
+    float max = 0.0;
+    QColor my_color;
+
+    for (int x=0; x<width; x++)
+    {
+        for( int y=0; y<height; y++)
+        {
+            double value_gx = 0.0;
+            double value_gy = 0.0;
+
+            for (int k=0; k<3;k++)
+            {
+                for(int p=0; p<3; p++)
+                {
+                    pixel=grayImage.pixel(x+1+1-k,y+1+1-p);
+                    value_gx += Gx[p*3+k] * qRed(pixel);
+                    value_gy += Gy[p*3+k] * qRed(pixel);
+                }
+//                sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
+                sobel_norm[x+y*width] = abs(value_gx) + abs(value_gy);
+
+                max=sobel_norm[x+y*width]>max ? sobel_norm[x+y*width]:max;
+            }
+        }
+    }
+
+    for(int i=0;i<width;i++){
+        for(int j=0;j<height;j++){
+            my_color.setHsv( 0 ,0, 255-int(255.0*sobel_norm[i + j * width]/max));
+            newImage.setPixel(i,j,my_color.rgb());
+        }
+    }
+    return newImage;
 }
 
 
 
 
 /*****************************************************************************
- *                             Gaussian Smoothing
+ *                                  高斯平滑
  * **************************************************************************/
 QImage Tools::GaussianSmoothing(const QImage &origin, int radius, double sigma)
 {
@@ -624,6 +672,10 @@ QImage Tools::Binaryzation(const QImage &origin)
     return newImg;
 }
 
+
+/*****************************************************************************
+ *                                 金属拉丝效果
+ * **************************************************************************/
 QImage Tools::Metal(QImage origin)
 {
     QImage *baseImage = new QImage(":/img/src/metal.png");

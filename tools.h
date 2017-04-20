@@ -36,11 +36,12 @@ QImage SimpleSmooth(const QImage &origin);
 QImage MeidaFilter(const QImage &origin, int radius);
 
 QImage LaplaceSharpen(const QImage &origin);
-QImage EdgeDetection(const QImage &origin);
+
 QImage SobelEdge(const QImage &origin);
 QImage GaussianSmoothing(const QImage &origin, int radius, double sigma);
 QImage Binaryzation(const QImage &origin);
 QImage Metal(QImage origin);
+QImage PrewittEdge(const QImage &origin);
 }
 
 
