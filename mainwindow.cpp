@@ -550,7 +550,7 @@ void MainWindow::on_actionFlower_frame_triggered()
 void MainWindow::on_actionMetal_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Filters::Metal(rightImage.toImage());
+    QImage newImage = Tools::Metal(rightImage.toImage());
     rightImage.convertFromImage(newImage);
 
     updateRightImage(rightImage);

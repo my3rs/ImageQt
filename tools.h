@@ -6,7 +6,8 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
-#include <QImage>
+
+#include <QPainter>
 #include <QPixmap>
 #include <QDebug>
 #include <QPainter>
@@ -39,7 +40,7 @@ QImage EdgeDetection(const QImage &origin);
 QImage SobelEdge(const QImage &origin);
 QImage GaussianSmoothing(const QImage &origin, int radius, double sigma);
 QImage Binaryzation(const QImage &origin);
-
+QImage Metal(QImage origin);
 }
 
 

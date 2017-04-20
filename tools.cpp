@@ -518,9 +518,8 @@ QImage Tools::LaplaceSharpen(const QImage &origin)
  * **************************************************************************/
 QImage Tools::SobelEdge(const QImage &origin)
 {
-    double *Gx, *Gy;
-    Gx = new double[9];
-    Gy = new double[9];
+    double *Gx = new double[9];
+    double *Gy = new double[9];
 
     /* Sobel */
     Gx[0] = 1.0; Gx[1] = 0.0; Gx[2] = -1.0;
@@ -547,8 +546,6 @@ QImage Tools::SobelEdge(const QImage &origin)
         {
             double value_gx = 0.0;
             double value_gy = 0.0;
-            double sum_coeff_gx = 0.0;
-            double sum_coeff_gy = 0.0;
 
             for (int k=0; k<3;k++)
             {
@@ -559,6 +556,7 @@ QImage Tools::SobelEdge(const QImage &origin)
                     value_gy += Gy[p*3+k] * qRed(pixel);
                 }
                 sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
+
                 max=sobel_norm[x+y*width]>max ? sobel_norm[x+y*width]:max;
             }
         }
@@ -626,3 +624,19 @@ QImage Tools::Binaryzation(const QImage &origin)
     return newImg;
 }
 
+QImage Tools::Metal(QImage origin)
+{
+    QImage *baseImage = new QImage(":/img/src/metal.png");
+    QImage darkImage = Tools::Brightness(-100, origin);
+    QImage greyImage = Tools::GreyScale(darkImage);
+    QPainter painter;
+
+    QImage newImage = baseImage->scaled(QSize(origin.width(),origin.height()));
+
+    painter.begin(&newImage);
+    painter.setOpacity(0.5);
+    painter.drawImage(0, 0, greyImage);
+    painter.end();
+
+    return newImage;
+}

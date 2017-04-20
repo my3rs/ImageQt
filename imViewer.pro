@@ -27,7 +27,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     graphicsview.cpp \
     tools.cpp \
-    filters.cpp \
     dialog_gaussianblur.cpp \
     histogram.cpp \
     dialog_linear_gray.cpp \
@@ -43,7 +42,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     graphicsview.h \
     tools.h \
-    filters.h \
     dialog_gaussianblur.h \
     histogram.h \
     dialog_linear_gray.h \
