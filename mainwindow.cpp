@@ -629,7 +629,29 @@ void MainWindow::on_actionMeida_Filter_triggered()
  *****************************************************************************/
 void MainWindow::on_actionLeft_triggered()
 {
-    ui->rightGraphicsView->rotate(-90);
+
+    bool ok;
+    int factor = QInputDialog::getInt(this, tr("旋转"), "请输入要旋转的角度",0,-360,360,10,&ok);
+    if (ok)
+    {
+        if (factor != 0)
+        {
+            QPixmap rightImage = rightPixmapItem->pixmap();
+
+            QImage *imgRotate = new QImage;
+            QMatrix matrix;
+            matrix.rotate(factor);
+            *imgRotate = rightImage.toImage().transformed(matrix);
+            QPixmap newPixmap;
+            newPixmap = QPixmap::fromImage(*imgRotate);
+            updateRightImage(newPixmap);
+        }
+        else
+        {
+            return;
+        }
+    }
+
 }
 
 /******************************************************************************
@@ -637,7 +659,16 @@ void MainWindow::on_actionLeft_triggered()
  *****************************************************************************/
 void MainWindow::on_actionRight_triggered()
 {
-    ui->rightGraphicsView->rotate(90);
+    //ui->rightGraphicsView->rotate(90);
+    QPixmap rightImage = rightPixmapItem->pixmap();
+
+    QImage *imgRotate = new QImage;
+    QMatrix matrix;
+    matrix.rotate(90);
+    *imgRotate = rightImage.toImage().transformed(matrix);
+    QPixmap newPixmap;
+    newPixmap = QPixmap::fromImage(*imgRotate);
+    updateRightImage(newPixmap);
 }
 
 /******************************************************************************
