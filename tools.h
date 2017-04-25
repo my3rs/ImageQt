@@ -42,6 +42,7 @@ QImage GaussianSmoothing(const QImage &origin, int radius, double sigma);
 QImage Binaryzation(const QImage &origin);
 QImage Metal(QImage origin);
 QImage PrewittEdge(const QImage &origin);
+QImage ContourExtraction(const QImage &origin);
 }
 
 

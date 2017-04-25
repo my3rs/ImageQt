@@ -827,12 +827,15 @@ void MainWindow::on_actionBinaryzation_triggered()
 
 
 /******************************************************************************
- *                          Adjust Brightness
+ *                          调整亮度
  *****************************************************************************/
 void MainWindow::on_actionAdjust_brightness_triggered()
 {
     bool ok;
-    int delta = QInputDialog::getInt(this, tr("Brightness"), "Input a value for brightness(+/-)",0,-1000,1000,10,&ok);
+    int delta = QInputDialog::getInt(this,
+                                     tr("Brightness"),
+                                     "Input a value for brightness(+/-)",
+                                     0,-1000,1000,10,&ok);
     if (ok)
     {
         if (delta != 100)
@@ -867,7 +870,7 @@ void MainWindow::on_actionNormal_triggered()
 
 
 /******************************************************************************
- *                              Dialog: About
+ *                              “关于”窗口
  *****************************************************************************/
 void MainWindow::on_actionAbout_triggered()
 {
@@ -878,7 +881,7 @@ void MainWindow::on_actionAbout_triggered()
 }
 
 /******************************************************************************
- *                          Language support
+ *                                  语言支持
  *****************************************************************************/
 
 void MainWindow::on_actionChinese_triggered()
@@ -902,7 +905,7 @@ void MainWindow::on_actionEnglish_triggered()
 }
 
 /******************************************************************************
- *                       Get the current user name
+ *                           获得当前用户的用户名
  *****************************************************************************/
 QString MainWindow::getUserName()
 {
@@ -912,7 +915,7 @@ QString MainWindow::getUserName()
 }
 
 /******************************************************************************
- *                       Get the current user name
+ *                              获得当前用户的家目录
  *****************************************************************************/
 QString MainWindow::getUserPath()
 {
@@ -930,11 +933,26 @@ void MainWindow::on_actionT_triggered()
     }
 }
 
-
+/******************************************************************************
+ *                              Prewitt边缘检测
+ *****************************************************************************/
 void MainWindow::on_actionPrewitt_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
     QImage newImage = Tools::PrewittEdge(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+
+/******************************************************************************
+ *                              轮廓提取法
+ *****************************************************************************/
+void MainWindow::on_actionContour_extraction_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::ContourExtraction(rightImage.toImage());
     rightImage.convertFromImage(newImage);
 
     updateRightImage(rightImage);

@@ -692,3 +692,43 @@ QImage Tools::Metal(QImage origin)
 
     return newImage;
 }
+
+
+/*****************************************************************************
+ *                                 轮廓提取法
+ * **************************************************************************/
+QImage Tools::ContourExtraction(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    int pixel[8];   // 当前像素周围的8个像素的像素值
+//    int *pixel = new int[9];
+    QImage binImg = Binaryzation(origin);
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+    newImg.fill(Qt::white);
+
+    for(int y=1; y<height; y++)
+    {
+        for(int x=1; x<width; x++)
+        {
+            memset(pixel,0,8);
+
+            if (QColor(binImg.pixel(x,y)).red() == 0)
+            {
+                newImg.setPixel(x, y, qRgb(0,0,0));
+                pixel[0] = QColor(binImg.pixel(x-1,y-1)).red();
+                pixel[1] = QColor(binImg.pixel(x-1,y)).red();
+                pixel[2] = QColor(binImg.pixel(x-1,y+1)).red();
+                pixel[3] = QColor(binImg.pixel(x,y-1)).red();
+                pixel[4] = QColor(binImg.pixel(x,y+1)).red();
+                pixel[5] = QColor(binImg.pixel(x+1,y-1)).red();
+                pixel[6] = QColor(binImg.pixel(x+1,y)).red();
+                pixel[7] = QColor(binImg.pixel(x+1,y+1)).red();
+                if (pixel[0]+pixel[1]+pixel[2]+pixel[3]+pixel[4]+pixel[5]+pixel[6]+pixel[7] == 0)
+                    newImg.setPixel(x,y,qRgb(255,255,255));
+            }
+        }
+    }
+
+    return newImg;
+}
