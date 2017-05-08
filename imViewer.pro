@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = imViewer
 TEMPLATE = app
+CONFIG += C++11
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -25,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    graphicsview.cpp \
     tools.cpp \
     dialog_gaussianblur.cpp \
     histogram.cpp \
@@ -37,10 +37,10 @@ SOURCES += main.cpp\
     dialog_two_threshold_transform.cpp \
     dialog_stretch_transform.cpp \
     gaussianblur.cpp \
-    medianfilter.cpp
+    medianfilter.cpp \
+    graphicsview.cpp
 
 HEADERS  += mainwindow.h \
-    graphicsview.h \
     tools.h \
     dialog_gaussianblur.h \
     histogram.h \
@@ -52,7 +52,8 @@ HEADERS  += mainwindow.h \
     dialog_two_threshold_transform.h \
     dialog_stretch_transform.h \
     gaussianblur.h \
-    medianfilter.h
+    medianfilter.h \
+    graphicsview.h
 
 FORMS    += mainwindow.ui \
     gaussianblurdialog.ui \

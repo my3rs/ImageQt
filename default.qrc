@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/img">
-        <file>src/document-open.png</file>
         <file>src/avatar-default.png</file>
         <file>src/document-save.png</file>
         <file>src/document-save-as.png</file>
@@ -29,6 +28,9 @@
         <file>src/Line_Chart_72px.png</file>
         <file>src/temperature_72px.png</file>
         <file>src/blur_on_72px.png</file>
+        <file>src/Open_folder_full_48px_1186194_easyicon.net.png</file>
+        <file>src/settings_backup_restore_48px_1182197_easyicon.net.png</file>
+        <file>src/clear_gtk_72px_43338_easyicon.net.png</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

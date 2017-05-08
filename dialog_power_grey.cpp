@@ -41,20 +41,20 @@ void DialogPowerGrey::paintFunctionImage(double c, double r, double b)
     ui->customPlot->replot();
 }
 
-void DialogPowerGrey::on_cDoubleSpinBox_valueChanged(double arg1)
+void DialogPowerGrey::on_cDoubleSpinBox_valueChanged(double c)
 {
-    paintFunctionImage(ui->cDoubleSpinBox->value(), ui->rDoubleSpinBox->value(), ui->bDoubleSpinBox->value());
+    paintFunctionImage(c, ui->rDoubleSpinBox->value(), ui->bDoubleSpinBox->value());
 }
 
 
 
 
-void DialogPowerGrey::on_rDoubleSpinBox_valueChanged(double arg1)
+void DialogPowerGrey::on_rDoubleSpinBox_valueChanged(double r)
 {
-    paintFunctionImage(ui->cDoubleSpinBox->value(), ui->rDoubleSpinBox->value(), ui->bDoubleSpinBox->value());
+    paintFunctionImage(ui->cDoubleSpinBox->value(), r, ui->bDoubleSpinBox->value());
 }
 
-void DialogPowerGrey::on_bDoubleSpinBox_valueChanged(double arg1)
+void DialogPowerGrey::on_bDoubleSpinBox_valueChanged(double b)
 {
-    paintFunctionImage(ui->cDoubleSpinBox->value(), ui->rDoubleSpinBox->value(), ui->bDoubleSpinBox->value());
+    paintFunctionImage(ui->cDoubleSpinBox->value(), ui->rDoubleSpinBox->value(), b);
 }

@@ -43,6 +43,15 @@ QImage Binaryzation(const QImage &origin);
 QImage Metal(QImage origin);
 QImage PrewittEdge(const QImage &origin);
 QImage ContourExtraction(const QImage &origin);
+QImage ConnectedDomain(const QImage &origin);
+QImage Dilate(const QImage &origin);
+QImage Expansion(const QImage &origin);
+QImage Opening(const QImage &origin);
+QImage Closing(const QImage &origin);
+QImage Thinning(const QImage &origin);
+QImage RGB2HSV(const QImage &origin);
+QImage RGB2HSL(const QImage &origin);
+QImage RGB2CMYK(const QImage &origin);
 }
 
 

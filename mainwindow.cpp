@@ -27,21 +27,25 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusBar->addPermanentWidget(size);
 
 
-    connect(ui->openBtn, SIGNAL(clicked(bool)),
-            this, SLOT(on_actionOpen_triggered()));
-    connect(ui->closeBtn, SIGNAL(clicked(bool)),
-            this, SLOT(on_actionClose_triggered()));
-    connect(ui->saveAsBtn, SIGNAL(clicked(bool)),
-            this, SLOT(on_actionSave_As_triggered()));
 
-    connect(ui->hstgrmBtn, SIGNAL(clicked()),
-            this, SLOT(on_actionHistogram_triggered()));
-    connect(ui->normalBtn, SIGNAL(clicked()),
-            this, SLOT(on_actionNormal_triggered()));
+    createToolBar();
 
     setActionStatus(false);
     setWindowTitle("ImageQt");
     ui->actionEnglish->setEnabled(false);
+}
+
+void MainWindow::createToolBar()
+{
+    ui->toolBar->addAction(ui->actionOpen);
+    ui->toolBar->addAction(ui->actionClose);
+
+    ui->toolBar->addSeparator();
+    ui->toolBar->addAction(ui->actionRestore);
+    ui->toolBar->addAction(ui->actionHistogram);
+
+    ui->toolBar->addSeparator();
+    ui->toolBar->addAction(ui->actionChinese);
 }
 
 MainWindow::~MainWindow()
@@ -110,6 +114,9 @@ void MainWindow::cleanImage()
 
 void MainWindow::setActionStatus(bool status)
 {
+    ui->actionPrewitt->setEnabled(status);
+    ui->actionContour_extraction->setEnabled(status);
+    ui->actionEdge_following->setEnabled(status);
     // sharpen
     ui->actionLaplace->setEnabled(status);
     ui->actionSobel->setEnabled(status);
@@ -125,12 +132,8 @@ void MainWindow::setActionStatus(bool status)
     ui->actionTwo_thresholds_transform->setEnabled(status);
     ui->actionPower_transformation->setEnabled(status);
     ui->actionLogarithm_grey_level_transformation->setEnabled(status);
-    ui->hstgrmBtn->setEnabled(status);
     ui->actionSave->setEnabled(status);
-    ui->saveAsBtn->setEnabled(status);
-    ui->closeBtn->setEnabled(status);
     ui->actionClose->setEnabled(status);
-    ui->normalBtn->setEnabled(status);
     ui->actionSave_As->setEnabled(status);
 
     ui->actionCool->setEnabled(status);
@@ -301,6 +304,9 @@ void MainWindow::on_actionOpen_triggered()
         rightPixmapItem = rightScene->addPixmap(rightPixmap);
         rightScene->setSceneRect(QRectF(rightPixmap.rect()));
 
+        qDebug()<<"depth:"<<rightPixmap.depth();
+        qDebug()<<"hasAlpha:"<<rightPixmap.hasAlpha();
+
 
 
 
@@ -469,11 +475,7 @@ void MainWindow::on_actionAdjust_triggered()
  *****************************************************************************/
 void MainWindow::on_actionRestore_triggered()
 {
-    ui->rightGraphicsView->resetTransform();
-    ui->rightGraphicsView->setFactor(0);
-
-    ui->leftGraphicsView->resetTransform();
-    ui->leftGraphicsView->setFactor(0);
+    on_actionNormal_triggered();
 
 }
 
@@ -953,6 +955,225 @@ void MainWindow::on_actionContour_extraction_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
     QImage newImage = Tools::ContourExtraction(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+void MainWindow::on_actionArea_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImg = rightImage.toImage();
+    QImage binImg = Tools::Binaryzation(newImg);
+    int area = 0;
+    for(int x=0; x<binImg.width(); x++)
+    {
+        for(int y=0; y<binImg.height(); y++)
+        {
+            if (QColor(binImg.pixel(x,y)).red() == 0)
+                area ++;
+        }
+    }
+
+    QMessageBox *message =new QMessageBox(QMessageBox::NoIcon,QObject::tr("面积计算"),"连通区域的面积为："+QString::number(area));
+    message->show();
+}
+
+void MainWindow::on_actionConnected_domain_triggered()
+{
+
+}
+
+void MainWindow::on_actionCircumference_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImg = rightImage.toImage();
+    QImage sobelImg = Tools::SobelEdge(newImg);
+    sobelImg = Tools::Binaryzation(sobelImg);
+    int c = 0;
+    for(int x=0; x<sobelImg.width(); x++)
+    {
+        for(int y=0; y<sobelImg.height(); y++)
+        {
+            if (QColor(sobelImg.pixel(x,y)).red() == 0)
+                c ++;
+        }
+    }
+    QMessageBox *message =new QMessageBox(QMessageBox::NoIcon,QObject::tr("周长计算"),"连通区域的周长为："+QString::number(c));
+    message->show();
+}
+
+
+
+void MainWindow::on_actionDilate_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage binaryImage = Tools::Binaryzation(rightImage.toImage());
+    QImage newImage = Tools::Dilate(binaryImage);
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+void MainWindow::on_actionExpansion_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage binaryImage = Tools::Binaryzation(rightImage.toImage());
+    QImage newImage = Tools::Expansion(binaryImage);
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+/*****************************************************************************
+ *                                 开运算
+ * **************************************************************************/
+void MainWindow::on_actionOpening_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage binaryImage = Tools::Binaryzation(rightImage.toImage());
+    QImage newImage = Tools::Opening(binaryImage);
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+
+/*****************************************************************************
+ *                                 闭运算
+ * **************************************************************************/
+void MainWindow::on_actionClosing_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage binaryImage = Tools::Binaryzation(rightImage.toImage());
+    QImage newImage = Tools::Closing(binaryImage);
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+/*****************************************************************************
+ *                                 图像细化
+ * **************************************************************************/
+void MainWindow::on_actionThinning_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::Thinning(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+/*****************************************************************************
+ *                                 RGB TO HSV 色彩空间转换
+ * **************************************************************************/
+void MainWindow::on_actionRGB2HSV_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::RGB2HSV(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+void MainWindow::on_actionEqualization_triggered()
+{
+//    QPixmap rightImage = rightPixmapItem->pixmap();
+//    QImage newImg = rightImage.toImage();
+//    int width = rightImage.width();
+//    int height = rightImage.height();
+//    QImage grayImg = QImage(width, height, QImage::Format_ARGB32);
+
+//    //存放HSI空间分量的结构体
+//    typedef struct HSI
+//    {
+//        float h;
+//        float s;
+//        float i;
+
+//    }hsi;
+
+//    //申请一个二维结构体数组，存放每个像素转换到HSI空间后三分量的值
+//    hsi **p = new hsi*[height];
+//    for(int i = 0;i < height;i++)
+//        p[i] = new hsi[height];
+
+//    //遍历图像，调用函数RGBtoHSI()转换到HSI空间
+//    float max = 0;
+//    for(int i = 0;i < width;i++)
+//    {
+//        for(int j = 0;j < height;j ++)
+//        {
+//            QRgb rgb = newImg.pixel(i,j);
+//            Tools::RGBtoHSI(qRed(rgb),qGreen(rgb),qBlue(rgb),&p[i][j].h,&p[i][j].s,&p[i][j].i);
+//            max = max > p[i][j].i?max:p[i][j].i;
+//        }
+//    }
+
+//    int n = (int)(max+0.5);
+//    //对分量I进行直方图均衡
+//    int *II = new int[n+1];
+//    float *IIPro = new float[n+1];
+//    float *IITemp = new float[n+1];
+//    float *IIJun = new float[n+1];
+
+//    for(int i = 0;i <= n;i++)
+//        II[i] = 0;
+
+//    //计算频率，即nk
+//    for(int i = 0;i < width;i++)
+//    {
+//        for(int j = 0;j < height;j ++)
+//        {
+//            II[(int)(p[i][j].i+0.5)]++;
+//        }
+//    }
+
+//    //计算每个数量级出现的概率
+//    for(int i = 0;i <= n;i++)
+//    {
+//        IIPro[i] = (II[i]*1.0)/(width*height);
+//    }
+
+//    //概率累加并计算均值
+//    IITemp[0] = IIPro[0];
+//    for(int i = 1;i <= n;i++)
+//    {
+//        IITemp[i] = IITemp[i-1]+IIPro[i];
+
+//        IIJun[i]= n*IITemp[i];
+//    }
+//    for(int i=0;i<width;i++)
+//    {
+
+//        for(int j=0;j<height;j++)
+//        {
+//            p[i][j].i = IIJun[(int)(p[i][j].i+0.5)];
+//            float r,g,b;
+//            Tools::HSItoRGB(p[i][j].h,p[i][j].s,p[i][j].i,&r,&g,&b);
+//            r = r > 255?255:(int)(r+0.5);
+//            g = g > 255?255:(int)(g+0.5);
+//            b = b > 255?255:(int)(b+0.5);
+//            grayImg.setPixel(i,j,qRgb(r,g,b));
+//         }
+//     }
+//    rightImage.convertFromImage(grayImg);
+//    updateRightImage(rightImage);
+}
+
+void MainWindow::on_actionRGB2HSL_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::RGB2HSL(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
+}
+
+void MainWindow::on_actionRGB2Cmyk_triggered()
+{
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::RGB2CMYK(rightImage.toImage());
     rightImage.convertFromImage(newImage);
 
     updateRightImage(rightImage);

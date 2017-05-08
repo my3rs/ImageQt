@@ -1,6 +1,9 @@
 #include "tools.h"
 #include "medianfilter.h"
 
+#define min2(a,b) (a)<(b)?(a):(a)
+#define min(a,b,c) (min2(a,b))<(c)?(min2(a,b)):(c)
+
 
 /*****************************************************************************
  *                           Greyscale
@@ -641,8 +644,6 @@ QImage Tools::GaussianSmoothing(const QImage &origin, int radius, double sigma)
     QImage newImage = blur->BlurImage(origin);
 
     return newImage;
-
-
 }
 
 /*****************************************************************************
@@ -730,5 +731,258 @@ QImage Tools::ContourExtraction(const QImage &origin)
         }
     }
 
+    return newImg;
+}
+
+
+QImage Tools::ConnectedDomain(const QImage &origin)
+{
+
+}
+
+
+/*****************************************************************************
+ *                                 全方位腐蚀
+ * **************************************************************************/
+QImage Tools::Dilate(const QImage &origin){
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    int dilateItem[9] = {1,0,1,
+                         0,0,0,
+                         1,0,1};
+
+    for (int x=1; x<width-1; x++)
+    {
+        for(int y=1; y<height-1; y++)
+        {
+            newImg.setPixel(x,y,qRgb(0,0,0));
+            for(int m=0; m<3; m++)
+            {
+                for(int n=0; n<3; n++)
+                {
+                    if(dilateItem[m+n] == 1)
+                        continue;
+                    QColor mColor = origin.pixel(x+(n-1),y+(1-m));
+                    if(mColor.red() > 128){
+                        newImg.setPixel(x,y,qRgb(255,255,255));
+                    }
+                }
+            }
+        }
+    }
+    return newImg;
+}
+
+/*****************************************************************************
+ *                                 全方位膨胀
+ * **************************************************************************/
+
+QImage Tools::Expansion(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    int dilateItem[9] = {1,0,1,
+                         0,0,0,
+                         1,0,1};
+
+    for (int x=1; x<width-1; x++)
+    {
+        for(int y=1; y<height-1; y++)
+        {
+            newImg.setPixel(x,y,qRgb(255,255,255));
+            for(int m=0; m<3; m++)
+            {
+                for(int n=0; n<3; n++)
+                {
+                    if(dilateItem[m+n] == 1)
+                        continue;
+                    QColor mColor = origin.pixel(x+(n-1),y+(1-m));
+                    if(mColor.red() < 128){
+                        newImg.setPixel(x,y,qRgb(0,0,0));
+                    }
+                }
+            }
+        }
+    }
+    return newImg;
+}
+
+
+/*****************************************************************************
+ *                                开运算
+ * **************************************************************************/
+QImage Tools::Opening(const QImage &origin)
+{
+    QImage afterDilate = Dilate(origin);
+    QImage afterExpansion = Expansion(afterDilate);
+
+    return afterExpansion;
+}
+
+/*****************************************************************************
+ *                                闭运算
+ * **************************************************************************/
+QImage Tools::Closing(const QImage &origin)
+{
+    QImage afterExpansion = Expansion(origin);
+    QImage afterDilate = Dilate(afterExpansion);
+
+    return afterDilate;
+}
+
+/*****************************************************************************
+ *                                图像细化
+ * **************************************************************************/
+
+QImage Tools::Thinning(const QImage &origin)
+{
+    QImage binImg = Binaryzation(origin);
+    int width = binImg.width();
+    int height = binImg.height();
+
+    int neighbor[8];
+    QImage mark =  QImage(width, height, QImage::Format_RGB888);
+    mark.fill(Qt::black);
+
+    bool loop = true;
+
+    int markNum = 0;
+    while(loop)
+    {
+        loop = false;
+        markNum = 0;
+        for(int y=1; y<height-1; y++)
+        {
+            for(int x=1; x<width-1; x++)
+            {
+                // 1
+                if(binImg.pixel(x,y) == 0)  continue;
+
+                neighbor[0] = QColor(binImg.pixel(x+1,y)).red();
+                neighbor[1] = QColor(binImg.pixel(x+1, y-1)).red();
+                neighbor[2] = QColor(binImg.pixel(x, y-1)).red();
+                neighbor[3] = QColor(binImg.pixel(x-1, y-1)).red();
+                neighbor[4] = QColor(binImg.pixel(x-1, y)).red();
+                neighbor[5] = QColor(binImg.pixel(x-1, y+1)).red();
+                neighbor[6] = QColor(binImg.pixel(x, y+1)).red();
+                neighbor[7] = QColor(binImg.pixel(x+1, y+1)).red();
+
+                // 2
+                int np = (neighbor[0]+neighbor[1]+neighbor[2]+neighbor[3]
+                        +neighbor[4]+neighbor[5]+neighbor[6]+neighbor[7])/255;
+                if (np<2|| np >6)   continue;
+
+                // 3
+                int sp = 0;
+                for(int i=1; i<8; i++)
+                {
+                    if(neighbor[i] - neighbor[i-1] == 255)
+                        sp++;
+
+                }
+                if(neighbor[0] - neighbor[7] == 255)
+                    sp++;
+                if (sp!=1)  continue;
+
+                // 4
+                if(neighbor[2]&neighbor[0]&neighbor[4]!=0)
+                     continue;
+                //条件5：p2*p6*p4==0
+                if(neighbor[2]&neighbor[6]&neighbor[4]!=0)
+                     continue;
+
+                //标记删除
+                mark.setPixel(x,y,qRgb(1,1,1));
+                markNum ++;
+                loop = true;
+            }
+        }
+
+        // 将标记删除的点置为背景色
+
+        for(int y=0; y<height; y++)
+        {
+            for(int x=0; x<width; x++)
+            {
+                if(QColor(mark.pixel(x,y)) == 1)
+                {
+                    binImg.setPixel(x,y,qRgb(0,0,0));
+                }
+            }
+        }
+    }
+
+
+    markNum = 0;
+
+    return binImg;
+}
+
+
+
+
+
+
+QImage Tools::RGB2HSV(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    for(int x=0; x<width; x++)
+    {
+        for(int y=0; y<height; y++)
+        {
+            QColor color = origin.pixel(x,y);
+//            int hue = color.hue();
+            int hue = 0;
+            color.setHsv(hue, color.saturation(), color.value(), color.alpha());
+//            newImg.setPixelColor(x,y,color);
+            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+        }
+    }
+    return newImg;
+}
+
+QImage Tools::RGB2HSL(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    for(int x=0; x<width; x++)
+    {
+        for(int y=0; y<height; y++)
+        {
+            QColor color = origin.pixel(x,y);
+            int h = 100;
+            color.setHsl(h, color.saturation(),color.lightness(), color.alpha());
+            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+        }
+    }
+    return newImg;
+}
+
+QImage Tools::RGB2CMYK(const QImage &origin)
+{
+    int width = origin.width();
+    int height = origin.height();
+    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+
+    for(int x=0; x<width; x++)
+    {
+        for(int y=0; y<height; y++)
+        {
+            QColor color = origin.pixel(x,y);
+            int h = 100;
+//            color.setCmyk(color.cyan(), color.magenta(), color.yellow(), color.black());
+            color.setCmyk(color.cyan(), color.magenta(), 0, color.black());
+            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+        }
+    }
     return newImg;
 }

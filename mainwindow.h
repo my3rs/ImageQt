@@ -1,8 +1,3 @@
-/****************************************************************************
- *                    Mainwindow and actions control
- *
- * *************************************************************************/
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -49,6 +44,7 @@ public:
     void cleanImage();
 
     void setActionStatus(bool);
+    void createToolBar();
 
 private slots:
 
@@ -117,6 +113,33 @@ private slots:
     void on_actionBinaryzation_triggered();
 
     void on_actionPrewitt_triggered();
+
+    void on_actionContour_extraction_triggered();
+
+    void on_actionArea_triggered();
+
+    void on_actionConnected_domain_triggered();
+
+    void on_actionCircumference_triggered();
+
+
+    void on_actionDilate_triggered();
+
+    void on_actionExpansion_triggered();
+
+    void on_actionOpening_triggered();
+
+    void on_actionClosing_triggered();
+
+    void on_actionThinning_triggered();
+
+    void on_actionRGB2HSV_triggered();
+
+    void on_actionEqualization_triggered();
+
+    void on_actionRGB2HSL_triggered();
+
+    void on_actionRGB2Cmyk_triggered();
 
 private:
     Ui::MainWindow  *ui;
