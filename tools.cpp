@@ -986,3 +986,83 @@ QImage Tools::RGB2CMYK(const QImage &origin)
     }
     return newImg;
 }
+
+
+QImage Tools::Final(const QImage &origin)
+{
+    int width  = origin.width()/3;
+    int height = origin.height()/3;
+    int dilateItem[9] = {1,0,1,
+                         0,0,0,
+                         1,0,1};
+
+
+
+    QImage newImg = QImage(origin.width(), origin.height(), QImage::Format_RGB888);
+
+    for(int x=1; x<width; x++)
+    {
+        for(int y=1; y<height; y++)
+        {
+            newImg.setPixel(x,y,qRgb(255,255,255));
+            for(int m=0; m<3; m++)
+            {
+                for(int n=0; n<3; n++)
+                {
+                    if(dilateItem[m+n] == 1)
+                        continue;
+                    QColor mColor = origin.pixel(x+(n-1),y+(1-m));
+                    if(mColor.red() < 128){
+                        newImg.setPixel(x,y,qRgb(0,0,0));
+                    }
+                }
+            }
+        }
+    }
+
+
+    // laplace
+    int window[3][3] = {0,-1,0,-1,4,-1,0,-1,0};
+    for(int x=width; x<2*width; x++)
+    {
+        for(int y=1; y<height; y++)
+        {
+            int sumR = 0;
+            int sumG = 0;
+            int sumB = 0;
+
+            //对每一个像素使用模板
+            for(int m=x-1; m<= x+1; m++)
+                for(int n=y-1; n<=y+1; n++)
+                {
+                    if(m>=0 && m<width && n<height)
+                    {
+                        sumR += QColor(origin.pixel(m,n)).red()*window[n-y+1][m-x+1];
+                        sumG += QColor(origin.pixel(m,n)).green()*window[n-y+1][m-x+1];
+                        sumB += QColor(origin.pixel(m,n)).blue()*window[n-y+1][m-x+1];
+                    }
+                }
+
+
+            int old_r = QColor(origin.pixel(x,y)).red();
+            sumR += old_r;
+            sumR = qBound(0, sumR, 255);
+
+            int old_g = QColor(origin.pixel(x,y)).green();
+            sumG += old_g;
+            sumG = qBound(0, sumG, 255);
+
+            int old_b = QColor(origin.pixel(x,y)).blue();
+            sumB += old_b;
+            sumB = qBound(0, sumB, 255);
+
+
+            newImg.setPixel(x,y, qRgb(sumR, sumG, sumB));
+        }
+    }
+
+
+
+
+    return newImg;
+}

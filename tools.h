@@ -52,6 +52,7 @@ QImage Thinning(const QImage &origin);
 QImage RGB2HSV(const QImage &origin);
 QImage RGB2HSL(const QImage &origin);
 QImage RGB2CMYK(const QImage &origin);
+QImage Final(const QImage &origin);
 }
 
 

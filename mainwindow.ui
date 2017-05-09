@@ -183,7 +183,6 @@
      <string>Color Space</string>
     </property>
     <addaction name="actionRGB2HSV"/>
-    <addaction name="actionEqualization"/>
     <addaction name="actionRGB2HSL"/>
     <addaction name="actionRGB2Cmyk"/>
    </widget>

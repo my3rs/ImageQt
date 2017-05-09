@@ -45,6 +45,7 @@ public:
 
     void setActionStatus(bool);
     void createToolBar();
+    void createAction();
 
 private slots:
 
@@ -135,13 +136,15 @@ private slots:
 
     void on_actionRGB2HSV_triggered();
 
-    void on_actionEqualization_triggered();
 
     void on_actionRGB2HSL_triggered();
 
     void on_actionRGB2Cmyk_triggered();
+    void on_actionFinal_triggered();
 
 private:
+    QAction *finalEx;
+
     Ui::MainWindow  *ui;
     QGraphicsScene  *leftScene;
     QGraphicsScene  *rightScene;

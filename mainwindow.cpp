@@ -27,8 +27,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusBar->addPermanentWidget(size);
 
 
-
+    createAction();
     createToolBar();
+
 
     setActionStatus(false);
     setWindowTitle("ImageQt");
@@ -46,6 +47,25 @@ void MainWindow::createToolBar()
 
     ui->toolBar->addSeparator();
     ui->toolBar->addAction(ui->actionChinese);
+
+    ui->toolBar->addSeparator();
+    ui->toolBar->addAction(finalEx);
+}
+
+void MainWindow::createAction()
+{
+    finalEx = new QAction(QIcon(":/img/src/Final_Cut_Pro_X_96px_1134672_easyicon.net.png"), tr("Final"), this);
+    connect(finalEx, SIGNAL(triggered(bool)), this, SLOT(on_actionFinal_triggered()));
+}
+
+void MainWindow::on_actionFinal_triggered()
+{
+
+    QPixmap rightImage = rightPixmapItem->pixmap();
+    QImage newImage = Tools::Final(rightImage.toImage());
+    rightImage.convertFromImage(newImage);
+
+    updateRightImage(rightImage);
 }
 
 MainWindow::~MainWindow()
@@ -1064,9 +1084,7 @@ void MainWindow::on_actionThinning_triggered()
     updateRightImage(rightImage);
 }
 
-/*****************************************************************************
- *                                 RGB TO HSV 色彩空间转换
- * **************************************************************************/
+
 void MainWindow::on_actionRGB2HSV_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
@@ -1076,90 +1094,7 @@ void MainWindow::on_actionRGB2HSV_triggered()
     updateRightImage(rightImage);
 }
 
-void MainWindow::on_actionEqualization_triggered()
-{
-//    QPixmap rightImage = rightPixmapItem->pixmap();
-//    QImage newImg = rightImage.toImage();
-//    int width = rightImage.width();
-//    int height = rightImage.height();
-//    QImage grayImg = QImage(width, height, QImage::Format_ARGB32);
 
-//    //存放HSI空间分量的结构体
-//    typedef struct HSI
-//    {
-//        float h;
-//        float s;
-//        float i;
-
-//    }hsi;
-
-//    //申请一个二维结构体数组，存放每个像素转换到HSI空间后三分量的值
-//    hsi **p = new hsi*[height];
-//    for(int i = 0;i < height;i++)
-//        p[i] = new hsi[height];
-
-//    //遍历图像，调用函数RGBtoHSI()转换到HSI空间
-//    float max = 0;
-//    for(int i = 0;i < width;i++)
-//    {
-//        for(int j = 0;j < height;j ++)
-//        {
-//            QRgb rgb = newImg.pixel(i,j);
-//            Tools::RGBtoHSI(qRed(rgb),qGreen(rgb),qBlue(rgb),&p[i][j].h,&p[i][j].s,&p[i][j].i);
-//            max = max > p[i][j].i?max:p[i][j].i;
-//        }
-//    }
-
-//    int n = (int)(max+0.5);
-//    //对分量I进行直方图均衡
-//    int *II = new int[n+1];
-//    float *IIPro = new float[n+1];
-//    float *IITemp = new float[n+1];
-//    float *IIJun = new float[n+1];
-
-//    for(int i = 0;i <= n;i++)
-//        II[i] = 0;
-
-//    //计算频率，即nk
-//    for(int i = 0;i < width;i++)
-//    {
-//        for(int j = 0;j < height;j ++)
-//        {
-//            II[(int)(p[i][j].i+0.5)]++;
-//        }
-//    }
-
-//    //计算每个数量级出现的概率
-//    for(int i = 0;i <= n;i++)
-//    {
-//        IIPro[i] = (II[i]*1.0)/(width*height);
-//    }
-
-//    //概率累加并计算均值
-//    IITemp[0] = IIPro[0];
-//    for(int i = 1;i <= n;i++)
-//    {
-//        IITemp[i] = IITemp[i-1]+IIPro[i];
-
-//        IIJun[i]= n*IITemp[i];
-//    }
-//    for(int i=0;i<width;i++)
-//    {
-
-//        for(int j=0;j<height;j++)
-//        {
-//            p[i][j].i = IIJun[(int)(p[i][j].i+0.5)];
-//            float r,g,b;
-//            Tools::HSItoRGB(p[i][j].h,p[i][j].s,p[i][j].i,&r,&g,&b);
-//            r = r > 255?255:(int)(r+0.5);
-//            g = g > 255?255:(int)(g+0.5);
-//            b = b > 255?255:(int)(b+0.5);
-//            grayImg.setPixel(i,j,qRgb(r,g,b));
-//         }
-//     }
-//    rightImage.convertFromImage(grayImg);
-//    updateRightImage(rightImage);
-}
 
 void MainWindow::on_actionRGB2HSL_triggered()
 {
