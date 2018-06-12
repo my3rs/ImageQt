@@ -140,7 +140,6 @@ private slots:
     void on_actionRGB2HSL_triggered();
 
     void on_actionRGB2Cmyk_triggered();
-    void on_actionFinal_triggered();
 
 private:
     QAction *finalEx;

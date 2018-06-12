@@ -48,25 +48,14 @@ void MainWindow::createToolBar()
     ui->toolBar->addSeparator();
     ui->toolBar->addAction(ui->actionChinese);
 
-    ui->toolBar->addSeparator();
-    ui->toolBar->addAction(finalEx);
 }
 
 void MainWindow::createAction()
 {
-    finalEx = new QAction(QIcon(":/img/src/Final_Cut_Pro_X_96px_1134672_easyicon.net.png"), tr("Final"), this);
-    connect(finalEx, SIGNAL(triggered(bool)), this, SLOT(on_actionFinal_triggered()));
+
 }
 
-void MainWindow::on_actionFinal_triggered()
-{
 
-    QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Tools::Final(rightImage.toImage());
-    rightImage.convertFromImage(newImage);
-
-    updateRightImage(rightImage);
-}
 
 MainWindow::~MainWindow()
 {
