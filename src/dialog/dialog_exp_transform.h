@@ -12,7 +12,7 @@ class DialogExpTransform : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogExpTransform(QWidget *parent = 0);
+    explicit DialogExpTransform(QWidget *parent = nullptr);
     ~DialogExpTransform();
 
 private:

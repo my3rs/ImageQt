@@ -18,6 +18,7 @@ DialogExpTransform::~DialogExpTransform()
 void DialogExpTransform::on_buttonBox_accepted()
 {
     emit sendData(ui->bDoubleSpinBox->value(), ui->cDoubleSpinBox->value(), ui->aDoubleSpinBox->value());
+
 }
 
 void DialogExpTransform::paintFunctionImage(double b, double c, double a)

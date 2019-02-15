@@ -1,1 +1,4 @@
 *.pro.user*
+.git*
+.git.*/
+

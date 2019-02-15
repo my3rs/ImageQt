@@ -9,15 +9,19 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     leftScene = new QGraphicsScene;
     rightScene = new QGraphicsScene;
+
+    leftPixmapItem = new QGraphicsPixmapItem();
+    rightPixmapItem = new QGraphicsPixmapItem();
 
 
     size = new QLabel;
 
 
 
-    info = NULL;
+    info = nullptr;
 
     leftScene->setBackgroundBrush(QColor::fromRgb(224,224,224));
     ui->leftGraphicsView->setScene(leftScene);
@@ -64,13 +68,13 @@ MainWindow::~MainWindow()
     if (leftScene)
     {
         delete leftScene;
-        leftScene = NULL;
+        leftScene = nullptr;
     }
 
     if (size)
     {
         delete size;
-        size = NULL;
+        size = nullptr;
     }
 
 
@@ -78,7 +82,7 @@ MainWindow::~MainWindow()
     if (rightScene)
     {
         delete leftScene;
-        leftScene = NULL;
+        leftScene = nullptr;
     }
 
 }
@@ -499,7 +503,7 @@ void MainWindow::on_actionHistogram_triggered()
     Histogram * hstgrm = new Histogram(scrollArea);
     hstgrm->computeHstgrm(rightPixmapItem->pixmap().toImage());
 
-    if (hstgrm == NULL)
+    if (hstgrm == nullptr)
         return;
 
 

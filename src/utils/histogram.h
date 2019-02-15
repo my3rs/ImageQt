@@ -9,7 +9,7 @@
 class Histogram : public QLabel
 {
 public:
-    Histogram(QWidget* parent = 0);
+    Histogram(QWidget* parent = nullptr);
     Histogram(QWidget*, Histogram*);
 
     void computeHstgrm(QImage img);

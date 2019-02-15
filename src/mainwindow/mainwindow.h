@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QProcess>
+#include <QGraphicsPixmapItem>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QInputDialog>
@@ -11,17 +12,17 @@
 #include <QStandardPaths>
 #include <QTranslator>
 #include "graphicsview.h"
-#include "dialog_gaussianblur.h"
-#include "tools.h"
-#include "histogram.h"
-#include "medianfilter.h"
-#include "gaussianblur.h"
-#include "dialog_linear_gray.h"
-#include "dialog_log_grey.h"
-#include "dialog_power_grey.h"
-#include "dialog_exp_transform.h"
-#include "dialog_two_threshold_transform.h"
-#include "dialog_stretch_transform.h"
+#include "../dialog/dialog_gaussianblur.h"
+#include "../utils/tools.h"
+#include "../utils/histogram.h"
+#include "../utils/gaussianblur.h"
+#include "../utils/medianfilter.h"
+#include "../dialog/dialog_linear_gray.h"
+#include "../dialog/dialog_log_grey.h"
+#include "../dialog/dialog_power_grey.h"
+#include "../dialog/dialog_exp_transform.h"
+#include "../dialog/dialog_two_threshold_transform.h"
+#include "../dialog/dialog_stretch_transform.h"
 
 #define WINDOW_TITLE    "ImageQt"
 #define WINDOW_CRITICAL "Error - ImageQt"
@@ -37,7 +38,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     void updateRightImage(QPixmap &pixmap);

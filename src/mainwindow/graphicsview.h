@@ -11,7 +11,7 @@ private:
     int factor;
 
 public:
-    GraphicsView(QWidget* parent = 0);
+    GraphicsView(QWidget* parent = nullptr);
     ~GraphicsView();
 
     int getFactor();

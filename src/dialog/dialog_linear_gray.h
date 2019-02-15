@@ -14,7 +14,7 @@ class LinearGrayDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit LinearGrayDialog(QWidget *parent = 0);
+    explicit LinearGrayDialog(QWidget *parent = nullptr);
     ~LinearGrayDialog();
 
 private:

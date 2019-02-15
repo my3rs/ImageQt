@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>avatar-default.png</file>
+        <file>document-save.png</file>
+        <file>document-save-as.png</file>
+        <file>frame_3.png</file>
+        <file>frame_1.png</file>
+        <file>frame_2.png</file>
+        <file>logo_1.png</file>
+        <file>logo_2.png</file>
+        <file>metal.png</file>
+        <file>chinese.png</file>
+        <file>english.png</file>
+        <file>right.png</file>
+        <file>horizontal.png</file>
+        <file>vertical.png</file>
+        <file>left.png</file>
+        <file>restore.png</file>
+        <file>histogram.png</file>
+        <file>brightness.svg</file>
+        <file>save.svg</file>
+        <file>zoom.png</file>
+        <file>lineGrey.gif</file>
+        <file>quill_72px.png</file>
+        <file>log.png</file>
+        <file>fun_exp.png</file>
+        <file>line_graphic_72p.png</file>
+        <file>Line_Chart_72px.png</file>
+        <file>temperature_72px.png</file>
+        <file>blur_on_72px.png</file>
+        <file>Open_folder_full_48px_1186194_easyicon.net.png</file>
+        <file>settings_backup_restore_48px_1182197_easyicon.net.png</file>
+        <file>clear_gtk_72px_43338_easyicon.net.png</file>
+    </qresource>
+    <qresource prefix="/language">
+        <file>cn.qm</file>
+    </qresource>
+</RCC>
