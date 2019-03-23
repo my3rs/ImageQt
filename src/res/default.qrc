@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/img">
         <file>avatar-default.png</file>
-        <file>document-save.png</file>
-        <file>document-save-as.png</file>
         <file>frame_3.png</file>
         <file>frame_1.png</file>
         <file>frame_2.png</file>
@@ -28,9 +26,8 @@
         <file>Line_Chart_72px.png</file>
         <file>temperature_72px.png</file>
         <file>blur_on_72px.png</file>
-        <file>Open_folder_full_48px_1186194_easyicon.net.png</file>
-        <file>settings_backup_restore_48px_1182197_easyicon.net.png</file>
-        <file>clear_gtk_72px_43338_easyicon.net.png</file>
+        <file>open.svg</file>
+        <file>clear.svg</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

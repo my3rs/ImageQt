@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
-    <height>604</height>
+    <width>1115</width>
+    <height>711</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,13 +41,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>978</width>
+     <width>1115</width>
      <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Fi&amp;le</string>
+     <string>文件(&amp;F)</string>
     </property>
     <addaction name="actionOpen"/>
     <addaction name="actionClose"/>
@@ -58,7 +58,7 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>编辑</string>
     </property>
     <addaction name="actionRestore"/>
     <addaction name="actionHistogram"/>
@@ -67,21 +67,19 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>帮助</string>
     </property>
     <widget class="QMenu" name="menuLanguage">
      <property name="title">
       <string>&amp;Language</string>
      </property>
-     <addaction name="actionChinese"/>
-     <addaction name="actionEnglish"/>
     </widget>
     <addaction name="actionAbout"/>
     <addaction name="menuLanguage"/>
    </widget>
    <widget class="QMenu" name="menuGrey_Transfrom">
     <property name="title">
-     <string>&amp;Grey Transfrom</string>
+     <string>灰色变换(&amp;G)</string>
     </property>
     <addaction name="actionLinear_level_transformation"/>
     <addaction name="actionPower_transformation"/>
@@ -116,7 +114,7 @@
    </widget>
    <widget class="QMenu" name="menuArtistic_Effect">
     <property name="title">
-     <string>Artistic Effect</string>
+     <string>艺术效果</string>
     </property>
     <widget class="QMenu" name="menuFrame">
      <property name="title">
@@ -210,8 +208,8 @@
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/Open_folder_full_48px_1186194_easyicon.net.png</normaloff>:/img/src/Open_folder_full_48px_1186194_easyicon.net.png</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/open.svg</normaloff>:/img/open.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Open...</string>
@@ -222,8 +220,8 @@
   </action>
   <action name="actionClose">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/clear_gtk_72px_43338_easyicon.net.png</normaloff>:/img/src/clear_gtk_72px_43338_easyicon.net.png</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/clear.svg</normaloff>:/img/clear.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Close</string>
@@ -231,8 +229,8 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/save.svg</normaloff>:/img/src/save.svg</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/save.svg</normaloff>:/img/save.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Save...</string>
@@ -275,8 +273,8 @@
   </action>
   <action name="actionRestore">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/restore.png</normaloff>:/img/src/restore.png</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/restore.png</normaloff>:/img/restore.png</iconset>
    </property>
    <property name="text">
     <string>R&amp;estore</string>
@@ -353,24 +351,6 @@
     <string>&amp;Adjust brightness</string>
    </property>
   </action>
-  <action name="actionChinese">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/chinese.png</normaloff>:/img/src/chinese.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Chinese</string>
-   </property>
-  </action>
-  <action name="actionEnglish">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/english.png</normaloff>:/img/src/english.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;English</string>
-   </property>
-  </action>
   <action name="actionHorizontal">
    <property name="icon">
     <iconset>
@@ -391,8 +371,8 @@
   </action>
   <action name="actionHistogram">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/histogram.png</normaloff>:/img/src/histogram.png</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/histogram.png</normaloff>:/img/histogram.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Histogram</string>
@@ -554,6 +534,8 @@
    <header>graphicsview.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../res/default.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -16,10 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     leftPixmapItem = new QGraphicsPixmapItem();
     rightPixmapItem = new QGraphicsPixmapItem();
 
-
     size = new QLabel;
-
-
 
     info = nullptr;
 
@@ -37,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setActionStatus(false);
     setWindowTitle("ImageQt");
-    ui->actionEnglish->setEnabled(false);
 }
 
 void MainWindow::createToolBar()
@@ -50,8 +46,6 @@ void MainWindow::createToolBar()
     ui->toolBar->addAction(ui->actionHistogram);
 
     ui->toolBar->addSeparator();
-    ui->toolBar->addAction(ui->actionChinese);
-
 }
 
 void MainWindow::createAction()
@@ -305,10 +299,6 @@ void MainWindow::on_actionOpen_triggered()
         // upload image
         info = new QFileInfo(imagePath);
 
-
-
-
-
         QPixmap leftPixmap(imagePath);
         leftPixmapItem = leftScene->addPixmap(leftPixmap);
         leftScene->setSceneRect(QRectF(leftPixmap.rect()));
@@ -319,12 +309,6 @@ void MainWindow::on_actionOpen_triggered()
 
         qDebug()<<"depth:"<<rightPixmap.depth();
         qDebug()<<"hasAlpha:"<<rightPixmap.hasAlpha();
-
-
-
-
-
-
 
         // settings
         this->setWindowTitle(info->fileName() + " - ImageQt");
@@ -895,29 +879,6 @@ void MainWindow::on_actionAbout_triggered()
     message.exec();
 }
 
-/******************************************************************************
- *                                  语言支持
- *****************************************************************************/
-
-void MainWindow::on_actionChinese_triggered()
-{
-    QTranslator translator;
-    translator.load(":/language/cn.qm");
-    qApp->installTranslator(&translator);
-    ui->retranslateUi(this);
-    ui->actionChinese->setEnabled(false);
-    ui->actionEnglish->setEnabled(true);
-}
-
-void MainWindow::on_actionEnglish_triggered()
-{
-    QTranslator translator;
-    translator.load(":/language/cn.qm");
-    qApp->removeTranslator(&translator);
-    ui->retranslateUi(this);
-    ui->actionEnglish->setEnabled(false);
-    ui->actionChinese->setEnabled(true);
-}
 
 /******************************************************************************
  *                           获得当前用户的用户名
