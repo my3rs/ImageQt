@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/img">
-        <file>avatar-default.png</file>
         <file>frame_3.png</file>
         <file>frame_1.png</file>
         <file>frame_2.png</file>
@@ -28,6 +27,7 @@
         <file>blur_on_72px.png</file>
         <file>open.svg</file>
         <file>clear.svg</file>
+        <file>about.svg</file>
     </qresource>
     <qresource prefix="/language">
         <file>cn.qm</file>

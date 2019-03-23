@@ -874,8 +874,8 @@ void MainWindow::on_actionNormal_triggered()
 void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox message(QMessageBox::NoIcon, tr(WINDOW_ABOUT), "<h1>ImageQt</h1>"
-                                                               "Powered By Qt 5.7.1.");
-    message.setIconPixmap(QPixmap(":/img/src/logo_1.png"));
+                                                               "Powered By Qt 5.12.0.");
+    message.setIconPixmap(QPixmap(":/img/logo_1.png"));
     message.exec();
 }
 

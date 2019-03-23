@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1115</width>
+    <width>1196</width>
     <height>711</height>
    </rect>
   </property>
@@ -14,8 +14,8 @@
    <string>ImageQt</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/img/src/logo_2.png</normaloff>:/img/src/logo_2.png</iconset>
+   <iconset resource="../res/default.qrc">
+    <normaloff>:/img/logo_2.png</normaloff>:/img/logo_2.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -41,7 +41,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1115</width>
+     <width>1196</width>
      <height>26</height>
     </rect>
    </property>
@@ -69,13 +69,7 @@
     <property name="title">
      <string>帮助</string>
     </property>
-    <widget class="QMenu" name="menuLanguage">
-     <property name="title">
-      <string>&amp;Language</string>
-     </property>
-    </widget>
     <addaction name="actionAbout"/>
-    <addaction name="menuLanguage"/>
    </widget>
    <widget class="QMenu" name="menuGrey_Transfrom">
     <property name="title">
@@ -92,24 +86,25 @@
    </widget>
    <widget class="QMenu" name="menuGeometric">
     <property name="title">
-     <string>Geo&amp;metric Transform</string>
+     <string>几何变换</string>
     </property>
     <widget class="QMenu" name="menuRotate_2">
      <property name="title">
-      <string>&amp;Rotate</string>
+      <string>旋转</string>
      </property>
      <addaction name="actionLeft"/>
      <addaction name="actionRight"/>
     </widget>
     <widget class="QMenu" name="menuFlip_2">
      <property name="title">
-      <string>&amp;Flip</string>
+      <string>翻转
+</string>
      </property>
      <addaction name="actionHorizontal"/>
      <addaction name="actionVertical"/>
     </widget>
-    <addaction name="menuRotate_2"/>
     <addaction name="zoomAction"/>
+    <addaction name="menuRotate_2"/>
     <addaction name="menuFlip_2"/>
    </widget>
    <widget class="QMenu" name="menuArtistic_Effect">
@@ -147,7 +142,7 @@
    </widget>
    <widget class="QMenu" name="menuBlur">
     <property name="title">
-     <string>Smoothi&amp;ng and  Sharpen</string>
+     <string>模糊与锐化</string>
     </property>
     <addaction name="actionSimple"/>
     <addaction name="actionGauss"/>
@@ -158,7 +153,7 @@
    </widget>
    <widget class="QMenu" name="menuContour_extraction">
     <property name="title">
-     <string>Contour Extraction</string>
+     <string>轮廓提取</string>
     </property>
     <addaction name="actionContour_extraction"/>
     <addaction name="actionEdge_following"/>
@@ -168,7 +163,7 @@
    </widget>
    <widget class="QMenu" name="menuMorphology">
     <property name="title">
-     <string>Morphology</string>
+     <string>形态学</string>
     </property>
     <addaction name="actionDilate"/>
     <addaction name="actionExpansion"/>
@@ -178,7 +173,7 @@
    </widget>
    <widget class="QMenu" name="menuColor_Space">
     <property name="title">
-     <string>Color Space</string>
+     <string>颜色空间</string>
     </property>
     <addaction name="actionRGB2HSV"/>
     <addaction name="actionRGB2HSL"/>
@@ -212,7 +207,7 @@
      <normaloff>:/img/open.svg</normaloff>:/img/open.svg</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open...</string>
+    <string>打开(&amp;O)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -224,7 +219,7 @@
      <normaloff>:/img/clear.svg</normaloff>:/img/clear.svg</iconset>
    </property>
    <property name="text">
-    <string>&amp;Close</string>
+    <string>关闭图片</string>
    </property>
   </action>
   <action name="actionSave">
@@ -233,7 +228,7 @@
      <normaloff>:/img/save.svg</normaloff>:/img/save.svg</iconset>
    </property>
    <property name="text">
-    <string>&amp;Save...</string>
+    <string>保存(&amp;S)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -241,12 +236,12 @@
   </action>
   <action name="actionSave_As">
    <property name="text">
-    <string>Sa&amp;ve As...</string>
+    <string>另存为</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>&amp;Exit</string>
+    <string>退出</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -254,8 +249,8 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/avatar-default.png</normaloff>:/img/src/avatar-default.png</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/about.svg</normaloff>:/img/about.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;About</string>
@@ -304,7 +299,7 @@
      <normaloff>:/img/src/zoom.png</normaloff>:/img/src/zoom.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Zoom</string>
+    <string>缩放</string>
    </property>
   </action>
   <action name="actionGrayscale">
@@ -344,8 +339,8 @@
   </action>
   <action name="actionAdjust_brightness">
    <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/brightness.svg</normaloff>:/img/src/brightness.svg</iconset>
+    <iconset resource="../res/default.qrc">
+     <normaloff>:/img/brightness.svg</normaloff>:/img/brightness.svg</iconset>
    </property>
    <property name="text">
     <string>&amp;Adjust brightness</string>
@@ -457,12 +452,12 @@
   </action>
   <action name="actionContour_extraction">
    <property name="text">
-    <string>Contour extraction</string>
+    <string>轮廓提取</string>
    </property>
   </action>
   <action name="actionEdge_following">
    <property name="text">
-    <string>Edge following</string>
+    <string>边缘跟踪</string>
    </property>
   </action>
   <action name="actionArea">
@@ -482,7 +477,7 @@
   </action>
   <action name="actionDilate">
    <property name="text">
-    <string>Dilate</string>
+    <string>Dialte</string>
    </property>
   </action>
   <action name="actionExpansion">

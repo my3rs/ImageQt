@@ -101,8 +101,6 @@ private slots:
 
 
     void on_actionAbout_triggered();        // Show "About" dialog
-    void on_actionChinese_triggered();
-    void on_actionEnglish_triggered();
 
     void on_actionT_triggered();
 
