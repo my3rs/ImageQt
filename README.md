@@ -27,7 +27,9 @@ Image viewer powered by Qt 5.8.0
 
 ## 截图
 
-![1](https://cdn2.seadev.cn/wp-content/uploads/2019/05/1559201653-Snipaste_2019-05-30_15-32-42.png)
-![2](https://cdn2.seadev.cn/wp-content/uploads/2019/05/1559201667-Snipaste_2019-05-30_15-33-15.png)
-![3](https://cdn2.seadev.cn/wp-content/uploads/2019/05/1559201672-Snipaste_2019-05-30_15-33-28.png)
+![1](./screenshots/Snipaste_2019-05-30_15-32-42.png)
+
+![2](./screenshots/Snipaste_2019-05-30_15-33-15.png)
+
+![3](./screenshots/Snipaste_2019-05-30_15-33-28.png)
 
