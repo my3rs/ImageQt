@@ -86,11 +86,8 @@ MainWindow::~MainWindow()
  *****************************************************************************/
 void MainWindow::updateRightImage(QPixmap &pixmap)
 {
-
     rightPixmapItem->setPixmap(pixmap);
     rightScene->setSceneRect(QRectF(pixmap.rect()));
-
-       qDebug() << "repaintRightScene"  << rightScene->items().count();
 }
 
 /******************************************************************************
@@ -158,7 +155,6 @@ void MainWindow::setActionStatus(bool status)
     ui->actionVertical->setEnabled(status);
     ui->actionClassic_frame->setEnabled(status);
     ui->actionAdjust_brightness->setEnabled(status);
-    ui->actionRight->setEnabled(status);
     ui->zoomAction->setEnabled(status);
 }
 
@@ -307,9 +303,6 @@ void MainWindow::on_actionOpen_triggered()
         rightPixmapItem = rightScene->addPixmap(rightPixmap);
         rightScene->setSceneRect(QRectF(rightPixmap.rect()));
 
-        qDebug()<<"depth:"<<rightPixmap.depth();
-        qDebug()<<"hasAlpha:"<<rightPixmap.hasAlpha();
-
         // settings
         this->setWindowTitle(info->fileName() + " - ImageQt");
 
@@ -317,9 +310,6 @@ void MainWindow::on_actionOpen_triggered()
 
         size->setText(QString::number(leftPixmapItem->pixmap().width())
                       + " x " + QString::number(leftPixmapItem->pixmap().height()));
-
-
-
     }
 }
 
@@ -508,15 +498,13 @@ void MainWindow::on_actionHistogram_triggered()
 }
 
 
-
-
 /******************************************************************************
  *                              Add frame
  *****************************************************************************/
 void MainWindow::on_actionMovie_frame_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage frame = QImage(":/img/src/frame_3.png");
+    QImage frame = QImage(":/img/frame_3.png");
     QImage newImage = Tools::DrawFrame(rightImage.toImage(), frame);
     rightImage.convertFromImage(newImage);
 
@@ -526,7 +514,7 @@ void MainWindow::on_actionMovie_frame_triggered()
 void MainWindow::on_actionClassic_frame_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage frame = QImage(":/img/src/frame_1.png");
+    QImage frame = QImage(":/img/frame_1.png");
     QImage newImage = Tools::DrawFrame(rightImage.toImage(), frame);
     rightImage.convertFromImage(newImage);
 
@@ -536,7 +524,7 @@ void MainWindow::on_actionClassic_frame_triggered()
 void MainWindow::on_actionFlower_frame_triggered()
 {
     QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage frame = QImage(":/img/src/frame_2.png");
+    QImage frame = QImage(":/img/frame_2.png");
     QImage newImage = Tools::DrawFrame(rightImage.toImage(), frame);
     rightImage.convertFromImage(newImage);
 
@@ -623,52 +611,6 @@ void MainWindow::on_actionMeida_Filter_triggered()
     }
 }
 
-/******************************************************************************
- *                              Rotate Left
- *****************************************************************************/
-void MainWindow::on_actionLeft_triggered()
-{
-
-    bool ok;
-    int factor = QInputDialog::getInt(this, tr("旋转"), "请输入要旋转的角度",0,-360,360,10,&ok);
-    if (ok)
-    {
-        if (factor != 0)
-        {
-            QPixmap rightImage = rightPixmapItem->pixmap();
-
-            QImage *imgRotate = new QImage;
-            QMatrix matrix;
-            matrix.rotate(factor);
-            *imgRotate = rightImage.toImage().transformed(matrix);
-            QPixmap newPixmap;
-            newPixmap = QPixmap::fromImage(*imgRotate);
-            updateRightImage(newPixmap);
-        }
-        else
-        {
-            return;
-        }
-    }
-
-}
-
-/******************************************************************************
- *                              Rotate Right
- *****************************************************************************/
-void MainWindow::on_actionRight_triggered()
-{
-    //ui->rightGraphicsView->rotate(90);
-    QPixmap rightImage = rightPixmapItem->pixmap();
-
-    QImage *imgRotate = new QImage;
-    QMatrix matrix;
-    matrix.rotate(90);
-    *imgRotate = rightImage.toImage().transformed(matrix);
-    QPixmap newPixmap;
-    newPixmap = QPixmap::fromImage(*imgRotate);
-    updateRightImage(newPixmap);
-}
 
 /******************************************************************************
  *                     on Action tools->zoom triggered
@@ -899,15 +841,15 @@ QString MainWindow::getUserPath()
     return userPath;
 }
 
-void MainWindow::on_actionT_triggered()
-{
-    QLabel* l = new QLabel;
-    if (!rightPixmapItem->pixmap().isNull()) {
-        qDebug() << "hello";
-        l->setPixmap(rightPixmapItem->pixmap());
-        l->show();
-    }
-}
+//void MainWindow::on_actionT_triggered()
+//{
+//    QLabel* l = new QLabel;
+//    if (!rightPixmapItem->pixmap().isNull()) {
+//        qDebug() << "hello";
+//        l->setPixmap(rightPixmapItem->pixmap());
+//        l->show();
+//    }
+//}
 
 /******************************************************************************
  *                              Prewitt边缘检测
@@ -953,10 +895,6 @@ void MainWindow::on_actionArea_triggered()
     message->show();
 }
 
-void MainWindow::on_actionConnected_domain_triggered()
-{
-
-}
 
 void MainWindow::on_actionCircumference_triggered()
 {
@@ -1039,31 +977,54 @@ void MainWindow::on_actionThinning_triggered()
 }
 
 
-void MainWindow::on_actionRGB2HSV_triggered()
+//void MainWindow::on_actionRGB2HSV_triggered()
+//{
+//    QPixmap rightImage = rightPixmapItem->pixmap();
+//    QImage newImage = Tools::RGB2HSV(rightImage.toImage());
+//    rightImage.convertFromImage(newImage);
+
+//    updateRightImage(rightImage);
+//}
+
+//void MainWindow::on_actionRGB2HSL_triggered()
+//{
+//    QPixmap rightImage = rightPixmapItem->pixmap();
+//    QImage newImage = Tools::RGB2HSL(rightImage.toImage());
+//    rightImage.convertFromImage(newImage);
+
+//    updateRightImage(rightImage);
+//}
+
+//void MainWindow::on_actionRGB2Cmyk_triggered()
+//{
+//    QPixmap rightImage = rightPixmapItem->pixmap();
+//    QImage newImage = Tools::RGB2CMYK(rightImage.toImage());
+//    rightImage.convertFromImage(newImage);
+
+//    updateRightImage(rightImage);
+//}
+
+void MainWindow::on_actionRotate_triggered()
 {
-    QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Tools::RGB2HSV(rightImage.toImage());
-    rightImage.convertFromImage(newImage);
+    bool ok;
+    int factor = QInputDialog::getInt(this, tr("旋转"), "请输入要旋转的角度（正数向右，负数向左）",0,-360,360,10,&ok);
+    if (ok)
+    {
+        if (factor != 0)
+        {
+            QPixmap rightImage = rightPixmapItem->pixmap();
 
-    updateRightImage(rightImage);
-}
-
-
-
-void MainWindow::on_actionRGB2HSL_triggered()
-{
-    QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Tools::RGB2HSL(rightImage.toImage());
-    rightImage.convertFromImage(newImage);
-
-    updateRightImage(rightImage);
-}
-
-void MainWindow::on_actionRGB2Cmyk_triggered()
-{
-    QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Tools::RGB2CMYK(rightImage.toImage());
-    rightImage.convertFromImage(newImage);
-
-    updateRightImage(rightImage);
+            QImage *imgRotate = new QImage;
+            QMatrix matrix;
+            matrix.rotate(factor);
+            *imgRotate = rightImage.toImage().transformed(matrix);
+            QPixmap newPixmap;
+            newPixmap = QPixmap::fromImage(*imgRotate);
+            updateRightImage(newPixmap);
+        }
+        else
+        {
+            return;
+        }
+    }
 }

@@ -83,8 +83,6 @@ private slots:
     void on_actionGauss_triggered();
     void on_actionMeida_Filter_triggered();
 
-    void on_actionLeft_triggered();         // Rotate Left: 90^
-    void on_actionRight_triggered();        // Rotate Right:90^
     void on_zoomAction_triggered();         // Zoom action with dialog
     void on_actionHorizontal_triggered();
     void on_actionVertical_triggered();
@@ -102,7 +100,7 @@ private slots:
 
     void on_actionAbout_triggered();        // Show "About" dialog
 
-    void on_actionT_triggered();
+//    void on_actionT_triggered();
 
     void on_actionLaplace_triggered();
 
@@ -118,8 +116,6 @@ private slots:
 
     void on_actionArea_triggered();
 
-    void on_actionConnected_domain_triggered();
-
     void on_actionCircumference_triggered();
 
 
@@ -133,12 +129,11 @@ private slots:
 
     void on_actionThinning_triggered();
 
-    void on_actionRGB2HSV_triggered();
+//    void on_actionRGB2HSV_triggered();
+//    void on_actionRGB2HSL_triggered();
+//    void on_actionRGB2Cmyk_triggered();
 
-
-    void on_actionRGB2HSL_triggered();
-
-    void on_actionRGB2Cmyk_triggered();
+    void on_actionRotate_triggered();
 
 private:
     QAction *finalEx;

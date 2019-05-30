@@ -88,14 +88,7 @@
     <property name="title">
      <string>几何变换</string>
     </property>
-    <widget class="QMenu" name="menuRotate_2">
-     <property name="title">
-      <string>旋转</string>
-     </property>
-     <addaction name="actionLeft"/>
-     <addaction name="actionRight"/>
-    </widget>
-    <widget class="QMenu" name="menuFlip_2">
+    <widget class="QMenu" name="menuFlip">
      <property name="title">
       <string>翻转
 </string>
@@ -104,8 +97,8 @@
      <addaction name="actionVertical"/>
     </widget>
     <addaction name="zoomAction"/>
-    <addaction name="menuRotate_2"/>
-    <addaction name="menuFlip_2"/>
+    <addaction name="actionRotate"/>
+    <addaction name="menuFlip"/>
    </widget>
    <widget class="QMenu" name="menuArtistic_Effect">
     <property name="title">
@@ -113,7 +106,7 @@
     </property>
     <widget class="QMenu" name="menuFrame">
      <property name="title">
-      <string>&amp;Frame</string>
+      <string>相框</string>
      </property>
      <addaction name="actionMovie_frame"/>
      <addaction name="actionClassic_frame"/>
@@ -121,13 +114,13 @@
     </widget>
     <widget class="QMenu" name="menuTexture">
      <property name="title">
-      <string>&amp;Texture</string>
+      <string>纹理</string>
      </property>
      <addaction name="actionMetal"/>
     </widget>
     <widget class="QMenu" name="menuTemperature">
      <property name="title">
-      <string>T&amp;emperature</string>
+      <string>色温</string>
      </property>
      <property name="icon">
       <iconset>
@@ -171,14 +164,6 @@
     <addaction name="actionClosing"/>
     <addaction name="actionThinning"/>
    </widget>
-   <widget class="QMenu" name="menuColor_Space">
-    <property name="title">
-     <string>颜色空间</string>
-    </property>
-    <addaction name="actionRGB2HSV"/>
-    <addaction name="actionRGB2HSL"/>
-    <addaction name="actionRGB2Cmyk"/>
-   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuArtistic_Effect"/>
@@ -187,7 +172,6 @@
    <addaction name="menuGrey_Transfrom"/>
    <addaction name="menuContour_extraction"/>
    <addaction name="menuMorphology"/>
-   <addaction name="menuColor_Space"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
@@ -208,6 +192,9 @@
    </property>
    <property name="text">
     <string>打开(&amp;O)</string>
+   </property>
+   <property name="toolTip">
+    <string>打开一张图片</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -253,7 +240,7 @@
      <normaloff>:/img/about.svg</normaloff>:/img/about.svg</iconset>
    </property>
    <property name="text">
-    <string>&amp;About</string>
+    <string>关于</string>
    </property>
   </action>
   <action name="actionNormal">
@@ -272,7 +259,7 @@
      <normaloff>:/img/restore.png</normaloff>:/img/restore.png</iconset>
    </property>
    <property name="text">
-    <string>R&amp;estore</string>
+    <string>恢复</string>
    </property>
   </action>
   <action name="actionLeft">
@@ -282,15 +269,6 @@
    </property>
    <property name="text">
     <string>&amp;Left</string>
-   </property>
-  </action>
-  <action name="actionRight">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/img/src/right.png</normaloff>:/img/src/right.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Right</string>
    </property>
   </action>
   <action name="zoomAction">
@@ -304,7 +282,7 @@
   </action>
   <action name="actionGrayscale">
    <property name="text">
-    <string>G&amp;rayscale</string>
+    <string>灰度图像</string>
    </property>
   </action>
   <action name="actionWarm">
@@ -319,22 +297,22 @@
   </action>
   <action name="actionMovie_frame">
    <property name="text">
-    <string>&amp;Movie frame</string>
+    <string>电影</string>
    </property>
   </action>
   <action name="actionClassic_frame">
    <property name="text">
-    <string>&amp;Classic frame</string>
+    <string>经典</string>
    </property>
   </action>
   <action name="actionFlower_frame">
    <property name="text">
-    <string>&amp;Flower frame</string>
+    <string>小花</string>
    </property>
   </action>
   <action name="actionMetal">
    <property name="text">
-    <string>&amp;Metal</string>
+    <string>金属</string>
    </property>
   </action>
   <action name="actionAdjust_brightness">
@@ -343,7 +321,7 @@
      <normaloff>:/img/brightness.svg</normaloff>:/img/brightness.svg</iconset>
    </property>
    <property name="text">
-    <string>&amp;Adjust brightness</string>
+    <string>亮度</string>
    </property>
   </action>
   <action name="actionHorizontal">
@@ -352,7 +330,7 @@
      <normaloff>:/img/src/horizontal.png</normaloff>:/img/src/horizontal.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Horizontal</string>
+    <string>水平</string>
    </property>
   </action>
   <action name="actionVertical">
@@ -361,7 +339,7 @@
      <normaloff>:/img/src/vertical.png</normaloff>:/img/src/vertical.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Vertical</string>
+    <string>垂直</string>
    </property>
   </action>
   <action name="actionHistogram">
@@ -370,7 +348,7 @@
      <normaloff>:/img/histogram.png</normaloff>:/img/histogram.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Histogram</string>
+    <string>直方图</string>
    </property>
   </action>
   <action name="actionLinear_level_transformation">
@@ -379,17 +357,17 @@
      <normaloff>:/img/src/line_graphic_72p.png</normaloff>:/img/src/line_graphic_72p.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Linear transform</string>
+    <string>线性变换</string>
    </property>
   </action>
   <action name="actionLogarithm_grey_level_transformation">
    <property name="text">
-    <string>L&amp;ogarithm transform</string>
+    <string>对数变换</string>
    </property>
   </action>
   <action name="actionPower_transformation">
    <property name="text">
-    <string>&amp;Power transform</string>
+    <string>幂次变换</string>
    </property>
   </action>
   <action name="actionExp_transfrom">
@@ -398,22 +376,22 @@
      <normaloff>:/img/src/Line_Chart_72px.png</normaloff>:/img/src/Line_Chart_72px.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Exp transfrom</string>
+    <string>指数变换</string>
    </property>
   </action>
   <action name="actionTwo_thresholds_transform">
    <property name="text">
-    <string>&amp;Two thresholds transform</string>
+    <string>双阈值变换</string>
    </property>
   </action>
   <action name="actionStretch_transformation">
    <property name="text">
-    <string>&amp;Stretch transformation</string>
+    <string>拉伸变换</string>
    </property>
   </action>
   <action name="actionSimple">
    <property name="text">
-    <string>&amp;Simple</string>
+    <string>简单模糊</string>
    </property>
   </action>
   <action name="actionGauss">
@@ -422,32 +400,32 @@
      <normaloff>:/img/src/blur_on_72px.png</normaloff>:/img/src/blur_on_72px.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Gauss</string>
+    <string>高斯模糊</string>
    </property>
   </action>
   <action name="actionMeida_Filter">
    <property name="text">
-    <string>Meida Filter</string>
+    <string>中值滤波</string>
    </property>
   </action>
   <action name="actionLaplace">
    <property name="text">
-    <string>Laplace</string>
+    <string>拉普拉斯锐化</string>
    </property>
   </action>
   <action name="actionSobel">
    <property name="text">
-    <string>Sobel</string>
+    <string>Sobel 边缘检测</string>
    </property>
   </action>
   <action name="actionBinaryzation">
    <property name="text">
-    <string>Binaryzation</string>
+    <string>二值化</string>
    </property>
   </action>
   <action name="actionPrewitt">
    <property name="text">
-    <string>Prewitt</string>
+    <string>Prewitt 边缘检测</string>
    </property>
   </action>
   <action name="actionContour_extraction">
@@ -470,39 +448,29 @@
     <string>Circumference</string>
    </property>
   </action>
-  <action name="actionConnected_domain">
-   <property name="text">
-    <string>Connected domain</string>
-   </property>
-  </action>
   <action name="actionDilate">
    <property name="text">
-    <string>Dialte</string>
+    <string>腐蚀</string>
    </property>
   </action>
   <action name="actionExpansion">
    <property name="text">
-    <string>Expansion</string>
+    <string>膨胀</string>
    </property>
   </action>
   <action name="actionOpening">
    <property name="text">
-    <string>Opening</string>
+    <string>开运算</string>
    </property>
   </action>
   <action name="actionClosing">
    <property name="text">
-    <string>Closing</string>
+    <string>闭运算</string>
    </property>
   </action>
   <action name="actionThinning">
    <property name="text">
-    <string>Thinning</string>
-   </property>
-  </action>
-  <action name="actionRGB2HSV">
-   <property name="text">
-    <string>RGB2HSV</string>
+    <string>细化处理</string>
    </property>
   </action>
   <action name="actionEqualization">
@@ -510,14 +478,9 @@
     <string>Equalization</string>
    </property>
   </action>
-  <action name="actionRGB2HSL">
+  <action name="actionRotate">
    <property name="text">
-    <string>RGB2HSL</string>
-   </property>
-  </action>
-  <action name="actionRGB2Cmyk">
-   <property name="text">
-    <string>RGB2Cmyk</string>
+    <string>旋转</string>
    </property>
   </action>
  </widget>

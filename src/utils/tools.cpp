@@ -735,11 +735,6 @@ QImage Tools::ContourExtraction(const QImage &origin)
 }
 
 
-QImage Tools::ConnectedDomain(const QImage &origin)
-{
-
-}
-
 
 /*****************************************************************************
  *                                 全方位腐蚀
@@ -837,7 +832,6 @@ QImage Tools::Closing(const QImage &origin)
 /*****************************************************************************
  *                                图像细化
  * **************************************************************************/
-
 QImage Tools::Thinning(const QImage &origin)
 {
     QImage binImg = Binaryzation(origin);
@@ -849,8 +843,8 @@ QImage Tools::Thinning(const QImage &origin)
     mark.fill(Qt::black);
 
     bool loop = true;
-
     int markNum = 0;
+
     while(loop)
     {
         loop = false;
@@ -874,7 +868,9 @@ QImage Tools::Thinning(const QImage &origin)
                 // 2
                 int np = (neighbor[0]+neighbor[1]+neighbor[2]+neighbor[3]
                         +neighbor[4]+neighbor[5]+neighbor[6]+neighbor[7])/255;
-                if (np<2|| np >6)   continue;
+
+                if (np<2|| np >6)
+                    continue;
 
                 // 3
                 int sp = 0;
@@ -882,15 +878,17 @@ QImage Tools::Thinning(const QImage &origin)
                 {
                     if(neighbor[i] - neighbor[i-1] == 255)
                         sp++;
-
                 }
                 if(neighbor[0] - neighbor[7] == 255)
                     sp++;
-                if (sp!=1)  continue;
+
+                if (sp!=1)
+                    continue;
 
                 // 4
                 if(neighbor[2]&neighbor[0]&neighbor[4]!=0)
                      continue;
+
                 //条件5：p2*p6*p4==0
                 if(neighbor[2]&neighbor[6]&neighbor[4]!=0)
                      continue;
@@ -903,7 +901,6 @@ QImage Tools::Thinning(const QImage &origin)
         }
 
         // 将标记删除的点置为背景色
-
         for(int y=0; y<height; y++)
         {
             for(int x=0; x<width; x++)
@@ -916,7 +913,6 @@ QImage Tools::Thinning(const QImage &origin)
         }
     }
 
-
     markNum = 0;
 
     return binImg;
@@ -927,65 +923,65 @@ QImage Tools::Thinning(const QImage &origin)
 
 
 
-QImage Tools::RGB2HSV(const QImage &origin)
-{
-    int width = origin.width();
-    int height = origin.height();
-    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+//QImage Tools::RGB2HSV(const QImage &origin)
+//{
+//    int width = origin.width();
+//    int height = origin.height();
+//    QImage newImg = QImage(width, height, QImage::Format_RGB888);
 
-    for(int x=0; x<width; x++)
-    {
-        for(int y=0; y<height; y++)
-        {
-            QColor color = origin.pixel(x,y);
-//            int hue = color.hue();
-            int hue = 0;
-            color.setHsv(hue, color.saturation(), color.value(), color.alpha());
-//            newImg.setPixelColor(x,y,color);
-            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
-        }
-    }
-    return newImg;
-}
+//    for(int x=0; x<width; x++)
+//    {
+//        for(int y=0; y<height; y++)
+//        {
+//            QColor color = origin.pixel(x,y);
+////            int hue = color.hue();
+//            int hue = 0;
+//            color.setHsv(hue, color.saturation(), color.value(), color.alpha());
+////            newImg.setPixelColor(x,y,color);
+//            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+//        }
+//    }
+//    return newImg;
+//}
 
-QImage Tools::RGB2HSL(const QImage &origin)
-{
-    int width = origin.width();
-    int height = origin.height();
-    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+//QImage Tools::RGB2HSL(const QImage &origin)
+//{
+//    int width = origin.width();
+//    int height = origin.height();
+//    QImage newImg = QImage(width, height, QImage::Format_RGB888);
 
-    for(int x=0; x<width; x++)
-    {
-        for(int y=0; y<height; y++)
-        {
-            QColor color = origin.pixel(x,y);
-            int h = 100;
-            color.setHsl(h, color.saturation(),color.lightness(), color.alpha());
-            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
-        }
-    }
-    return newImg;
-}
+//    for(int x=0; x<width; x++)
+//    {
+//        for(int y=0; y<height; y++)
+//        {
+//            QColor color = origin.pixel(x,y);
+//            int h = 100;
+//            color.setHsl(h, color.saturation(),color.lightness(), color.alpha());
+//            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+//        }
+//    }
+//    return newImg;
+//}
 
-QImage Tools::RGB2CMYK(const QImage &origin)
-{
-    int width = origin.width();
-    int height = origin.height();
-    QImage newImg = QImage(width, height, QImage::Format_RGB888);
+//QImage Tools::RGB2CMYK(const QImage &origin)
+//{
+//    int width = origin.width();
+//    int height = origin.height();
+//    QImage newImg = QImage(width, height, QImage::Format_RGB888);
 
-    for(int x=0; x<width; x++)
-    {
-        for(int y=0; y<height; y++)
-        {
-            QColor color = origin.pixel(x,y);
-            int h = 100;
-//            color.setCmyk(color.cyan(), color.magenta(), color.yellow(), color.black());
-            color.setCmyk(color.cyan(), color.magenta(), 0, color.black());
-            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
-        }
-    }
-    return newImg;
-}
+//    for(int x=0; x<width; x++)
+//    {
+//        for(int y=0; y<height; y++)
+//        {
+//            QColor color = origin.pixel(x,y);
+//            int h = 100;
+////            color.setCmyk(color.cyan(), color.magenta(), color.yellow(), color.black());
+//            color.setCmyk(color.cyan(), color.magenta(), 0, color.black());
+//            newImg.setPixel(x,y,qRgb(color.red(),color.green(),color.blue()));
+//        }
+//    }
+//    return newImg;
+//}
 
 
 QImage Tools::Final(const QImage &origin)
