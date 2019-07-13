@@ -1,4 +1,4 @@
-#include "tools.h"
+﻿#include "tools.h"
 #include "medianfilter.h"
 
 #define min2(a,b) (a)<(b)?(a):(a)
@@ -112,6 +112,7 @@ QImage Tools::Brightness(int delta, QImage origin)
             // Check if the new values are between 0 and 255
             r = qBound(0, r, 255);
             g = qBound(0, g, 255);
+            b = qBound(0, b, 255);
 
             newImage->setPixel(x,y, qRgb(r,g,b));
         }
@@ -483,6 +484,7 @@ QImage Tools::LaplaceSharpen(const QImage &origin)
             int sumB = 0;
 
             //对每一个像素使用模板
+
             for(int m=x-1; m<= x+1; m++)
                 for(int n=y-1; n<=y+1; n++)
                 {
@@ -828,99 +830,6 @@ QImage Tools::Closing(const QImage &origin)
 
     return afterDilate;
 }
-
-/*****************************************************************************
- *                                图像细化
- * **************************************************************************/
-QImage Tools::Thinning(const QImage &origin)
-{
-    QImage binImg = Binaryzation(origin);
-    int width = binImg.width();
-    int height = binImg.height();
-
-    int neighbor[8];
-    QImage mark =  QImage(width, height, QImage::Format_RGB888);
-    mark.fill(Qt::black);
-
-    bool loop = true;
-    int markNum = 0;
-
-    while(loop)
-    {
-        loop = false;
-        markNum = 0;
-        for(int y=1; y<height-1; y++)
-        {
-            for(int x=1; x<width-1; x++)
-            {
-                // 1
-                if(binImg.pixel(x,y) == 0)  continue;
-
-                neighbor[0] = QColor(binImg.pixel(x+1,y)).red();
-                neighbor[1] = QColor(binImg.pixel(x+1, y-1)).red();
-                neighbor[2] = QColor(binImg.pixel(x, y-1)).red();
-                neighbor[3] = QColor(binImg.pixel(x-1, y-1)).red();
-                neighbor[4] = QColor(binImg.pixel(x-1, y)).red();
-                neighbor[5] = QColor(binImg.pixel(x-1, y+1)).red();
-                neighbor[6] = QColor(binImg.pixel(x, y+1)).red();
-                neighbor[7] = QColor(binImg.pixel(x+1, y+1)).red();
-
-                // 2
-                int np = (neighbor[0]+neighbor[1]+neighbor[2]+neighbor[3]
-                        +neighbor[4]+neighbor[5]+neighbor[6]+neighbor[7])/255;
-
-                if (np<2|| np >6)
-                    continue;
-
-                // 3
-                int sp = 0;
-                for(int i=1; i<8; i++)
-                {
-                    if(neighbor[i] - neighbor[i-1] == 255)
-                        sp++;
-                }
-                if(neighbor[0] - neighbor[7] == 255)
-                    sp++;
-
-                if (sp!=1)
-                    continue;
-
-                // 4
-                if(neighbor[2]&neighbor[0]&neighbor[4]!=0)
-                     continue;
-
-                //条件5：p2*p6*p4==0
-                if(neighbor[2]&neighbor[6]&neighbor[4]!=0)
-                     continue;
-
-                //标记删除
-                mark.setPixel(x,y,qRgb(1,1,1));
-                markNum ++;
-                loop = true;
-            }
-        }
-
-        // 将标记删除的点置为背景色
-        for(int y=0; y<height; y++)
-        {
-            for(int x=0; x<width; x++)
-            {
-                if(QColor(mark.pixel(x,y)) == 1)
-                {
-                    binImg.setPixel(x,y,qRgb(0,0,0));
-                }
-            }
-        }
-    }
-
-    markNum = 0;
-
-    return binImg;
-}
-
-
-
-
 
 
 //QImage Tools::RGB2HSV(const QImage &origin)
