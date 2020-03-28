@@ -969,11 +969,12 @@ void MainWindow::on_actionClosing_triggered()
  * **************************************************************************/
 void MainWindow::on_actionThinning_triggered()
 {
-    QPixmap rightImage = rightPixmapItem->pixmap();
-    QImage newImage = Tools::Thinning(rightImage.toImage());
-    rightImage.convertFromImage(newImage);
+//    QPixmap rightImage = rightPixmapItem->pixmap();
+//    QImage newImage = Tools::Thinning(rightImage.toImage());
+//    rightImage.convertFromImage(newImage);
 
-    updateRightImage(rightImage);
+//    updateRightImage(rightImage);
+    qDebug() << "TODO";
 }
 
 

@@ -541,7 +541,11 @@ QImage Tools::SobelEdge(const QImage &origin)
     int width = grayImage.width();
     QImage newImage = QImage(width, height,QImage::Format_RGB888);
 
-    float sobel_norm[width*height];
+    /* 改写下面这行解决：某些编译器下不支持“变长数组”的问题 */
+    // float sobel_norm[width*height];
+
+
+    float *sobel_norm = new float[width * height];
     float max = 0.0;
     QColor my_color;
 
@@ -560,7 +564,6 @@ QImage Tools::SobelEdge(const QImage &origin)
                     value_gx += Gx[p*3+k] * qRed(pixel);
                     value_gy += Gy[p*3+k] * qRed(pixel);
                 }
-//                sobel_norm[x+y*width] = sqrt(value_gx*value_gx + value_gy*value_gy)/1.0;
                 sobel_norm[x+y*width] = abs(value_gx) + abs(value_gy);
 
                 max=sobel_norm[x+y*width]>max ? sobel_norm[x+y*width]:max;
@@ -574,6 +577,7 @@ QImage Tools::SobelEdge(const QImage &origin)
             newImage.setPixel(i,j,my_color.rgb());
         }
     }
+    delete[] sobel_norm;
     return newImage;
 }
 
